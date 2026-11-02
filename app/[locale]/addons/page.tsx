@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: c.metaTitle,
     description: c.metaDescription,
-    alternates: { canonical: `/${locale}/addons`, languages: { ar: "/ar/addons", en: "/en/addons" } },
+    alternates: { canonical: `/${locale}/addons`, languages: { ar: "/ar/addons", en: "/en/addons", "x-default": "/ar/addons" } },
   };
 }
 

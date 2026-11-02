@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: d.contactPage.title,
     description: d.contactPage.intro,
-    alternates: { canonical: `/${locale}/contact`, languages: { ar: "/ar/contact", en: "/en/contact" } },
+    alternates: { canonical: `/${locale}/contact`, languages: { ar: "/ar/contact", en: "/en/contact", "x-default": "/ar/contact" } },
   };
 }
 

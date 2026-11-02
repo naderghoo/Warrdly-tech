@@ -79,7 +79,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <div className="grid grid-cols-3 gap-3">
                 {d.dashboard.kpis.map((k, i) => (
                   <div key={k} className="flex flex-col gap-1.5 rounded-xl glass-dark p-3.5">
-                    <span className="text-[13px] text-mist">{k}</span>
+                    <span className="text-[13px] text-mist-2">{k}</span>
                     <span
                       className="h-2.5 rounded-md"
                       style={{ width: ["70%", "55%", "82%"][i], background: ["#F2A93B", "#E7B3D6", "#C98BB8"][i] }}

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: d.zatcaPage.title,
     description: d.zatcaBand.text,
-    alternates: { canonical: `/${locale}/zatca`, languages: { ar: "/ar/zatca", en: "/en/zatca" } },
+    alternates: { canonical: `/${locale}/zatca`, languages: { ar: "/ar/zatca", en: "/en/zatca", "x-default": "/ar/zatca" } },
   };
 }
 

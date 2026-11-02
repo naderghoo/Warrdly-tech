@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: sector.title,
     description: sector.short,
-    alternates: { canonical: `/${locale}/solutions/${slug}`, languages: { ar: `/ar/solutions/${slug}`, en: `/en/solutions/${slug}` } },
+    alternates: { canonical: `/${locale}/solutions/${slug}`, languages: { ar: `/ar/solutions/${slug}`, en: `/en/solutions/${slug}`, "x-default": `/ar/solutions/${slug}` } },
   };
 }
 

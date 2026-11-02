@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: c.metaTitle,
     description: c.metaDescription,
-    alternates: { canonical: `/${locale}/integrations`, languages: { ar: "/ar/integrations", en: "/en/integrations" } },
+    alternates: { canonical: `/${locale}/integrations`, languages: { ar: "/ar/integrations", en: "/en/integrations", "x-default": "/ar/integrations" } },
   };
 }
 

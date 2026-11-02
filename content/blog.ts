@@ -128,7 +128,7 @@ export const posts: Post[] = [
     en: {
       title: "Connecting Odoo to Fatoora: what your business needs for Phase 2",
       description:
-        "A practical guide to preparing Odoo for ZATCA Fatoora integration: standard vs simplified invoices, the setup steps, and the common mistakes that get invoices rejected.",
+        "A practical guide to preparing Odoo for Fatoora integration: standard vs simplified invoices, setup steps, and mistakes that get invoices rejected.",
       category: "Compliance",
       readMinutes: 5,
       body: [

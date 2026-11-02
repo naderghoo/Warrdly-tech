@@ -21,17 +21,19 @@ export function Reveal() {
     );
 
     const vh = window.innerHeight;
+    // Read all positions first, then write — avoids forcing a layout per element
+    const tops = els.map((el) => el.getBoundingClientRect().top);
     const pending: HTMLElement[] = [];
-    for (const el of els) {
+    els.forEach((el, i) => {
       el.dataset.revealed = "1";
       // Already on screen at load: leave it alone so nothing flickers
-      if (el.getBoundingClientRect().top < vh * 0.9) continue;
+      if (tops[i] < vh * 0.9) return;
       const siblings = el.parentElement ? Array.from(el.parentElement.children) : [];
       const idx = Math.max(0, siblings.indexOf(el));
       el.style.transitionDelay = `${Math.min(idx, 5) * 70}ms`;
       el.classList.add("reveal");
       pending.push(el);
-    }
+    });
 
     const io = new IntersectionObserver(
       (entries) => {

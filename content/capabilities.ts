@@ -59,7 +59,7 @@ export const capAr: Capabilities = {
     addonsCta: "استعرض الحلول الجاهزة",
   },
   integrations: {
-    metaTitle: "تكاملات Odoo مع أمازون ونون وترينديول وسلة وزد",
+    metaTitle: "تكاملات Odoo: أمازون، نون، سلة، زد",
     metaDescription:
       "نربط Odoo بأمازون ونون وترينديول وسلة وزد ووردلي، وبشركات الشحن أرامكس وJ&T: مزامنة المخزون والأسعار واستيراد الطلبات والمرتجعات تلقائياً.",
     eyebrow: "التكاملات",
@@ -434,7 +434,7 @@ export const capEn: Capabilities = {
     addonsCta: "Browse ready-built solutions",
   },
   integrations: {
-    metaTitle: "Odoo integrations with Amazon, noon, Trendyol, Salla and Zid",
+    metaTitle: "Odoo integrations: Amazon, noon, Salla, Zid",
     metaDescription:
       "We connect Odoo to Amazon, noon, Trendyol, Salla, Zid and Warrdly, plus Aramex and J&T shipping: automatic stock and price sync, order and return import.",
     eyebrow: "Integrations",

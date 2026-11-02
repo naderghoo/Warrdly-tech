@@ -19,9 +19,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!isLocale(locale) || !post) return {};
   const c = post[locale];
   return {
-    title: c.title,
+    // Article titles are long enough on their own; skip the brand suffix
+    title: { absolute: c.title },
     description: c.description,
-    alternates: { canonical: `/${locale}/blog/${slug}`, languages: { ar: `/ar/blog/${slug}`, en: `/en/blog/${slug}` } },
+    alternates: { canonical: `/${locale}/blog/${slug}`, languages: { ar: `/ar/blog/${slug}`, en: `/en/blog/${slug}`, "x-default": `/ar/blog/${slug}` } },
     openGraph: { type: "article", title: c.title, description: c.description, publishedTime: post.date, images: ["/og.png"] },
   };
 }

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: ui.title,
     description: ui.intro,
-    alternates: { canonical: `/${locale}/blog`, languages: { ar: "/ar/blog", en: "/en/blog" } },
+    alternates: { canonical: `/${locale}/blog`, languages: { ar: "/ar/blog", en: "/en/blog", "x-default": "/ar/blog" } },
   };
 }
 

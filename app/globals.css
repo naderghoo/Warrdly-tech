@@ -208,3 +208,14 @@ a.bg-gold:active {
   a.bg-plum:hover, button.bg-plum:hover, a.bg-gold:hover { transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ===================== Performance on small screens =====================
+   Live backdrop blur and animated blurred shapes are expensive on phones.
+   Keep the same look with slightly more opaque surfaces and static light. */
+@media (max-width: 767px) {
+  .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .glass-tint { background: rgba(246, 237, 243, 0.88); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .glass-dark { background: rgba(255, 255, 255, 0.08); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .glass-ink { background: rgba(36, 21, 42, 0.94); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .animate-float, .animate-drift, .animate-drift-slow { animation: none; }
+}
