@@ -5,7 +5,7 @@ import { en } from "@/content/en";
 // not-found pages don't receive route params, so show both languages
 export default function NotFound() {
   return (
-    <section className="bg-white">
+    <section className="bg-transparent">
       <div className="mx-auto flex max-w-[720px] flex-col items-center gap-5 px-5 py-28 text-center">
         <span className="text-6xl font-bold text-plum">404</span>
         <h1 className="text-3xl font-bold">{ar.notFound.title}</h1>

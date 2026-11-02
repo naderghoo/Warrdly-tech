@@ -28,7 +28,7 @@ export default async function AddonsPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-ink text-white">
+      <section className="glow-dark text-white">
         <Container className="flex flex-col gap-6 pb-16 pt-16 sm:pt-20">
           <Eyebrow light>{c.eyebrow}</Eyebrow>
           <h1 className="max-w-[860px] text-4xl font-bold leading-tight sm:text-5xl">{c.title}</h1>

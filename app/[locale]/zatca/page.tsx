@@ -26,7 +26,7 @@ export default async function ZatcaPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-ink text-white">
+      <section className="glow-dark text-white">
         <Container className="flex flex-col gap-6 pb-20 pt-16 sm:pt-20">
           <Eyebrow light>{d.zatcaBand.eyebrow}</Eyebrow>
           <h1 className="max-w-[860px] text-4xl font-bold leading-tight sm:text-5xl">{z.title}</h1>
@@ -39,12 +39,12 @@ export default async function ZatcaPage({ params }: { params: Params }) {
         </Container>
       </section>
 
-      <section className="bg-paper">
+      <section className="bg-transparent">
         <Container className="flex flex-col gap-8 py-20">
           <h2 className="text-2xl font-bold sm:text-3xl">{z.phasesTitle}</h2>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {z.phases.map((ph, i) => (
-              <div key={ph.title} className="flex flex-col gap-3 rounded-2xl border-t-4 border-plum bg-white p-8">
+              <div key={ph.title} className="flex flex-col gap-3 rounded-2xl glass border-t-4 !border-t-plum p-8">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-tint text-lg font-bold text-plum">
                   {locale === "ar" ? ["١", "٢"][i] : i + 1}
                 </span>
@@ -56,7 +56,7 @@ export default async function ZatcaPage({ params }: { params: Params }) {
         </Container>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-transparent">
         <Container className="grid grid-cols-1 gap-12 py-20 lg:grid-cols-2">
           <div className="flex flex-col gap-5">
             <h2 className="text-2xl font-bold sm:text-3xl">{z.whatWeDoTitle}</h2>
@@ -69,12 +69,12 @@ export default async function ZatcaPage({ params }: { params: Params }) {
               ))}
             </ul>
           </div>
-          <div className="flex flex-col gap-4 rounded-3xl bg-tint p-8">
+          <div className="flex flex-col gap-4 rounded-3xl glass-tint p-8">
             <h2 className="text-2xl font-bold">{z.checklistTitle}</h2>
             <p className="text-base text-muted">{z.checklistIntro}</p>
             <ol className="flex flex-col gap-3">
               {z.checklist.map((c, i) => (
-                <li key={c} className="flex gap-3 rounded-xl bg-white p-4 text-[15px]">
+                <li key={c} className="flex gap-3 rounded-xl glass p-4 text-[15px]">
                   <span className="font-bold text-plum">{locale === "ar" ? "١٢٣٤٥٦"[i] : i + 1}.</span>
                   {c}
                 </li>
@@ -84,12 +84,12 @@ export default async function ZatcaPage({ params }: { params: Params }) {
         </Container>
       </section>
 
-      <section className="bg-paper">
+      <section className="bg-transparent">
         <Container className="flex flex-col gap-6 py-20">
           <h2 className="text-2xl font-bold sm:text-3xl">{z.faqTitle}</h2>
           <div className="flex flex-col gap-3">
             {z.faq.map((f) => (
-              <details key={f.q} className="group rounded-2xl border border-line bg-white p-6 open:shadow-sm">
+              <details key={f.q} className="group rounded-2xl glass p-6 open:shadow-sm">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">
                   {f.q}
                   <span className="text-2xl leading-none text-plum transition-transform group-open:rotate-45" aria-hidden="true">

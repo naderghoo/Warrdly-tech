@@ -74,7 +74,7 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
   // ---------- Intro ----------
   if (step === -1) {
     return (
-      <div ref={topRef} className="scroll-mt-28 flex flex-col items-start gap-6 rounded-3xl border border-line bg-white p-8 sm:p-12">
+      <div ref={topRef} className="scroll-mt-28 flex flex-col items-start gap-6 rounded-3xl glass p-8 sm:p-12">
         <ul className="flex flex-col gap-3 text-lg">
           {c.points.map((p) => (
             <li key={p} className="flex items-center gap-3">
@@ -100,7 +100,7 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
     const q = c.questions[step];
     const selected = answers[q.id];
     return (
-      <div ref={topRef} className="scroll-mt-28 flex flex-col gap-6 rounded-3xl border border-line bg-white p-6 sm:p-10">
+      <div ref={topRef} className="scroll-mt-28 flex flex-col gap-6 rounded-3xl glass p-6 sm:p-10">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between text-sm font-semibold text-muted-2">
             <span>
@@ -164,7 +164,7 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
   const ring = 2 * Math.PI * 54;
   return (
     <div ref={topRef} className="scroll-mt-28 flex flex-col gap-8">
-      <section className="flex flex-wrap items-center gap-8 rounded-3xl bg-ink p-8 text-white sm:p-10">
+      <section className="flex flex-wrap items-center gap-8 rounded-3xl glow-dark p-8 text-white sm:p-10">
         <div className="relative h-[140px] w-[140px] flex-none">
           <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90" aria-hidden="true">
             <circle cx="60" cy="60" r="54" fill="none" stroke="#3A2539" strokeWidth="12" />
@@ -193,7 +193,7 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
         </div>
       </section>
 
-      <section className="flex flex-col gap-4 rounded-3xl border border-line bg-white p-6 sm:p-8">
+      <section className="flex flex-col gap-4 rounded-3xl glass p-6 sm:p-8">
         <h3 className="text-xl font-bold">{c.areasTitle}</h3>
         <ul className="flex flex-col gap-3.5">
           {result.areas.map((a) => (
@@ -214,13 +214,13 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
       <section className="flex flex-col gap-4">
         <h3 className="text-xl font-bold">{c.gapsTitle}</h3>
         {result.gaps.length === 0 ? (
-          <p className="rounded-2xl bg-tint p-5 text-base text-plum-dark">{c.noGaps}</p>
+          <p className="rounded-2xl glass-tint p-5 text-base text-plum-dark">{c.noGaps}</p>
         ) : (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {result.gaps.slice(0, 4).map((g) => {
               const a = c.areas[g.key];
               return (
-                <div key={g.key} className="flex flex-col gap-2.5 rounded-2xl border border-line bg-white p-6">
+                <div key={g.key} className="flex flex-col gap-2.5 rounded-2xl glass p-6">
                   <div className="flex items-center justify-between gap-2">
                     <h4 className="text-lg font-bold">{a.name}</h4>
                     <span className="text-sm font-semibold text-muted-2">{pctText(g.pct)}</span>
@@ -237,7 +237,7 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
         )}
       </section>
 
-      <section className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-tint p-6">
+      <section className="flex flex-wrap items-center justify-between gap-4 rounded-2xl glass-tint p-6">
         <div className="flex flex-col gap-1">
           <span className="text-sm font-semibold text-plum-dark">{c.packageTitle}</span>
           <span className="text-2xl font-bold">{c.packages[result.pkg]}</span>

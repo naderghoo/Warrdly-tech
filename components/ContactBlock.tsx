@@ -7,7 +7,7 @@ import { Container, Eyebrow } from "./ui";
 
 export function ContactBlock({ dict, locale, heading = true }: { dict: Dict; locale: Locale; heading?: boolean }) {
   return (
-    <section id="contact" className="bg-white">
+    <section id="contact" className="bg-transparent">
       <Container className="flex flex-wrap gap-14 py-20 sm:py-24">
         <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-4.5">
           {heading && (

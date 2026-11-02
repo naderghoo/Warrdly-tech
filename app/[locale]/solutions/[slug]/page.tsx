@@ -36,7 +36,7 @@ export default async function SectorPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-white">
+      <section className="bg-transparent">
         <Container className="flex flex-col gap-6 pb-16 pt-14 sm:pt-20">
           <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-tint text-plum">
             <Icon name={sector.icon} size={32} stroke={1.8} />
@@ -52,13 +52,13 @@ export default async function SectorPage({ params }: { params: Params }) {
         </Container>
       </section>
 
-      <section className="bg-paper">
+      <section className="bg-transparent">
         <Container className="grid grid-cols-1 gap-12 py-20 lg:grid-cols-[1fr_1.4fr]">
           <div className="flex flex-col gap-5">
             <h2 className="text-2xl font-bold sm:text-3xl">{p.challengesTitle}</h2>
             <ul className="flex flex-col gap-3">
               {sector.challenges.map((c) => (
-                <li key={c} className="flex gap-3 rounded-xl border border-line bg-white p-4 text-base">
+                <li key={c} className="flex gap-3 rounded-xl glass p-4 text-base">
                   <span className="mt-2 h-2 w-2 flex-none rounded-full bg-gold" aria-hidden="true" />
                   {c}
                 </li>
@@ -69,7 +69,7 @@ export default async function SectorPage({ params }: { params: Params }) {
             <h2 className="text-2xl font-bold sm:text-3xl">{p.solutionTitle}</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {sector.solution.map((s) => (
-                <div key={s.title} className="flex flex-col gap-2 rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(36,21,42,0.06)]">
+                <div key={s.title} className="flex flex-col gap-2 rounded-2xl glass p-6">
                   <Icon name="check" size={22} stroke={2.4} className="text-plum" />
                   <h3 className="text-lg font-bold">{s.title}</h3>
                   <p className="text-[15px] text-muted">{s.text}</p>
@@ -80,7 +80,7 @@ export default async function SectorPage({ params }: { params: Params }) {
         </Container>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-transparent">
         <Container className="flex flex-col gap-5 py-16">
           <h2 className="text-2xl font-bold">{p.appsTitle}</h2>
           <ul className="flex flex-wrap gap-3">

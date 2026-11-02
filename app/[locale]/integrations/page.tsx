@@ -28,14 +28,14 @@ export default async function IntegrationsPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-ink text-white">
+      <section className="glow-dark text-white">
         <Container className="flex flex-col gap-6 pb-16 pt-16 sm:pt-20">
           <Eyebrow light>{c.eyebrow}</Eyebrow>
           <h1 className="max-w-[860px] text-4xl font-bold leading-tight sm:text-5xl">{c.title}</h1>
           <p className="max-w-[780px] text-lg text-mist-2 sm:text-xl">{c.intro}</p>
           <dl className="grid max-w-[640px] grid-cols-3 gap-4 pt-2">
             {c.stats.map((s) => (
-              <div key={s.label} className="rounded-2xl bg-ink-2 p-4">
+              <div key={s.label} className="rounded-2xl glass-dark p-4">
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="text-3xl font-bold text-gold">{s.value}</dd>
                 <dd className="text-sm text-mist">{s.label}</dd>
@@ -50,12 +50,12 @@ export default async function IntegrationsPage({ params }: { params: Params }) {
 
       <CapabilityGroups groups={c.groups} />
 
-      <section className="bg-ink text-white">
+      <section className="glow-dark text-white">
         <Container className="flex flex-col gap-10 py-20">
           <h2 className="text-2xl font-bold sm:text-3xl">{c.howTitle}</h2>
           <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {c.how.map((h, i) => (
-              <li key={h.title} className="flex flex-col gap-2 rounded-2xl bg-ink-2 p-6">
+              <li key={h.title} className="flex flex-col gap-2 rounded-2xl glass-dark p-6">
                 <span className="text-sm font-bold text-gold">{num(i)}</span>
                 <h3 className="text-lg font-bold">{h.title}</h3>
                 <p className="text-[15px] text-mist">{h.text}</p>

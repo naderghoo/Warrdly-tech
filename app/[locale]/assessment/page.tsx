@@ -26,14 +26,14 @@ export default async function AssessmentPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-ink text-white">
+      <section className="glow-dark text-white">
         <Container className="flex max-w-[860px] flex-col gap-5 pb-14 pt-14 sm:pt-16">
           <Eyebrow light>{c.eyebrow}</Eyebrow>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">{c.title}</h1>
           <p className="text-lg text-mist-2 sm:text-xl">{c.intro}</p>
         </Container>
       </section>
-      <section className="bg-paper">
+      <section className="bg-transparent">
         <Container className="max-w-[860px] py-12 sm:py-16">
           <Assessment c={c} dict={d} locale={locale} />
         </Container>

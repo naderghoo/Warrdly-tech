@@ -72,7 +72,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
         </Link>
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-white/60 bg-white/60 backdrop-blur-xl backdrop-saturate-150">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-3 sm:px-6">
           <Link href={base} className="flex flex-none items-center gap-2.5 text-ink">
             <Image src="/logo.png" alt="" width={44} height={44} priority />
@@ -103,7 +103,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
               </button>
               {solOpen && (
                 <div className="absolute start-0 top-full w-[340px] pt-2">
-                  <div className="flex flex-col rounded-2xl border border-line bg-white p-2 shadow-[0_16px_40px_rgba(36,21,42,0.12)]">
+                  <div className="flex flex-col rounded-2xl glass-strong p-2">
                     {dict.sectors.map((s) => (
                       <Link
                         key={s.slug}
@@ -166,7 +166,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
         </div>
 
         {open && (
-          <nav aria-label={dict.nav.menu} className="max-h-[calc(100vh-120px)] overflow-y-auto border-t border-line bg-white xl:hidden">
+          <nav aria-label={dict.nav.menu} className="max-h-[calc(100vh-120px)] overflow-y-auto border-t border-line glass-strong xl:hidden">
             <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-3">
               <span className="pt-2 text-[13px] font-semibold text-muted-2">{dict.nav.solutions}</span>
               {dict.sectors.map((s) => (

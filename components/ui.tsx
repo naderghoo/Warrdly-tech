@@ -55,7 +55,7 @@ export function SecondaryButton({ href, children }: { href: string; children: Re
   return (
     <Link
       href={href}
-      className="inline-flex min-h-[52px] items-center justify-center rounded-xl border-[1.5px] border-line-2 bg-white px-7 text-[17px] font-semibold text-ink transition-colors hover:border-plum"
+      className="inline-flex min-h-[52px] items-center justify-center rounded-xl border-[1.5px] border-line-2 bg-white/60 backdrop-blur px-7 text-[17px] font-semibold text-ink transition-colors hover:border-plum"
     >
       {children}
     </Link>

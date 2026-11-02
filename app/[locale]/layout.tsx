@@ -84,6 +84,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dirOf(locale)}>
       <body className="font-sans">
+        <div className="mesh" aria-hidden="true" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd(locale)) }}

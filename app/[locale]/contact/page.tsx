@@ -24,7 +24,7 @@ export default async function ContactPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-tint">
+      <section className="bg-tint/40">
         <Container className="flex flex-col gap-4 py-16">
           <h1 className="text-4xl font-bold sm:text-5xl">{d.contactPage.title}</h1>
           <p className="max-w-[700px] text-lg text-muted">{d.contact.title}</p>

@@ -6,7 +6,7 @@ import type { Dict } from "@/content/ar";
 type Status = "idle" | "sending" | "success" | "error";
 
 const field =
-  "min-h-[48px] w-full rounded-[10px] border border-line-2 bg-white px-3.5 py-3 text-base text-ink placeholder:text-muted-2/70 focus:border-plum focus:outline-none";
+  "min-h-[48px] w-full rounded-[10px] border border-line-2 bg-white/80 px-3.5 py-3 text-base text-ink placeholder:text-muted-2/70 focus:border-plum focus:outline-none";
 const label = "flex flex-col gap-1.5 text-[15px] font-semibold text-ink";
 
 export function LeadForm({
@@ -52,7 +52,7 @@ export function LeadForm({
 
   if (status === "success") {
     return (
-      <div role="status" className="rounded-[20px] border border-line bg-tint p-8 text-lg font-medium text-plum-dark">
+      <div role="status" className="rounded-[20px] glass-tint p-8 text-lg font-medium text-plum-dark">
         {f.success}
       </div>
     );
@@ -62,7 +62,7 @@ export function LeadForm({
     <form
       onSubmit={onSubmit}
       noValidate
-      className="grid grid-cols-1 gap-4.5 rounded-[20px] border border-line bg-paper p-6 sm:grid-cols-2 sm:p-8"
+      className="grid grid-cols-1 gap-4.5 rounded-[20px] glass p-6 sm:grid-cols-2 sm:p-8"
     >
       <label className={label}>
         {f.name}

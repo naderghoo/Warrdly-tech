@@ -29,8 +29,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       {/* Hero */}
-      <section className="bg-white">
-        <Container className="flex flex-wrap items-center gap-14 pb-24 pt-16 sm:pt-20">
+      <section className="relative overflow-hidden bg-transparent">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <span className="absolute top-10 h-[420px] w-[420px] rounded-full bg-plum/30 blur-[90px] ltr:right-[-80px] rtl:left-[-80px]" />
+          <span className="absolute bottom-[-120px] h-[360px] w-[360px] rounded-full bg-gold/25 blur-[90px] ltr:right-[28%] rtl:left-[28%]" />
+          <span className="absolute top-[-140px] h-[320px] w-[320px] rounded-full bg-lilac/50 blur-[80px] ltr:left-[20%] rtl:right-[20%]" />
+        </div>
+        <Container className="relative flex flex-wrap items-center gap-14 pb-24 pt-16 sm:pt-20">
           <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-6">
             <span className="inline-flex items-center gap-2 self-start rounded-full bg-tint px-3.5 py-1.5 text-sm font-semibold text-plum-dark">
               <Icon name="shield" size={16} />
@@ -60,7 +65,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
           {/* Dashboard illustration */}
           <div className="min-w-0 flex-[1_1_420px]" aria-hidden="true">
-            <div className="rounded-[20px] bg-ink p-5 shadow-[0_24px_60px_rgba(36,21,42,0.18)]">
+            <div className="rounded-[20px] glass-ink p-5 shadow-[0_24px_60px_rgba(36,21,42,0.25)]">
               <div className="flex items-center justify-between pb-4">
                 <span className="text-[15px] font-semibold text-mist-2">{d.dashboard.title}</span>
                 <span className="flex gap-1.5">
@@ -71,7 +76,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {d.dashboard.kpis.map((k, i) => (
-                  <div key={k} className="flex flex-col gap-1.5 rounded-xl bg-ink-2 p-3.5">
+                  <div key={k} className="flex flex-col gap-1.5 rounded-xl glass-dark p-3.5">
                     <span className="text-[13px] text-mist">{k}</span>
                     <span
                       className="h-2.5 rounded-md"
@@ -80,7 +85,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   </div>
                 ))}
               </div>
-              <div className="mt-3 rounded-xl bg-ink-2 p-4.5">
+              <div className="mt-3 rounded-xl glass-dark p-4.5">
                 <div className="flex h-[150px] items-end gap-2.5">
                   {[40, 58, 50, 72, 66, 88, 95].map((h, i) => (
                     <span
@@ -105,7 +110,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* Stats (hidden until filled in content/site.ts) */}
       {site.stats.length > 0 && (
-        <section className="border-y border-line bg-paper">
+        <section className="border-y border-white/60 bg-white/30">
           <Container className="grid grid-cols-2 gap-6 py-10 text-center md:grid-cols-4">
             {site.stats.map((s) => (
               <div key={s.en}>
@@ -118,7 +123,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       )}
 
       {/* Sectors */}
-      <section id="sectors" className="scroll-mt-24 bg-paper">
+      <section id="sectors" className="scroll-mt-24 bg-white/25">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <SectionHead eyebrow={d.sectorsSection.eyebrow} title={d.sectorsSection.title} subtitle={d.sectorsSection.subtitle} />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -126,7 +131,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <Link
                 key={s.slug}
                 href={`${base}/solutions/${s.slug}`}
-                className="group flex flex-col gap-3.5 rounded-2xl border border-line bg-white p-7 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
+                className="group flex flex-col gap-3.5 rounded-2xl glass p-7 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
               >
                 <span className="flex h-13 w-13 items-center justify-center rounded-xl bg-tint text-plum">
                   <Icon name={s.icon} size={26} stroke={1.8} />
@@ -144,7 +149,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Services */}
-      <section id="services" className="scroll-mt-24 bg-white">
+      <section id="services" className="scroll-mt-24 bg-transparent">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="flex max-w-[640px] flex-col gap-3">
@@ -153,9 +158,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
             <TextLink href={`${base}/contact`}>{d.services.link}</TextLink>
           </div>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl glass bg-white/30 md:grid-cols-2 lg:grid-cols-3">
             {d.services.items.map((s) => (
-              <div key={s.title} className="flex gap-4.5 bg-white p-8">
+              <div key={s.title} className="flex gap-4.5 bg-white/45 p-8">
                 <Icon name={s.icon} size={28} stroke={1.8} className="flex-none text-ink" />
                 <div className="flex flex-col gap-1.5">
                   <h3 className="text-[19px] font-bold">{s.title}</h3>
@@ -168,7 +173,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ZATCA band */}
-      <section id="zatca" className="scroll-mt-24 bg-ink text-white">
+      <section id="zatca" className="scroll-mt-24 glow-dark text-white">
         <Container className="flex flex-wrap items-center gap-12 py-20 sm:py-22">
           <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-4.5">
             <Eyebrow light>{d.zatcaBand.eyebrow}</Eyebrow>
@@ -189,7 +194,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
           <div className="grid min-w-0 flex-[1_1_420px] grid-cols-1 gap-3.5 sm:grid-cols-2">
             {d.zatcaBand.items.map((it) => (
-              <div key={it.title} className="flex flex-col gap-2 rounded-[14px] bg-ink-2 p-5.5">
+              <div key={it.title} className="flex flex-col gap-2 rounded-[14px] glass-dark p-5.5">
                 <Icon name={it.icon} size={24} className="text-lilac" />
                 <span className="text-[17px] font-semibold">{it.title}</span>
                 <span className="text-[15px] text-mist">{it.text}</span>
@@ -200,12 +205,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Process */}
-      <section className="bg-paper">
+      <section className="bg-transparent">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <SectionHead eyebrow={d.process.eyebrow} title={d.process.title} />
           <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {d.process.steps.map((s, i) => (
-              <li key={s.title} className="flex flex-col gap-2.5 rounded-2xl border-t-4 border-plum bg-white p-7">
+              <li key={s.title} className="flex flex-col gap-2.5 rounded-2xl glass border-t-4 !border-t-plum p-7">
                 <span className="text-[15px] font-bold text-plum">{num(i)}</span>
                 <h3 className="text-xl font-bold">{s.title}</h3>
                 <p className="text-base text-muted">{s.text}</p>
@@ -216,9 +221,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Case study */}
-      <section id="case" className="scroll-mt-24 bg-white">
+      <section id="case" className="scroll-mt-24 bg-transparent">
         <Container className="py-20 sm:py-24">
-          <div className="flex flex-col gap-5 rounded-3xl bg-tint p-8 sm:p-14">
+          <div className="flex flex-col gap-5 rounded-3xl glass-tint p-8 sm:p-14">
             <span className="text-[15px] font-semibold text-plum-dark">{d.caseStudy.eyebrow}</span>
             <h2 className="max-w-[820px] text-2xl font-bold leading-snug sm:text-4xl">{d.caseStudy.title}</h2>
             <p className="max-w-[820px] text-lg text-[#3E3242]">{d.caseStudy.text}</p>
@@ -230,7 +235,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Integrations */}
-      <section id="integrations" className="scroll-mt-24 bg-ink text-white">
+      <section id="integrations" className="scroll-mt-24 glow-dark text-white">
         <Container className="flex flex-wrap items-center gap-12 py-20 sm:py-24">
           <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-4.5">
             <Eyebrow light>{cap.home.eyebrow}</Eyebrow>
@@ -250,7 +255,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             {cap.home.channels.map((ch) => (
               <li
                 key={ch}
-                className="flex min-h-[72px] items-center justify-center rounded-2xl border border-white/10 bg-ink-2 px-3 text-center text-[17px] font-semibold"
+                className="flex min-h-[72px] items-center justify-center rounded-2xl glass-dark px-3 text-center text-[17px] font-semibold"
               >
                 {ch}
               </li>
@@ -260,7 +265,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Ready-built solutions teaser */}
-      <section className="bg-white">
+      <section className="bg-transparent">
         <Container className="flex flex-col gap-10 py-20 sm:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHead eyebrow={cap.home.addonsEyebrow} title={cap.home.addonsTitle} subtitle={cap.home.addonsText} />
@@ -271,7 +276,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <Link
                 key={it.key}
                 href={`${base}/addons#${it.group}`}
-                className="flex flex-col gap-2.5 rounded-2xl border border-line bg-paper p-6 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
+                className="flex flex-col gap-2.5 rounded-2xl glass p-6 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-tint text-plum">
                   <Icon name={it.icon} size={22} stroke={1.8} />
@@ -285,7 +290,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Packages */}
-      <section id="packages" className="scroll-mt-24 bg-paper">
+      <section id="packages" className="scroll-mt-24 bg-white/25">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <SectionHead center eyebrow={d.packages.eyebrow} title={d.packages.title} subtitle={d.packages.subtitle} />
           <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-3">
@@ -301,7 +306,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <div
                   key={t.key}
                   className={`flex flex-col gap-4.5 rounded-[18px] p-8 ${
-                    featured ? "bg-ink text-white shadow-[0_20px_50px_rgba(36,21,42,0.22)]" : "border border-line bg-white"
+                    featured ? "bg-ink text-white shadow-[0_20px_50px_rgba(36,21,42,0.22)]" : "glass"
                   }`}
                 >
                   <div className="flex items-center justify-between">

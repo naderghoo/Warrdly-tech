@@ -58,7 +58,7 @@ function Render({ block }: { block: Block }) {
       );
     case "note":
       return (
-        <aside className="flex gap-3 rounded-2xl bg-tint p-5 text-[16px] font-medium leading-[1.8] text-plum-dark">
+        <aside className="flex gap-3 rounded-2xl glass-tint p-5 text-[16px] font-medium leading-[1.8] text-plum-dark">
           <Icon name="shield" size={22} className="mt-0.5 flex-none" />
           {block.text}
         </aside>
@@ -96,7 +96,7 @@ export default async function BlogPost({ params }: { params: Params }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article>
-        <header className="bg-tint">
+        <header className="bg-tint/40">
           <Container className="flex max-w-[860px] flex-col gap-5 py-14">
             <Link href={`/${locale}/blog`} className="inline-flex items-center gap-1.5 self-start text-[15px] font-semibold text-plum hover:text-plum-dark">
               <Icon name="arrow" size={16} className="ltr:-scale-x-100" />
@@ -115,7 +115,7 @@ export default async function BlogPost({ params }: { params: Params }) {
           </Container>
         </header>
 
-        <div className="bg-white">
+        <div className="bg-transparent">
           <Container className="flex max-w-[860px] flex-col gap-5 py-14">
             {c.body.map((b, i) => (
               <Render key={i} block={b} />
@@ -129,7 +129,7 @@ export default async function BlogPost({ params }: { params: Params }) {
         </div>
       </article>
 
-      <section className="bg-ink text-white">
+      <section className="glow-dark text-white">
         <Container className="flex max-w-[860px] flex-col items-start gap-4 py-14">
           <h2 className="text-2xl font-bold sm:text-3xl">{ui.ctaTitle}</h2>
           <p className="text-lg text-mist-2">{ui.ctaText}</p>
@@ -140,7 +140,7 @@ export default async function BlogPost({ params }: { params: Params }) {
       </section>
 
       {others.length > 0 && (
-        <section className="bg-paper">
+        <section className="bg-transparent">
           <Container className="flex flex-col gap-6 py-16">
             <h2 className="text-2xl font-bold">{ui.more}</h2>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -148,7 +148,7 @@ export default async function BlogPost({ params }: { params: Params }) {
                 <Link
                   key={p.slug}
                   href={`/${locale}/blog/${p.slug}`}
-                  className="flex flex-col gap-2 rounded-2xl border border-line bg-white p-6 text-ink hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
+                  className="flex flex-col gap-2 rounded-2xl glass p-6 text-ink hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
                 >
                   <span className="text-[13px] font-semibold text-plum-dark">{p[locale].category}</span>
                   <h3 className="text-lg font-bold leading-snug">{p[locale].title}</h3>

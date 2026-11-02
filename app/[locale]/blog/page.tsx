@@ -27,13 +27,13 @@ export default async function BlogIndex({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-tint">
+      <section className="bg-tint/40">
         <Container className="flex flex-col gap-4 py-16">
           <h1 className="text-4xl font-bold sm:text-5xl">{ui.title}</h1>
           <p className="max-w-[720px] text-lg text-muted">{ui.intro}</p>
         </Container>
       </section>
-      <section className="bg-white">
+      <section className="bg-transparent">
         <Container className="grid grid-cols-1 gap-6 py-16 md:grid-cols-2 lg:grid-cols-3">
           {sorted.map((p) => {
             const c = p[locale];
@@ -41,7 +41,7 @@ export default async function BlogIndex({ params }: { params: Params }) {
               <Link
                 key={p.slug}
                 href={`/${locale}/blog/${p.slug}`}
-                className="group flex flex-col gap-3 rounded-2xl border border-line bg-paper p-7 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
+                className="group flex flex-col gap-3 rounded-2xl glass p-7 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
               >
                 <div className="flex flex-wrap items-center gap-2 text-[13px]">
                   <span className="rounded-full bg-tint px-3 py-1 font-semibold text-plum-dark">{c.category}</span>
