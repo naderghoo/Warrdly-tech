@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
 import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLink } from "@/components/ui";
+import { DigitalTeaser } from "@/components/DigitalTeaser";
 import { WhyOdoo } from "@/components/WhyOdoo";
 import { getCap } from "@/content/capabilities";
+import { getDigital } from "@/content/digital";
 import { getOdoo } from "@/content/odoo";
 import { getDict, isLocale } from "@/content/i18n";
 import { site } from "@/content/site";
@@ -175,6 +177,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </Container>
       </section>
+
+      {/* Full technology services */}
+      <DigitalTeaser c={getDigital(locale)} locale={locale} />
 
       {/* ZATCA band */}
       <section id="zatca" className="scroll-mt-24 glow-dark text-white">

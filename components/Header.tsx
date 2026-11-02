@@ -46,7 +46,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
   const cap = getCap(locale);
   const links = [
     { href: `${base}/integrations`, label: cap.nav.integrations },
-    { href: `${base}#services`, label: dict.nav.services },
+    { href: `${base}/services`, label: dict.nav.services },
     { href: `${base}#packages`, label: dict.nav.packages },
     { href: `${base}/blog`, label: locale === "ar" ? "المدونة" : "Blog" },
     { href: `${base}/contact`, label: dict.nav.contact },
