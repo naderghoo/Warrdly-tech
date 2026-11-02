@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
 import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLink } from "@/components/ui";
+import { getCap } from "@/content/capabilities";
 import { getDict, isLocale } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -14,6 +15,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const d = getDict(locale);
   const base = `/${locale}`;
   const badge = site.partnerLevel ? `${d.hero.badge} · ${site.partnerLevel}` : d.hero.badge;
+  const cap = getCap(locale);
+  const pickKeys = ["margin", "forecast", "count", "credit", "portal", "b2bapp"];
+  const addonPicks = cap.addons.groups
+    .flatMap((g) => g.items.map((it) => ({ ...it, group: g.id, icon: g.icon })))
+    .filter((it) => pickKeys.includes(it.key))
+    .sort((a, b) => pickKeys.indexOf(a.key) - pickKeys.indexOf(b.key));
   const num = (i: number) => {
     const s = String(i + 1).padStart(2, "0");
     return locale === "ar" ? toArabicDigits(s) : s;
@@ -223,16 +230,57 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Integrations */}
-      <section className="bg-white">
-        <Container className="flex flex-col items-center gap-7 pb-24 text-center">
-          <h2 className="text-2xl font-bold sm:text-[28px]">{d.integrations.title}</h2>
-          <ul className="flex flex-wrap justify-center gap-3">
-            {d.integrations.items.map((it) => (
-              <li key={it} className="rounded-full border border-[#DFD4DC] px-5.5 py-2.5 text-base font-medium">
-                {it}
+      <section id="integrations" className="scroll-mt-24 bg-ink text-white">
+        <Container className="flex flex-wrap items-center gap-12 py-20 sm:py-24">
+          <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-4.5">
+            <Eyebrow light>{cap.home.eyebrow}</Eyebrow>
+            <h2 className="text-3xl font-bold leading-snug sm:text-[40px]">{cap.home.title}</h2>
+            <p className="text-lg text-mist-2">{cap.home.text}</p>
+            <div className="pt-2">
+              <Link
+                href={`${base}/integrations`}
+                className="inline-flex min-h-[52px] items-center gap-2 rounded-xl bg-gold px-6 font-bold text-ink hover:bg-[#F5B95A]"
+              >
+                {cap.home.cta}
+                <Icon name="arrow" size={18} className="rtl:-scale-x-100" />
+              </Link>
+            </div>
+          </div>
+          <ul className="grid min-w-0 flex-[1_1_460px] grid-cols-2 gap-3 sm:grid-cols-3">
+            {cap.home.channels.map((ch) => (
+              <li
+                key={ch}
+                className="flex min-h-[72px] items-center justify-center rounded-2xl border border-white/10 bg-ink-2 px-3 text-center text-[17px] font-semibold"
+              >
+                {ch}
               </li>
             ))}
           </ul>
+        </Container>
+      </section>
+
+      {/* Ready-built solutions teaser */}
+      <section className="bg-white">
+        <Container className="flex flex-col gap-10 py-20 sm:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHead eyebrow={cap.home.addonsEyebrow} title={cap.home.addonsTitle} subtitle={cap.home.addonsText} />
+            <TextLink href={`${base}/addons`}>{cap.home.addonsCta}</TextLink>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {addonPicks.map((it) => (
+              <Link
+                key={it.key}
+                href={`${base}/addons#${it.group}`}
+                className="flex flex-col gap-2.5 rounded-2xl border border-line bg-paper p-6 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-tint text-plum">
+                  <Icon name={it.icon} size={22} stroke={1.8} />
+                </span>
+                <h3 className="text-lg font-bold">{it.name}</h3>
+                <p className="text-[15px] text-muted">{it.text}</p>
+              </Link>
+            ))}
+          </div>
         </Container>
       </section>
 

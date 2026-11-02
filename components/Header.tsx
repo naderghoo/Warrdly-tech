@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Dict } from "@/content/ar";
+import { getCap } from "@/content/capabilities";
 import type { Locale } from "@/content/i18n";
 import { Icon } from "./Icon";
 
@@ -42,10 +43,11 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
     setSolOpen(false);
   }, [pathname]);
 
+  const cap = getCap(locale);
   const links = [
+    { href: `${base}/integrations`, label: cap.nav.integrations },
     { href: `${base}#services`, label: dict.nav.services },
     { href: `${base}#packages`, label: dict.nav.packages },
-    { href: `${base}#case`, label: dict.nav.caseStudy },
     { href: `${base}/contact`, label: dict.nav.contact },
   ];
   const navLink = "whitespace-nowrap text-[15px] font-medium text-ink hover:text-plum";
@@ -116,9 +118,14 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                         </span>
                       </Link>
                     ))}
-                    <Link href={`${base}#sectors`} className="rounded-xl p-3 text-sm font-semibold text-plum hover:bg-paper">
-                      {dict.nav.allSolutions}
-                    </Link>
+                    <div className="mt-1 flex flex-wrap justify-between gap-2 border-t border-line px-3 pt-3 pb-1">
+                      <Link href={`${base}/addons`} className="text-sm font-semibold text-plum hover:text-plum-dark">
+                        {cap.nav.addons}
+                      </Link>
+                      <Link href={`${base}#sectors`} className="text-sm font-semibold text-muted-2 hover:text-plum">
+                        {dict.nav.allSolutions}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -167,6 +174,10 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                   {s.title}
                 </Link>
               ))}
+              <Link href={`${base}/addons`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
+                <Icon name="gear" size={20} stroke={1.8} />
+                {cap.nav.addons}
+              </Link>
               <div className="my-2 border-t border-line" />
               {links.map((l) => (
                 <Link key={l.href} href={l.href} className="border-b border-line py-3.5 text-base font-medium text-ink last:border-0">

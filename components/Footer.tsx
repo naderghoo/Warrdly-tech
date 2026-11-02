@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Dict } from "@/content/ar";
+import { getCap } from "@/content/capabilities";
 import type { Locale } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -32,6 +33,8 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
           </nav>
           <nav aria-label={dict.footer.company} className="flex flex-col gap-2.5 text-[15px]">
             <span className="font-semibold text-white">{dict.footer.company}</span>
+            <Link href={`${base}/integrations`} className="hover:text-white">{getCap(locale).nav.integrations}</Link>
+            <Link href={`${base}/addons`} className="hover:text-white">{getCap(locale).nav.addons}</Link>
             <Link href={`${base}#services`} className="hover:text-white">{dict.nav.services}</Link>
             <Link href={`${base}/zatca`} className="hover:text-white">{dict.nav.zatca}</Link>
             <Link href={`${base}#packages`} className="hover:text-white">{dict.nav.packages}</Link>

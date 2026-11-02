@@ -109,7 +109,7 @@ export const en: Dict = {
         { title: "Store integrations", text: "Salla and Zid orders flow in automatically with stock updates." },
         { title: "Loyalty programs", text: "Points, coupons and gift cards linked to the customer profile." },
       ],
-      apps: ["Point of Sale", "Website", "Inventory", "Accounting", "Loyalty"],
+      apps: ["Point of Sale", "Website", "Inventory", "Accounting", "Loyalty", "Amazon, noon & Trendyol connectors"],
     },
     {
       slug: "import",
