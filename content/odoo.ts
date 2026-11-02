@@ -18,7 +18,7 @@ export type OdooContent = {
   regionStats: { value: string; label: string }[];
   clientsTitle: string;
   clientsNote: string;
-  clients: { name: string; type: string }[];
+  clients: { name: string; type: string; place: string; detail: string }[];
   sourcesTitle: string;
   sources: { label: string; url: string }[];
 };
@@ -29,10 +29,10 @@ export const odooAr: OdooContent = {
   intro:
     "Odoo من أسرع أنظمة إدارة الأعمال نمواً في العالم. يجمع المبيعات والمخزون والمحاسبة والموارد البشرية والمتجر الإلكتروني في منصة واحدة، بتكلفة أقل ووقت تطبيق أقصر من الأنظمة التقليدية.",
   stats: [
-    { value: "+١٣ مليون", label: "مستخدم حول العالم" },
-    { value: "+٧٬٠٠٠", label: "عميل جديد كل شهر" },
-    { value: "+١٠٠", label: "دولة يعمل فيها عملاء Odoo" },
-    { value: "٥ مليارات €", label: "قيمة الشركة في ٢٠٢٤" },
+    { value: "+13", label: "مليون مستخدم حول العالم" },
+    { value: "+7,000", label: "عميل جديد كل شهر" },
+    { value: "+100", label: "دولة يعمل فيها عملاء Odoo" },
+    { value: "€5B", label: "قيمة الشركة (2024)" },
   ],
   features: [
     { icon: "box", title: "كل أعمالك في منصة واحدة", text: "المبيعات والمشتريات والمخزون والمحاسبة والموارد البشرية والمتجر ونقاط البيع على قاعدة بيانات واحدة، دون ربط أنظمة منفصلة." },
@@ -59,26 +59,31 @@ export const odooAr: OdooContent = {
   compareNote: "مقارنة عامة حسب الفئة وليست تقييماً لمنتج بعينه.",
   regionTitle: "Odoo في السعودية والخليج",
   regionStats: [
-    { value: "١٨٩", label: "شريكاً رسمياً لـ Odoo في السعودية" },
-    { value: "+٦٠٠ ألف", label: "مستخدم في الشرق الأوسط (٢٠٢١)" },
-    { value: "دبي", label: "مقر Odoo الإقليمي منذ ٢٠١٨" },
+    { value: "189", label: "شريكاً رسمياً لـ Odoo في السعودية" },
+    { value: "+930", label: "موقعاً إلكترونياً سعودياً يعمل على Odoo" },
+    { value: "+600K", label: "مستخدم في الشرق الأوسط (2021)" },
+    { value: "دبي", label: "مقر Odoo الإقليمي منذ 2018" },
   ],
-  clientsTitle: "جهات تستخدم Odoo في المنطقة",
-  clientsNote: "بحسب ما نشرته Odoo عن عملائها. هذه جهات تستخدم Odoo، وليست بالضرورة عملاءً لوردلي تيكنولوجيز.",
+  clientsTitle: "شركات توزيع وتجارة إلكترونية تعمل على Odoo في الخليج",
+  clientsNote: "من قصص العملاء ومراجع الشركات المنشورة على موقع Odoo. هذه شركات تستخدم Odoo، وليست بالضرورة عملاءً لوردلي تيكنولوجيز.",
   clients: [
-    { name: "جامعة الفيصل", type: "تعليم · الرياض" },
-    { name: "كليات البترجي الطبية", type: "تعليم · جدة" },
-    { name: "جامعة دار الحكمة", type: "تعليم · جدة" },
-    { name: "UPS", type: "لوجستيات · الشرق الأوسط" },
-    { name: "Philip Morris International", type: "تصنيع · الشرق الأوسط" },
-    { name: "Rashid Al Jabri Group", type: "مجموعة شركات · الخليج" },
+    { name: "Aromatic", type: "تجزئة وتجارة إلكترونية · B2B وB2C", place: "السعودية", detail: "بدأت متجراً إلكترونياً وتدير اليوم 45 فرعاً على Odoo: نقاط البيع والمخزون والمبيعات والمحاسبة." },
+    { name: "Al Taqah Trading Est.", type: "توزيع B2B", place: "الرياض", detail: "موزّع لاصقات صناعية للمصانع في السعودية والخليج، مع فوترة إلكترونية متوافقة مع الهيئة." },
+    { name: "Sugar Sprinkles", type: "تجزئة متعددة الفروع", place: "السعودية", detail: "11 فرعاً ووحدتا إنتاج تُدار من نظام واحد." },
+    { name: "Al Mana Partners", type: "توزيع علامات تجارية", place: "قطر", detail: "موزّع لعلامات استهلاكية وتقنية للمنازل والشركات." },
+    { name: "Al Wahda Trading", type: "استيراد وتوزيع أغذية · B2B", place: "قطر", detail: "يورّد للمطاعم والمقاهي ومحلات التجزئة وشركات التموين." },
+    { name: "Al Zelal Al Qatariya", type: "توزيع سلع استهلاكية · B2B", place: "قطر والعراق", detail: "يورّد لتجار الجملة ومحلات التجزئة والهايبر ماركت." },
   ],
   sourcesTitle: "المصادر",
   sources: [
-    { label: "إعلان Odoo الرسمي، نوفمبر ٢٠٢٤ (المستخدمون، العملاء الجدد، الدول، التقييم)", url: "https://www.newswire.ca/news-releases/odoo-s-a-announces-a-eur500-million-transaction-increasing-the-belgian-unicorn-s-valuation-to-eur5-billion-833233161.html" },
-    { label: "دليل شركاء Odoo في السعودية (نوفمبر ٢٠٢٦)", url: "https://www.odoo.com/partners/country/saudi-arabia-185" },
-    { label: "خليج تايمز، أبريل ٢٠٢١ (مستخدمو الشرق الأوسط والعملاء الإقليميون)", url: "https://www.khaleejtimes.com/business-technology-review/odoo-shows-unstoppable-growth" },
-    { label: "قصص عملاء Odoo في السعودية", url: "https://www.odoo.com/customers/industry/education-16/country/saudi-arabia-185" },
+    { label: "إعلان Odoo الرسمي، نوفمبر 2024 (المستخدمون، العملاء الجدد، الدول، التقييم)", url: "https://www.newswire.ca/news-releases/odoo-s-a-announces-a-eur500-million-transaction-increasing-the-belgian-unicorn-s-valuation-to-eur5-billion-833233161.html" },
+    { label: "دليل شركاء Odoo في السعودية (نوفمبر 2026)", url: "https://www.odoo.com/partners/country/saudi-arabia-185" },
+    { label: "BuiltWith: المواقع التي تعمل على Odoo في السعودية (نوفمبر 2026)", url: "https://trends.builtwith.com/websitelist/Odoo/Saudi-Arabia" },
+    { label: "خليج تايمز، أبريل 2021 (مستخدمو الشرق الأوسط)", url: "https://www.khaleejtimes.com/business-technology-review/odoo-shows-unstoppable-growth" },
+    { label: "Odoo: قصة عميل Aromatic", url: "https://www.odoo.com/blog/customer-reviews-6/scent-of-success-aromatic-s-journey-with-odoo-1280" },
+    { label: "Odoo: مرجع Al Taqah Trading", url: "https://www.odoo.com/customers/al-taqah-trading-est-7494715" },
+    { label: "Odoo: مراجع العملاء في السعودية", url: "https://www.odoo.com/customers/country/saudi-arabia-185" },
+    { label: "Odoo: مراجع شركات الجملة والتجزئة في قطر", url: "https://www.odoo.com/customers/industry/wholesale-retail-7/country/qatar-180" },
   ],
 };
 
@@ -119,25 +124,30 @@ export const odooEn: OdooContent = {
   regionTitle: "Odoo in Saudi Arabia and the Gulf",
   regionStats: [
     { value: "189", label: "official Odoo partners in Saudi Arabia" },
+    { value: "930+", label: "Saudi websites running on Odoo" },
     { value: "600K+", label: "users in the Middle East (2021)" },
     { value: "Dubai", label: "Odoo regional office since 2018" },
   ],
-  clientsTitle: "Organizations using Odoo in the region",
-  clientsNote: "As published by Odoo about its customers. These organizations use Odoo; they are not necessarily Warrdly Technologies clients.",
+  clientsTitle: "Distribution and e-commerce companies running on Odoo in the Gulf",
+  clientsNote: "From customer stories and references published on odoo.com. These companies use Odoo; they are not necessarily Warrdly Technologies clients.",
   clients: [
-    { name: "Alfaisal University", type: "Education · Riyadh" },
-    { name: "Batterjee Medical College", type: "Education · Jeddah" },
-    { name: "Dar Al-Hekma University", type: "Education · Jeddah" },
-    { name: "UPS", type: "Logistics · Middle East" },
-    { name: "Philip Morris International", type: "Manufacturing · Middle East" },
-    { name: "Rashid Al Jabri Group", type: "Group of companies · Gulf" },
+    { name: "Aromatic", type: "Retail & e-commerce · B2B and B2C", place: "Saudi Arabia", detail: "Started as an online store and now runs 45 branches on Odoo: POS, inventory, sales and accounting." },
+    { name: "Al Taqah Trading Est.", type: "B2B distribution", place: "Riyadh", detail: "Distributor of industrial adhesives to manufacturers in Saudi Arabia and the Gulf, with ZATCA-compliant e-invoicing." },
+    { name: "Sugar Sprinkles", type: "Multi-branch retail", place: "Saudi Arabia", detail: "11 branches and two production units run from one system." },
+    { name: "Al Mana Partners", type: "Brand distribution", place: "Qatar", detail: "Distributor of consumer and technology brands to households and businesses." },
+    { name: "Al Wahda Trading", type: "Food import & distribution · B2B", place: "Qatar", detail: "Supplies restaurants, cafés, retailers and caterers." },
+    { name: "Al Zelal Al Qatariya", type: "FMCG distribution · B2B", place: "Qatar & Iraq", detail: "Supplies wholesalers, retailers and hypermarkets." },
   ],
   sourcesTitle: "Sources",
   sources: [
     { label: "Odoo official announcement, November 2024 (users, new customers, countries, valuation)", url: "https://www.newswire.ca/news-releases/odoo-s-a-announces-a-eur500-million-transaction-increasing-the-belgian-unicorn-s-valuation-to-eur5-billion-833233161.html" },
     { label: "Odoo partner directory, Saudi Arabia (November 2026)", url: "https://www.odoo.com/partners/country/saudi-arabia-185" },
-    { label: "Khaleej Times, April 2021 (Middle East users and regional customers)", url: "https://www.khaleejtimes.com/business-technology-review/odoo-shows-unstoppable-growth" },
-    { label: "Odoo customer stories in Saudi Arabia", url: "https://www.odoo.com/customers/industry/education-16/country/saudi-arabia-185" },
+    { label: "BuiltWith: websites using Odoo in Saudi Arabia (November 2026)", url: "https://trends.builtwith.com/websitelist/Odoo/Saudi-Arabia" },
+    { label: "Khaleej Times, April 2021 (Middle East users)", url: "https://www.khaleejtimes.com/business-technology-review/odoo-shows-unstoppable-growth" },
+    { label: "Odoo: Aromatic customer story", url: "https://www.odoo.com/blog/customer-reviews-6/scent-of-success-aromatic-s-journey-with-odoo-1280" },
+    { label: "Odoo: Al Taqah Trading reference", url: "https://www.odoo.com/customers/al-taqah-trading-est-7494715" },
+    { label: "Odoo: customer references in Saudi Arabia", url: "https://www.odoo.com/customers/country/saudi-arabia-185" },
+    { label: "Odoo: wholesale & retail references in Qatar", url: "https://www.odoo.com/customers/industry/wholesale-retail-7/country/qatar-180" },
   ],
 };
 

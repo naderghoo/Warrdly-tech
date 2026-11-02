@@ -24,7 +24,7 @@ export default async function IntegrationsPage({ params }: { params: Params }) {
   if (!isLocale(locale)) notFound();
   const d = getDict(locale);
   const c = getCap(locale).integrations;
-  const num = (i: number) => (locale === "ar" ? "١٢٣٤"[i] : String(i + 1));
+  const num = (i: number) => String(i + 1).padStart(2, "0");
 
   return (
     <>

@@ -9,7 +9,6 @@ import { getOdoo } from "@/content/odoo";
 import { getDict, isLocale } from "@/content/i18n";
 import { site } from "@/content/site";
 
-const toArabicDigits = (s: string) => s.replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]);
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -25,7 +24,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     .sort((a, b) => pickKeys.indexOf(a.key) - pickKeys.indexOf(b.key));
   const num = (i: number) => {
     const s = String(i + 1).padStart(2, "0");
-    return locale === "ar" ? toArabicDigits(s) : s;
+    return s;
   };
 
   return (
@@ -33,9 +32,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Hero */}
       <section className="relative overflow-hidden bg-transparent">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <span className="animate-drift absolute top-10 h-[420px] w-[420px] rounded-full bg-plum/30 blur-[90px] ltr:right-[-80px] rtl:left-[-80px]" />
-          <span className="animate-drift-slow absolute bottom-[-120px] h-[360px] w-[360px] rounded-full bg-gold/25 blur-[90px] ltr:right-[28%] rtl:left-[28%]" />
-          <span className="absolute top-[-140px] h-[320px] w-[320px] rounded-full bg-lilac/50 blur-[80px] ltr:left-[20%] rtl:right-[20%]" />
+          <span className="animate-drift absolute top-10 h-[420px] w-[420px] rounded-full bg-plum/20 blur-[90px] ltr:right-[-80px] rtl:left-[-80px]" />
+          <span className="animate-drift-slow absolute bottom-[-120px] h-[360px] w-[360px] rounded-full bg-gold/15 blur-[90px] ltr:right-[28%] rtl:left-[28%]" />
+          <span className="absolute top-[-140px] h-[320px] w-[320px] rounded-full bg-lilac/35 blur-[80px] ltr:left-[20%] rtl:right-[20%]" />
         </div>
         <Container className="relative flex flex-wrap items-center gap-14 pb-24 pt-16 sm:pt-20">
           <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-6">

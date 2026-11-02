@@ -74,7 +74,7 @@ export default async function BlogPost({ params }: { params: Params }) {
   const c = post[locale];
   const ui = blogUi[locale];
   const others = posts.filter((p) => p.slug !== slug);
-  const date = new Intl.DateTimeFormat(locale === "ar" ? "ar-SA-u-ca-gregory" : "en-GB", {
+  const date = new Intl.DateTimeFormat(locale === "ar" ? "ar-SA-u-ca-gregory-nu-latn" : "en-GB", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -108,7 +108,7 @@ export default async function BlogPost({ params }: { params: Params }) {
               <time dateTime={post.date}>{date}</time>
               <span>·</span>
               <span>
-                {locale === "ar" ? c.readMinutes.toLocaleString("ar-SA") : c.readMinutes} {ui.minutes}
+                {c.readMinutes} {ui.minutes}
               </span>
             </div>
             <h1 className="text-3xl font-bold leading-tight sm:text-[44px]">{c.title}</h1>

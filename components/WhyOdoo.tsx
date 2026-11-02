@@ -1,54 +1,80 @@
 import type { OdooContent } from "@/content/odoo";
 import { Icon } from "./Icon";
-import { Container, SectionHead } from "./ui";
+import { Container, Eyebrow } from "./ui";
+
+/** Figures always read left-to-right (e.g. "+7,000", "€5B"), even inside Arabic text */
+function Figure({ value, className = "" }: { value: string; className?: string }) {
+  return (
+    <span dir="ltr" className={`inline-block tabular-nums ${className}`}>
+      {value}
+    </span>
+  );
+}
 
 export function WhyOdoo({ c }: { c: OdooContent }) {
   return (
     <>
-      {/* Features + global figures */}
+      {/* ---------- Why Odoo: intro, key figures, advantages ---------- */}
       <section id="why-odoo" className="scroll-mt-24 bg-transparent">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
-          <SectionHead eyebrow={c.eyebrow} title={c.title} subtitle={c.intro} />
+          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.1fr_1fr]">
+            <div className="flex flex-col gap-3">
+              <Eyebrow>{c.eyebrow}</Eyebrow>
+              <h2 className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{c.title}</h2>
+            </div>
+            <p className="text-lg text-muted">{c.intro}</p>
+          </div>
 
-          <dl className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {c.stats.map((s) => (
-              <div key={s.label} className="flex flex-col gap-1 rounded-2xl glass p-6">
-                <dt className="order-2 text-[15px] text-muted">{s.label}</dt>
-                <dd className="order-1 text-3xl font-bold text-plum sm:text-4xl">{s.value}</dd>
+          {/* Key figures: one formal band with dividers */}
+          <dl className="panel grid grid-cols-2 overflow-hidden rounded-xl lg:grid-cols-4">
+            {c.stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex flex-col gap-1.5 p-6 sm:p-7 ${i % 2 === 1 ? "border-s border-line" : ""} ${i >= 2 ? "border-t border-line lg:border-t-0" : ""} ${i === 2 ? "lg:border-s" : ""}`}
+              >
+                <dd className="text-3xl font-bold text-ink sm:text-[38px]">
+                  <Figure value={s.value} />
+                </dd>
+                <dt className="text-[15px] text-muted">{s.label}</dt>
+                <span aria-hidden="true" className="mt-2 h-[3px] w-10 rounded-full bg-plum" />
               </div>
             ))}
           </dl>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {c.features.map((f) => (
-              <div key={f.title} className="flex flex-col gap-3 rounded-2xl glass p-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-tint text-plum">
-                  <Icon name={f.icon} size={22} stroke={1.8} />
+          {/* Advantages: structured grid inside a single panel */}
+          <div className="panel grid grid-cols-1 overflow-hidden rounded-xl sm:grid-cols-2 lg:grid-cols-4">
+            {c.features.map((f, i) => (
+              <div
+                key={f.title}
+                className={`flex flex-col gap-3 border-line p-6 sm:p-7 ${i > 0 ? "border-t sm:border-t-0" : ""} ${i % 2 === 1 ? "sm:border-s" : ""} ${i >= 2 ? "sm:border-t" : ""} ${i % 4 !== 0 ? "lg:border-s" : "lg:border-s-0"} ${i >= 4 ? "lg:border-t" : "lg:border-t-0"}`}
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-plum/20 bg-plum/5 text-plum">
+                  <Icon name={f.icon} size={20} stroke={1.8} />
                 </span>
-                <h3 className="text-lg font-bold">{f.title}</h3>
-                <p className="text-[15px] text-muted">{f.text}</p>
+                <h3 className="text-[17px] font-bold text-ink">{f.title}</h3>
+                <p className="text-[15px] leading-relaxed text-muted">{f.text}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Comparison */}
+      {/* ---------- Comparison table ---------- */}
       <section className="bg-transparent">
         <Container className="flex flex-col gap-8 pb-20 sm:pb-24">
           <div className="flex max-w-[720px] flex-col gap-2">
-            <h2 className="text-2xl font-bold sm:text-3xl">{c.compareTitle}</h2>
+            <h2 className="text-2xl font-bold text-ink sm:text-3xl">{c.compareTitle}</h2>
             <p className="text-lg text-muted">{c.compareIntro}</p>
           </div>
-          <div className="overflow-x-auto rounded-2xl glass">
+          <div className="panel overflow-x-auto rounded-xl">
             <table className="w-full min-w-[720px] border-collapse text-start text-[15px]">
               <thead>
-                <tr>
+                <tr className="bg-ink text-white">
                   {c.compareCols.map((col, i) => (
                     <th
                       key={col}
                       scope="col"
-                      className={`px-5 py-4 text-start font-bold ${i === 1 ? "bg-plum text-white" : "text-ink"} ${i === 0 ? "w-[22%]" : ""}`}
+                      className={`px-5 py-4 text-start font-semibold ${i === 1 ? "bg-plum" : ""} ${i === 0 ? "w-[22%]" : ""}`}
                     >
                       {col}
                     </th>
@@ -56,19 +82,19 @@ export function WhyOdoo({ c }: { c: OdooContent }) {
                 </tr>
               </thead>
               <tbody>
-                {c.compareRows.map((r) => (
-                  <tr key={r.label} className="border-t border-white/70">
-                    <th scope="row" className="px-5 py-4 text-start font-semibold text-ink">
+                {c.compareRows.map((r, i) => (
+                  <tr key={r.label} className={i % 2 === 1 ? "bg-paper/70" : "bg-white/70"}>
+                    <th scope="row" className="border-t border-line px-5 py-4 text-start font-semibold text-ink">
                       {r.label}
                     </th>
-                    <td className="bg-plum/8 px-5 py-4 font-semibold text-plum-dark">
+                    <td className="border-t border-line bg-plum/[0.06] px-5 py-4 font-semibold text-plum-dark">
                       <span className="inline-flex items-center gap-2">
                         <Icon name="check" size={16} stroke={2.6} className="flex-none text-plum" />
                         {r.odoo}
                       </span>
                     </td>
-                    <td className="px-5 py-4 text-muted">{r.local}</td>
-                    <td className="px-5 py-4 text-muted">{r.legacy}</td>
+                    <td className="border-t border-line px-5 py-4 text-muted">{r.local}</td>
+                    <td className="border-t border-line px-5 py-4 text-muted">{r.legacy}</td>
                   </tr>
                 ))}
               </tbody>
@@ -78,35 +104,55 @@ export function WhyOdoo({ c }: { c: OdooContent }) {
         </Container>
       </section>
 
-      {/* Region */}
-      <section className="glow-dark text-white">
+      {/* ---------- Odoo in the region ---------- */}
+      <section className="bg-ink text-white">
         <Container className="flex flex-col gap-10 py-20">
-          <h2 className="text-3xl font-bold sm:text-[40px]">{c.regionTitle}</h2>
-          <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {c.regionStats.map((s) => (
-              <div key={s.label} className="flex flex-col gap-1 rounded-2xl glass-dark p-6">
-                <dt className="order-2 text-[15px] text-mist">{s.label}</dt>
-                <dd className="order-1 text-3xl font-bold text-gold sm:text-4xl">{s.value}</dd>
+          <div className="flex flex-col gap-3">
+            <span className="h-[3px] w-12 rounded-full bg-gold" aria-hidden="true" />
+            <h2 className="text-3xl font-bold sm:text-[40px]">{c.regionTitle}</h2>
+          </div>
+
+          <dl className="grid grid-cols-2 overflow-hidden rounded-xl border border-white/12 lg:grid-cols-4">
+            {c.regionStats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex flex-col gap-1.5 bg-white/[0.03] p-6 ${i % 2 === 1 ? "border-s border-white/12" : ""} ${i >= 2 ? "border-t border-white/12 lg:border-t-0" : ""} ${i === 2 ? "lg:border-s" : ""}`}
+              >
+                <dd className="text-3xl font-bold text-gold sm:text-4xl">
+                  <Figure value={s.value} />
+                </dd>
+                <dt className="text-[15px] text-mist-2">{s.label}</dt>
               </div>
             ))}
           </dl>
 
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xl font-bold">{c.clientsTitle}</h3>
-            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-5">
+            <h3 className="text-xl font-bold sm:text-2xl">{c.clientsTitle}</h3>
+            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {c.clients.map((cl) => (
-                <li key={cl.name} className="flex flex-col gap-0.5 rounded-2xl glass-dark px-5 py-4">
-                  <span className="text-[17px] font-semibold">{cl.name}</span>
-                  <span className="text-sm text-mist">{cl.type}</span>
+                <li key={cl.name} className="flex flex-col gap-3 rounded-xl border border-white/12 bg-white/[0.04] p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <span dir="ltr" className="text-lg font-bold">
+                      {cl.name}
+                    </span>
+                    <span className="flex-none rounded-md border border-white/15 px-2 py-0.5 text-[12px] font-medium text-mist-2">
+                      {cl.place}
+                    </span>
+                  </div>
+                  <span className="text-[13px] font-semibold text-gold">{cl.type}</span>
+                  <p className="text-[15px] leading-relaxed text-mist-2">{cl.detail}</p>
                 </li>
               ))}
             </ul>
             <p className="text-sm text-mist">{c.clientsNote}</p>
           </div>
 
-          <details className="group rounded-2xl glass-dark px-5 py-4 text-sm text-mist">
-            <summary className="cursor-pointer list-none font-semibold text-mist-2">
-              {c.sourcesTitle} <span aria-hidden="true" className="inline-block transition-transform group-open:rotate-45">+</span>
+          <details className="group rounded-xl border border-white/12 px-5 py-4 text-sm text-mist-2">
+            <summary className="flex cursor-pointer list-none items-center justify-between font-semibold">
+              {c.sourcesTitle}
+              <span aria-hidden="true" className="text-lg transition-transform group-open:rotate-45">
+                +
+              </span>
             </summary>
             <ul className="flex flex-col gap-2 pt-3">
               {c.sources.map((s) => (

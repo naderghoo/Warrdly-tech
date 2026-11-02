@@ -17,9 +17,9 @@ export function Assessment({ c, dict, locale }: { c: AssessmentContent; dict: Di
   const topRef = useRef<HTMLDivElement>(null);
   const n = c.questions.length;
   const base = `/${locale}`;
-  const digits = (v: number | string) => (locale === "ar" ? String(v).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]) : String(v));
+  const digits = (v: number | string) => String(v);
 
-  const pctText = (v: number) => (locale === "ar" ? `${digits(v)}٪` : `${v}%`);
+  const pctText = (v: number) => `${v}%`;
 
   const go = (s: number) => {
     setStep(s);

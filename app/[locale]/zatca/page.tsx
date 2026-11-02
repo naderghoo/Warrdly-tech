@@ -46,7 +46,7 @@ export default async function ZatcaPage({ params }: { params: Params }) {
             {z.phases.map((ph, i) => (
               <div key={ph.title} className="flex flex-col gap-3 rounded-2xl glass border-t-4 !border-t-plum p-8">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-tint text-lg font-bold text-plum">
-                  {locale === "ar" ? ["١", "٢"][i] : i + 1}
+                  {i + 1}
                 </span>
                 <h3 className="text-xl font-bold">{ph.title}</h3>
                 <p className="text-base text-muted">{ph.text}</p>
@@ -75,7 +75,7 @@ export default async function ZatcaPage({ params }: { params: Params }) {
             <ol className="flex flex-col gap-3">
               {z.checklist.map((c, i) => (
                 <li key={c} className="flex gap-3 rounded-xl glass p-4 text-[15px]">
-                  <span className="font-bold text-plum">{locale === "ar" ? "١٢٣٤٥٦"[i] : i + 1}.</span>
+                  <span className="font-bold text-plum">{i + 1}.</span>
                   {c}
                 </li>
               ))}

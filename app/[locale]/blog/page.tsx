@@ -46,7 +46,7 @@ export default async function BlogIndex({ params }: { params: Params }) {
                 <div className="flex flex-wrap items-center gap-2 text-[13px]">
                   <span className="rounded-full bg-tint px-3 py-1 font-semibold text-plum-dark">{c.category}</span>
                   <span className="text-muted-2">
-                    {locale === "ar" ? c.readMinutes.toLocaleString("ar-SA") : c.readMinutes} {ui.minutes}
+                    {c.readMinutes} {ui.minutes}
                   </span>
                 </div>
                 <h2 className="text-xl font-bold leading-snug">{c.title}</h2>
