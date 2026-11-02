@@ -31,8 +31,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Hero */}
       <section className="relative overflow-hidden bg-transparent">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <span className="absolute top-10 h-[420px] w-[420px] rounded-full bg-plum/30 blur-[90px] ltr:right-[-80px] rtl:left-[-80px]" />
-          <span className="absolute bottom-[-120px] h-[360px] w-[360px] rounded-full bg-gold/25 blur-[90px] ltr:right-[28%] rtl:left-[28%]" />
+          <span className="animate-drift absolute top-10 h-[420px] w-[420px] rounded-full bg-plum/30 blur-[90px] ltr:right-[-80px] rtl:left-[-80px]" />
+          <span className="animate-drift-slow absolute bottom-[-120px] h-[360px] w-[360px] rounded-full bg-gold/25 blur-[90px] ltr:right-[28%] rtl:left-[28%]" />
           <span className="absolute top-[-140px] h-[320px] w-[320px] rounded-full bg-lilac/50 blur-[80px] ltr:left-[20%] rtl:right-[20%]" />
         </div>
         <Container className="relative flex flex-wrap items-center gap-14 pb-24 pt-16 sm:pt-20">
@@ -64,7 +64,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
 
           {/* Dashboard illustration */}
-          <div className="min-w-0 flex-[1_1_420px]" aria-hidden="true">
+          <div className="animate-float min-w-0 flex-[1_1_420px]" aria-hidden="true">
             <div className="rounded-[20px] glass-ink p-5 shadow-[0_24px_60px_rgba(36,21,42,0.25)]">
               <div className="flex items-center justify-between pb-4">
                 <span className="text-[15px] font-semibold text-mist-2">{d.dashboard.title}</span>
@@ -90,8 +90,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   {[40, 58, 50, 72, 66, 88, 95].map((h, i) => (
                     <span
                       key={i}
-                      className={`flex-1 rounded-t-md ${i > 4 ? "bg-lilac" : "bg-ink-3"}`}
-                      style={{ height: `${h}%` }}
+                      className={`animate-grow flex-1 rounded-t-md ${i > 4 ? "bg-lilac" : "bg-ink-3"}`}
+                      style={{ height: `${h}%`, animationDelay: `${200 + i * 80}ms` }}
                     />
                   ))}
                 </div>

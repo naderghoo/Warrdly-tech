@@ -10,6 +10,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Reveal } from "@/components/Reveal";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { dirOf, getDict, isLocale, locales } from "@/content/i18n";
 import { site } from "@/content/site";
@@ -95,6 +96,7 @@ export default async function LocaleLayout({
         </main>
         <Footer dict={dict} locale={locale} />
         <WhatsAppFloat label={dict.contact.whatsapp} />
+        <Reveal />
         <Analytics />
         <SpeedInsights />
       </body>
