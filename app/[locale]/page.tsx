@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
 import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLink } from "@/components/ui";
+import { WhyOdoo } from "@/components/WhyOdoo";
 import { getCap } from "@/content/capabilities";
+import { getOdoo } from "@/content/odoo";
 import { getDict, isLocale } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -107,6 +109,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </Container>
       </section>
+
+      {/* Why Odoo: features, comparison, regional figures */}
+      <WhyOdoo c={getOdoo(locale)} />
 
       {/* Stats (hidden until filled in content/site.ts) */}
       {site.stats.length > 0 && (
