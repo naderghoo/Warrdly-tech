@@ -48,6 +48,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
     { href: `${base}/integrations`, label: cap.nav.integrations },
     { href: `${base}#services`, label: dict.nav.services },
     { href: `${base}#packages`, label: dict.nav.packages },
+    { href: `${base}/blog`, label: locale === "ar" ? "المدونة" : "Blog" },
     { href: `${base}/contact`, label: dict.nav.contact },
   ];
   const navLink = "whitespace-nowrap text-[15px] font-medium text-ink hover:text-plum";
@@ -81,7 +82,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
             </span>
           </Link>
 
-          <nav aria-label={dict.nav.menu} className="hidden items-center gap-7 lg:flex">
+          <nav aria-label={dict.nav.menu} className="hidden items-center gap-7 xl:flex">
             <div
               ref={solRef}
               className="relative"
@@ -154,7 +155,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
             </Link>
             <button
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-ink hover:bg-paper lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-ink hover:bg-paper xl:hidden"
               aria-label={open ? dict.nav.close : dict.nav.menu}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -165,7 +166,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
         </div>
 
         {open && (
-          <nav aria-label={dict.nav.menu} className="max-h-[calc(100vh-120px)] overflow-y-auto border-t border-line bg-white lg:hidden">
+          <nav aria-label={dict.nav.menu} className="max-h-[calc(100vh-120px)] overflow-y-auto border-t border-line bg-white xl:hidden">
             <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-3">
               <span className="pt-2 text-[13px] font-semibold text-muted-2">{dict.nav.solutions}</span>
               {dict.sectors.map((s) => (
