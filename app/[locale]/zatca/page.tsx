@@ -32,7 +32,7 @@ export default async function ZatcaPage({ params }: { params: Params }) {
           <h1 className="max-w-[860px] text-4xl font-bold leading-tight sm:text-5xl">{z.title}</h1>
           <p className="max-w-[780px] text-lg text-mist-2 sm:text-xl">{z.intro}</p>
           <div>
-            <PrimaryButton href={`/${locale}/contact`} arrow className="!bg-gold !text-ink hover:!bg-[#F5B95A]">
+            <PrimaryButton href={`/${locale}/assessment`} arrow className="!bg-gold !text-ink hover:!bg-[#F5B95A]">
               {d.zatcaBand.cta}
             </PrimaryButton>
           </div>

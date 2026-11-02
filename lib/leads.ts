@@ -9,7 +9,12 @@ export type Lead = {
   sector?: string;
   message?: string;
   locale?: string;
+  source?: string;
+  assessment?: string;
 };
+
+const subject = (lead: Lead) =>
+  `${lead.source === "readiness-assessment" ? "اختبار الجاهزية" : "طلب استشارة من الموقع"} - ${lead.company || lead.name}`;
 
 const env = (k: string) => process.env[k]?.trim() || "";
 
@@ -22,8 +27,10 @@ function describe(lead: Lead) {
     `عدد المستخدمين / Users: ${lead.users || "-"}`,
     `القطاع / Industry: ${lead.sector || "-"}`,
     `لغة الموقع / Site language: ${lead.locale || "-"}`,
+    `المصدر / Source: ${lead.source || "contact-form"}`,
     "",
     lead.message || "",
+    ...(lead.assessment ? ["", "----- اختبار الجاهزية / Readiness assessment -----", lead.assessment] : []),
   ].join("\n");
 }
 
@@ -47,7 +54,7 @@ async function sendToOdooApi(lead: Lead) {
   const uid = await rpc(url, "common", "authenticate", [db, login, key, {}]);
   if (!uid) throw new Error("Odoo authentication failed");
   const vals: Record<string, unknown> = {
-    name: `طلب استشارة من الموقع - ${lead.company || lead.name}`,
+    name: subject(lead),
     contact_name: lead.name,
     partner_name: lead.company || false,
     phone: lead.phone,
@@ -72,7 +79,7 @@ async function sendByEmail(lead: Lead) {
     from: env("SMTP_FROM") || env("SMTP_USER"),
     to: env("LEAD_TO_EMAIL"),
     replyTo: lead.email || undefined,
-    subject: `طلب استشارة من الموقع - ${lead.company || lead.name}`,
+    subject: subject(lead),
     text: describe(lead),
   });
 }

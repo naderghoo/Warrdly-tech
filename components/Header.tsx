@@ -179,6 +179,10 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                 <Icon name="gear" size={20} stroke={1.8} />
                 {cap.nav.addons}
               </Link>
+              <Link href={`${base}/assessment`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
+                <Icon name="check" size={20} stroke={2} />
+                {locale === "ar" ? "اختبار جاهزية شركتك" : "Readiness test"}
+              </Link>
               <div className="my-2 border-t border-line" />
               {links.map((l) => (
                 <Link key={l.href} href={l.href} className="border-b border-line py-3.5 text-base font-medium text-ink last:border-0">

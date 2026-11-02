@@ -23,6 +23,8 @@ export async function POST(req: Request) {
     sector: clip(body.sector, 80),
     message: clip(body.message, 2000),
     locale: clip(body.locale, 5),
+    source: clip(body.source, 40),
+    assessment: clip(body.assessment, 4000),
   };
 
   if (!lead.name || !lead.phone) {

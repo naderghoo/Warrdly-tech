@@ -46,7 +46,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <PrimaryButton href={`${base}/contact`} arrow>
                 {d.hero.primary}
               </PrimaryButton>
-              <SecondaryButton href={`${base}#packages`}>{d.hero.secondary}</SecondaryButton>
+              <SecondaryButton href={`${base}/assessment`}>{d.hero.secondary}</SecondaryButton>
             </div>
             <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
               {d.hero.points.map((p) => (
@@ -176,7 +176,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <p className="text-lg text-mist-2">{d.zatcaBand.text}</p>
             <div className="flex flex-wrap items-center gap-5 pt-2">
               <Link
-                href={`${base}/contact`}
+                href={`${base}/assessment`}
                 className="inline-flex min-h-[52px] items-center rounded-xl bg-gold px-6 font-bold text-ink hover:bg-[#F5B95A]"
               >
                 {d.zatcaBand.cta}

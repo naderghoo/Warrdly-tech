@@ -9,7 +9,19 @@ const field =
   "min-h-[48px] w-full rounded-[10px] border border-line-2 bg-white px-3.5 py-3 text-base text-ink placeholder:text-muted-2/70 focus:border-plum focus:outline-none";
 const label = "flex flex-col gap-1.5 text-[15px] font-semibold text-ink";
 
-export function LeadForm({ dict, locale }: { dict: Dict; locale: string }) {
+export function LeadForm({
+  dict,
+  locale,
+  compact = false,
+  extra,
+}: {
+  dict: Dict;
+  locale: string;
+  /** hide users / sector / message fields */
+  compact?: boolean;
+  /** extra data sent with the request (e.g. assessment summary) */
+  extra?: Record<string, string>;
+}) {
   const f = dict.form;
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -28,7 +40,7 @@ export function LeadForm({ dict, locale }: { dict: Dict; locale: string }) {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, locale }),
+        body: JSON.stringify({ ...data, ...extra, locale }),
       });
       if (!res.ok) throw new Error();
       form.reset();
@@ -68,26 +80,30 @@ export function LeadForm({ dict, locale }: { dict: Dict; locale: string }) {
         {f.email}
         <input name="email" type="email" autoComplete="email" placeholder="name@company.com" dir="ltr" className={`${field} rtl:text-right`} />
       </label>
-      <label className={label}>
-        {f.users}
-        <select name="users" className={field}>
-          {f.usersOptions.map((o) => (
-            <option key={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-      <label className={label}>
-        {f.sector}
-        <select name="sector" className={field}>
-          {f.sectorOptions.map((o) => (
-            <option key={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-      <label className={`${label} sm:col-span-2`}>
-        {f.message}
-        <textarea name="message" rows={3} placeholder={f.messagePh} className={`${field} resize-y`} />
-      </label>
+      {!compact && (
+        <>
+          <label className={label}>
+            {f.users}
+            <select name="users" className={field}>
+              {f.usersOptions.map((o) => (
+                <option key={o}>{o}</option>
+              ))}
+            </select>
+          </label>
+          <label className={label}>
+            {f.sector}
+            <select name="sector" className={field}>
+              {f.sectorOptions.map((o) => (
+                <option key={o}>{o}</option>
+              ))}
+            </select>
+          </label>
+          <label className={`${label} sm:col-span-2`}>
+            {f.message}
+            <textarea name="message" rows={3} placeholder={f.messagePh} className={`${field} resize-y`} />
+          </label>
+        </>
+      )}
       {/* honeypot */}
       <input name="website" type="text" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {(error || status === "error") && (

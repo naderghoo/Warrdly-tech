@@ -38,6 +38,7 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
             <Link href={`${base}#services`} className="hover:text-white">{dict.nav.services}</Link>
             <Link href={`${base}/zatca`} className="hover:text-white">{dict.nav.zatca}</Link>
             <Link href={`${base}/blog`} className="hover:text-white">{locale === "ar" ? "المدونة" : "Blog"}</Link>
+            <Link href={`${base}/assessment`} className="hover:text-white">{locale === "ar" ? "اختبار الجاهزية" : "Readiness test"}</Link>
             <Link href={`${base}#packages`} className="hover:text-white">{dict.nav.packages}</Link>
             <Link href={`${base}/contact`} className="hover:text-white">{dict.nav.contact}</Link>
           </nav>

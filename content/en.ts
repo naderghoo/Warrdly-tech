@@ -32,7 +32,7 @@ export const en: Dict = {
     subtitle:
       "We were traders before we were a tech company. We know the warehouse, the sales rep and the tax invoice because we live them every day — so we build you an Odoo system that works from day one.",
     primary: "Book a free consultation",
-    secondary: "View packages",
+    secondary: "Take the readiness test",
     points: ["A Saudi team that speaks your language", "ZATCA compliant", "Ongoing support after go-live"],
   },
   dashboard: {
