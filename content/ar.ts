@@ -13,12 +13,16 @@ export const ar = {
     caseStudy: "قصص النجاح",
     contact: "تواصل معنا",
     cta: "احجز استشارة مجانية",
+    ctaShort: "استشارة مجانية",
     lang: "English",
     menu: "القائمة",
     close: "إغلاق القائمة",
+    allSolutions: "كل الحلول",
+    skip: "تخطَّ إلى المحتوى",
   },
-  announcement:
-    "شريك Odoo الرسمي في المملكة العربية السعودية · تطبيق متوافق مع الفوترة الإلكترونية (فاتورة – المرحلة الثانية)",
+  announcement: "شريك Odoo الرسمي في المملكة العربية السعودية",
+  announcementCta: "احجز استشارتك المجانية",
+  notFound: { title: "الصفحة غير موجودة", text: "ربما تغيّر الرابط أو حُذفت الصفحة.", home: "العودة للرئيسية" },
   hero: {
     badge: "Official Odoo Partner",
     title1: "نطبّق Odoo",
