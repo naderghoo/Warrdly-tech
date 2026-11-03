@@ -5,7 +5,7 @@
 
 export const site = {
   /** الدومين النهائي للموقع */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://warrdly.tech",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://tech.warrdly.com",
 
   /** مستوى الشراكة مع Odoo: "Ready" | "Silver" | "Gold" | "" (اتركه فارغاً لإخفائه) */
   partnerLevel: "",
