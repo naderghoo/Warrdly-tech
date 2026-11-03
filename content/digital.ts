@@ -41,7 +41,7 @@ export const digitalAr: DigitalContent = {
   eyebrow: "الخدمات التقنية",
   title: "شريكك التقني من الفكرة حتى الإطلاق",
   intro:
-    "إلى جانب Odoo، نصمم ونطوّر المواقع والمتاجر الإلكترونية ومنصات الأعمال وتطبيقات الجوال، ونربطها بأنظمتك لتعمل كمنظومة واحدة. بنينا منصة وردلي B2B وتطبيقات جاسمين بيوتي، ونقدم الخبرة نفسها لعملائنا.",
+    "إلى جانب Odoo، نصمم ونطوّر المواقع والمتاجر الإلكترونية ومنصات الأعمال وتطبيقات الجوال، ونربطها بأنظمتك لتعمل كمنظومة واحدة. بنينا منصات B2B وتطبيقات جوال تعمل يومياً في السوق السعودي.",
   primary: "ناقش مشروعك",
   secondary: "استعرض أعمالنا",
   pillars: [
@@ -139,7 +139,7 @@ export const digitalAr: DigitalContent = {
     },
   ],
   workTitle: "من أعمالنا",
-  workIntro: "منتجات بنيناها ونشغّلها يومياً، وليست مجرد نماذج عرض.",
+  workIntro: "منتجات تعمل في السوق فعلياً. نعرض مشاريع العملاء دون أسماء أو بيانات، التزاماً بالسرية.",
   work: [
     {
       name: "منصة وردلي B2B",
@@ -149,13 +149,13 @@ export const digitalAr: DigitalContent = {
       url: "https://warrdly.com",
     },
     {
-      name: "تطبيق جاسمين بيوتي B2B",
+      name: "تطبيق B2B لموزّع منتجات تجميل",
       type: "تطبيق جوال لعملاء الجملة",
       text: "تطبيق للعملاء التجاريين: كتالوج بأسعار العميل، سلة وطلبات، مرتجعات، كشف حساب، دفع إلكتروني، وتتبّع شحنات أرامكس وJ&T.",
       tags: ["تطبيق جوال", "واجهة API", "شحن ودفع"],
     },
     {
-      name: "تطبيق بوابة الموظفين",
+      name: "تطبيق موظفين لشركة توزيع",
       type: "تطبيق جوال داخلي",
       text: "حضور من الجوال مع التحقق برمز QR لموقع العمل، تتبّع مسار المناديب، مهام وموافقات، ومؤشرات أداء المبيعات.",
       tags: ["تطبيق جوال", "موارد بشرية", "Odoo"],
@@ -209,7 +209,7 @@ export const digitalEn: DigitalContent = {
   eyebrow: "Technology services",
   title: "Your technology partner from idea to launch",
   intro:
-    "Beyond Odoo, we design and build websites, online stores, business platforms and mobile apps, and connect them to your systems so everything works as one. We built the Warrdly B2B marketplace and Jasmine Beauty's apps, and we bring the same experience to our clients.",
+    "Beyond Odoo, we design and build websites, online stores, business platforms and mobile apps, and connect them to your systems so everything works as one. We have built B2B platforms and mobile apps that run every day in the Saudi market.",
   primary: "Discuss your project",
   secondary: "See our work",
   pillars: [
@@ -235,11 +235,11 @@ export const digitalEn: DigitalContent = {
     { key: "consulting", icon: "cap", title: "Technology consulting", text: "We help you choose the right technology before you spend on it.", items: ["Current systems assessment", "Digital transformation roadmap", "Platform and vendor selection", "Project requirements writing"] },
   ],
   workTitle: "Our work",
-  workIntro: "Products we built and run every day — not just demos.",
+  workIntro: "Products running in the market today. Client projects are shown without names or data, in line with our confidentiality commitment.",
   work: [
     { name: "Warrdly B2B marketplace", type: "Wholesale marketplace", text: "A health and beauty wholesale platform serving shops and pharmacies in Saudi Arabia and the Gulf, connected to Odoo for stock, price and order sync.", tags: ["Web platform", "B2B", "Odoo integration"], url: "https://warrdly.com" },
-    { name: "Jasmine Beauty B2B app", type: "Mobile app for wholesale customers", text: "An app for business customers: catalog at customer prices, cart and orders, returns, statements, online payment and Aramex/J&T shipment tracking.", tags: ["Mobile app", "API", "Shipping & payments"] },
-    { name: "Employee portal app", type: "Internal mobile app", text: "Mobile attendance with worksite QR verification, sales rep route tracking, tasks and approvals, and sales KPIs.", tags: ["Mobile app", "HR", "Odoo"] },
+    { name: "B2B app for a beauty distributor", type: "Mobile app for wholesale customers", text: "An app for business customers: catalog at customer prices, cart and orders, returns, statements, online payment and Aramex/J&T shipment tracking.", tags: ["Mobile app", "API", "Shipping & payments"] },
+    { name: "Employee app for a distribution company", type: "Internal mobile app", text: "Mobile attendance with worksite QR verification, sales rep route tracking, tasks and approvals, and sales KPIs.", tags: ["Mobile app", "HR", "Odoo"] },
     { name: "Warrdly Technologies website", type: "Bilingual company website", text: "The site you're browsing: Arabic and English, fast, search-optimized, with an interactive assessment and CRM-connected forms.", tags: ["Website", "SEO", "CRM integration"] },
   ],
   stackTitle: "Technologies we work with",

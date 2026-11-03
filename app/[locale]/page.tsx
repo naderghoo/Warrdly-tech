@@ -229,17 +229,37 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Container>
       </section>
 
-      {/* Case study */}
-      <section id="case" className="scroll-mt-24 bg-transparent">
-        <Container className="py-20 sm:py-24">
-          <div className="flex flex-col gap-5 rounded-3xl glass-tint p-8 sm:p-14">
-            <span className="text-[15px] font-semibold text-plum-dark">{d.caseStudy.eyebrow}</span>
-            <h2 className="max-w-[820px] text-2xl font-bold leading-snug sm:text-4xl">{d.caseStudy.title}</h2>
-            <p className="max-w-[820px] text-lg text-[#3E3242]">{d.caseStudy.text}</p>
-            <div>
-              <TextLink href={`${base}/contact`}>{d.caseStudy.cta}</TextLink>
+      {/* Trust & confidentiality */}
+      <section id="trust" className="scroll-mt-24 bg-transparent">
+        <Container className="flex flex-col gap-10 py-20 sm:py-24">
+          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.1fr_1fr]">
+            <div className="flex flex-col gap-3">
+              <Eyebrow>{d.caseStudy.eyebrow}</Eyebrow>
+              <h2 className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{d.caseStudy.title}</h2>
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-lg text-muted">{d.caseStudy.text}</p>
+              <div>
+                <TextLink href={`${base}/contact`}>{d.caseStudy.cta}</TextLink>
+              </div>
             </div>
           </div>
+          <ul className="panel grid grid-cols-1 overflow-hidden rounded-xl sm:grid-cols-2 lg:grid-cols-3">
+            {d.caseStudy.items.map((it, i) => (
+              <li
+                key={it.title}
+                className={`flex gap-4 border-line p-6 sm:p-7 ${i > 0 ? "border-t sm:border-t-0" : ""} ${i % 2 === 1 ? "sm:border-s" : ""} ${i >= 2 ? "sm:border-t" : ""} ${i % 3 !== 0 ? "lg:border-s" : "lg:border-s-0"} ${i >= 3 ? "lg:border-t" : "lg:border-t-0"}`}
+              >
+                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-ink text-gold">
+                  <Icon name={it.icon} size={20} stroke={1.8} />
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-[17px] font-bold text-ink">{it.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-muted">{it.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 

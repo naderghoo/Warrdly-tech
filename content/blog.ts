@@ -226,7 +226,7 @@ export const posts: Post[] = [
           type: "p",
           text: "أمازون ونون يقدمان نموذجين: أن تشحن الطلب من مستودعك، أو أن تخزّن بضاعتك في مستودعات المنصة وتتولى هي الشحن (FBA في أمازون وFBN في نون). في Odoo نفصل كل نموذج في مستودع مستقل، فتعرف بدقة ما هو موجود عندك وما هو موجود لدى المنصة، وتُسجَّل الشحنات المرسلة إلى المنصة كتحويلات مخزنية واضحة.",
         },
-        { type: "h2", text: "نصائح من تجربتنا اليومية" },
+        { type: "h2", text: "نصائح عملية من مشاريع التكامل" },
         {
           type: "ul",
           items: [
@@ -239,7 +239,7 @@ export const posts: Post[] = [
         },
         {
           type: "note",
-          text: "نحن نبيع على أمازون ونون وترينديول وسلة من Odoo كل يوم، والتكاملات التي نقدمها لعملائنا هي نفسها التي نشغّلها في أعمالنا.",
+          text: "التكاملات التي نقدمها مع أمازون ونون وترينديول وسلة اختُبرت في بيئات تشغيل فعلية، وكل تكامل يُنفّذ على حسابات العميل نفسه وبصلاحيات محدودة.",
         },
         { type: "h2", text: "متى تحتاج التكامل؟" },
         {
@@ -275,7 +275,7 @@ export const posts: Post[] = [
           type: "p",
           text: "Amazon and noon both offer two models: you ship from your own warehouse, or you store stock in the platform's warehouses and they ship (FBA on Amazon, FBN on noon). In Odoo we model each as a separate warehouse, so you know exactly what you hold and what the platform holds, and shipments to the platform are clear stock transfers.",
         },
-        { type: "h2", text: "Tips from daily operation" },
+        { type: "h2", text: "Practical tips from integration projects" },
         {
           type: "ul",
           items: [
@@ -288,7 +288,7 @@ export const posts: Post[] = [
         },
         {
           type: "note",
-          text: "We sell on Amazon, noon, Trendyol and Salla from Odoo every day. The integrations we offer clients are the same ones we run in our own business.",
+          text: "Our Amazon, noon, Trendyol and Salla integrations are proven in live operations, and every integration runs on the client's own accounts with limited access.",
         },
         { type: "h2", text: "When do you need it?" },
         {

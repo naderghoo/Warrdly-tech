@@ -50,12 +50,12 @@ export const capAr: Capabilities = {
   home: {
     eyebrow: "المنصات والتكاملات",
     title: "كل قنوات بيعك في مخزون واحد",
-    text: "نربط Odoo بمنصات البيع الكبرى في السعودية والخليج، فتصل الطلبات تلقائياً، ويتحدّث المخزون والأسعار على كل منصة من مكان واحد. هذه التكاملات طوّرناها ونشغّلها يومياً في أعمالنا.",
+    text: "نربط Odoo بمنصات البيع الكبرى في السعودية والخليج، فتصل الطلبات تلقائياً، ويتحدّث المخزون والأسعار على كل منصة من مكان واحد. هذه التكاملات طوّرناها واختبرناها في بيئات تشغيل فعلية.",
     channels: ["أمازون", "نون", "ترينديول", "سلة", "زد", "وردلي B2B", "Google Shopping", "أرامكس", "J&T Express"],
     cta: "تفاصيل التكاملات",
     addonsEyebrow: "حلول طوّرناها",
     addonsTitle: "أدوات جاهزة تضيفها إلى Odoo",
-    addonsText: "مديولات بنيناها لاحتياجات شركات التوزيع في السعودية، ونستخدمها في عملياتنا اليومية قبل أن نقدمها لعملائنا.",
+    addonsText: "مديولات طوّرناها لاحتياجات شركات التوزيع في السعودية، واختُبرت في تشغيل فعلي قبل أن نقدمها لعملائنا.",
     addonsCta: "استعرض الحلول الجاهزة",
   },
   integrations: {
@@ -65,7 +65,7 @@ export const capAr: Capabilities = {
     eyebrow: "التكاملات",
     title: "اربط Odoo بكل منصة تبيع عليها",
     intro:
-      "طوّرنا تكاملات Odoo مع أهم منصات التجارة الإلكترونية وشركات الشحن في السعودية، ونشغّلها يومياً في أعمالنا. النتيجة: مخزون واحد، وأسعار موحّدة، وطلبات تدخل النظام دون إدخال يدوي.",
+      "طوّرنا تكاملات Odoo مع أهم منصات التجارة الإلكترونية وشركات الشحن في السعودية، واختبرناها في بيئات تشغيل فعلية. النتيجة: مخزون واحد، وأسعار موحّدة، وطلبات تدخل النظام دون إدخال يدوي.",
     stats: [
       { value: "7", label: "منصات بيع ومتاجر" },
       { value: "2", label: "شركات شحن" },
@@ -258,9 +258,9 @@ export const capAr: Capabilities = {
     metaDescription:
       "مديولات Odoo طوّرناها لشركات التوزيع في السعودية: اعتماد البيع حسب هامش الربح، توقّع المشتريات، الجرد الآمن، تقييم الأداء، وتطبيقات الجوال.",
     eyebrow: "حلولنا الجاهزة",
-    title: "أدوات طوّرناها لأننا احتجناها",
+    title: "أدوات مُجرّبة في التشغيل الفعلي",
     intro:
-      "كل حل في هذه الصفحة بدأ بمشكلة واجهناها في شركة توزيع حقيقية. بنيناه على Odoo، وشغّلناه في عملياتنا اليومية، ثم أصبح جاهزاً لعملائنا.",
+      "كل حل في هذه الصفحة طُوّر لمعالجة مشكلة حقيقية لدى شركات التوزيع السعودية، واختُبر في بيئة تشغيل فعلية قبل أن نقدمه لعملائنا.",
     note: "نهيّئ كل حل على طريقة عمل شركتك، ويمكن تطويره حسب احتياجك.",
     groups: [
       {
@@ -425,12 +425,12 @@ export const capEn: Capabilities = {
   home: {
     eyebrow: "Platforms & integrations",
     title: "Every sales channel on one inventory",
-    text: "We connect Odoo to the major marketplaces in Saudi Arabia and the Gulf, so orders flow in automatically and stock and prices update on every platform from one place. We built these integrations and run them every day in our own business.",
+    text: "We connect Odoo to the major marketplaces in Saudi Arabia and the Gulf, so orders flow in automatically and stock and prices update on every platform from one place. We built these integrations and tested them in live operations.",
     channels: ["Amazon", "noon", "Trendyol", "Salla", "Zid", "Warrdly B2B", "Google Shopping", "Aramex", "J&T Express"],
     cta: "Integration details",
     addonsEyebrow: "Built by us",
     addonsTitle: "Ready-made tools you can add to Odoo",
-    addonsText: "Modules we built for Saudi distribution companies and use in our own daily operations before offering them to clients.",
+    addonsText: "Modules we built for Saudi distribution companies and proved in live operations before offering them to clients.",
     addonsCta: "Browse ready-built solutions",
   },
   integrations: {
@@ -440,7 +440,7 @@ export const capEn: Capabilities = {
     eyebrow: "Integrations",
     title: "Connect Odoo to every platform you sell on",
     intro:
-      "We built Odoo integrations with the leading e-commerce platforms and couriers in Saudi Arabia, and we run them every day in our own business. The result: one inventory, consistent prices, and orders that reach the system with no manual entry.",
+      "We built Odoo integrations with the leading e-commerce platforms and couriers in Saudi Arabia, and tested them in live operations. The result: one inventory, consistent prices, and orders that reach the system with no manual entry.",
     stats: [
       { value: "7", label: "Marketplaces & stores" },
       { value: "2", label: "Couriers" },
@@ -617,9 +617,9 @@ export const capEn: Capabilities = {
     metaDescription:
       "Odoo modules we built for Saudi distributors: margin-based sales approval, purchase forecasting, secure stock counts, KPI evaluation and mobile apps.",
     eyebrow: "Ready-built solutions",
-    title: "Tools we built because we needed them",
+    title: "Tools proven in live operations",
     intro:
-      "Every solution on this page started with a problem we faced in a real distribution company. We built it on Odoo, ran it in our own daily operations, and now it's ready for our clients.",
+      "Every solution on this page was built to solve a real problem for Saudi distribution companies, and tested in live operations before we offered it to clients.",
     note: "We configure each solution to how your company works, and can extend it to your needs.",
     groups: [
       {

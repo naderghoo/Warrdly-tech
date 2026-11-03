@@ -28,12 +28,12 @@ export const en: Dict = {
   hero: {
     badge: "Official Odoo Partner",
     title1: "We implement Odoo",
-    title2: "with a trader's mindset",
+    title2: "with expertise and confidentiality",
     subtitle:
-      "We were traders before we were a tech company. We know the warehouse, the sales rep and the tax invoice because we live them every day — so we build you an Odoo system that works from day one.",
+      "A team specialized in distribution, wholesale and retail. We understand your cycle from the warehouse to the tax invoice and build you an Odoo system that works from day one — with a full commitment to keeping your data confidential.",
     primary: "Book a free consultation",
     secondary: "Take the readiness test",
-    points: ["A Saudi team that speaks your language", "ZATCA compliant", "Ongoing support after go-live"],
+    points: ["An NDA with every client", "Your system and data are fully yours", "ZATCA compliant"],
   },
   dashboard: {
     title: "Sales & inventory dashboard",
@@ -75,7 +75,7 @@ export const en: Dict = {
       title: "Beauty & Personal Care",
       short: "Lot and expiry tracking, promotions, and agency and brand management.",
       intro:
-        "We have worked in beauty distribution for years, and we know that expiry dates, lots and promotions make the difference between profit and loss. We configure Odoo around those details.",
+        "Our experience in the beauty sector taught us that expiry dates, lots and promotions make the difference between profit and loss. We configure Odoo around those details.",
       challenges: [
         "Products nearing expiry with no early warning",
         "Hard to trace lots for recalls or customer complaints",
@@ -170,10 +170,18 @@ export const en: Dict = {
     ],
   },
   caseStudy: {
-    eyebrow: "From our own experience",
-    title: "Jasmine Beauty: a beauty distributor running its business on Odoo",
-    text: "Jasmine Beauty Trading is a beauty and personal care distributor in Jeddah that runs its sales, warehouses and invoicing on Odoo. What we learn from operating it every day is what we bring to our clients: solutions proven in the Saudi market, not theory.",
-    cta: "Talk to us about your business",
+    eyebrow: "Trust & confidentiality",
+    title: "Your data is held in trust, and your system is yours",
+    text: "We know that sales figures, costs and customer lists are a company's most sensitive information. That's why we work under clear, written commitments before we see any data.",
+    cta: "Request our NDA template",
+    items: [
+      { icon: "shield", title: "An NDA before we start", text: "We sign a non-disclosure agreement before accessing any of your data or systems." },
+      { icon: "box", title: "The system is in your name", text: "The Odoo subscription and database are registered to your company, with full ownership and control." },
+      { icon: "gear", title: "Limited, temporary access", text: "Only the team assigned to your project works on it, and our access is revoked at handover or whenever you ask." },
+      { icon: "check", title: "Every login is logged", text: "The system records who signed in and what they changed, and you can review it at any time." },
+      { icon: "swap", title: "Test data, not real data", text: "Wherever possible we build and test on anonymized copies, and never move your data outside your environment." },
+      { icon: "code", title: "We never share your data", text: "We never use one client's data on another project, and never publish client names or figures without written permission." },
+    ],
   },
   integrations: {
     title: "We connect Odoo to the tools you use in the Saudi market",
