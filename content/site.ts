@@ -11,10 +11,10 @@ export const site = {
   partnerLevel: "",
 
   /** رقم واتساب بالصيغة الدولية بدون + أو مسافات، مثال: "9665XXXXXXXX". فارغ = يُخفى الزر */
-  whatsapp: "",
+  whatsapp: "966536663891",
 
   /** البريد الظاهر في الموقع. فارغ = يُخفى */
-  email: "",
+  email: "nader@warrdly.com",
 
   /** رابط صفحة حجز المواعيد في Odoo (Appointments). فارغ = يُستخدم نموذج التواصل */
   appointmentUrl: "",

@@ -51,7 +51,7 @@ export const capAr: Capabilities = {
     eyebrow: "المنصات والتكاملات",
     title: "كل قنوات بيعك في مخزون واحد",
     text: "نربط Odoo بمنصات البيع الكبرى في السعودية والخليج، فتصل الطلبات تلقائياً، ويتحدّث المخزون والأسعار على كل منصة من مكان واحد. هذه التكاملات طوّرناها واختبرناها في بيئات تشغيل فعلية.",
-    channels: ["أمازون", "نون", "ترينديول", "سلة", "زد", "وردلي B2B", "Google Shopping", "أرامكس", "J&T Express"],
+    channels: ["أمازون", "نون", "ترينديول", "سلة", "وردلي B2B", "Google Shopping", "أرامكس", "J&T Express"],
     cta: "تفاصيل التكاملات",
     addonsEyebrow: "حلول طوّرناها",
     addonsTitle: "أدوات جاهزة تضيفها إلى Odoo",
@@ -59,15 +59,15 @@ export const capAr: Capabilities = {
     addonsCta: "استعرض الحلول الجاهزة",
   },
   integrations: {
-    metaTitle: "تكاملات Odoo: أمازون، نون، سلة، زد",
+    metaTitle: "تكاملات Odoo: أمازون، نون، ترينديول، سلة",
     metaDescription:
-      "نربط Odoo بأمازون ونون وترينديول وسلة وزد ووردلي، وبشركات الشحن أرامكس وJ&T: مزامنة المخزون والأسعار واستيراد الطلبات والمرتجعات تلقائياً.",
+      "نربط Odoo بأمازون ونون وترينديول وسلة ووردلي، وبشركات الشحن أرامكس وJ&T: مزامنة المخزون والأسعار واستيراد الطلبات والمرتجعات تلقائياً.",
     eyebrow: "التكاملات",
     title: "اربط Odoo بكل منصة تبيع عليها",
     intro:
       "طوّرنا تكاملات Odoo مع أهم منصات التجارة الإلكترونية وشركات الشحن في السعودية، واختبرناها في بيئات تشغيل فعلية. النتيجة: مخزون واحد، وأسعار موحّدة، وطلبات تدخل النظام دون إدخال يدوي.",
     stats: [
-      { value: "7", label: "منصات بيع ومتاجر" },
+      { value: "6", label: "منصات بيع ومتاجر" },
       { value: "2", label: "شركات شحن" },
       { value: "1", label: "مخزون موحّد لكل القنوات" },
     ],
@@ -123,7 +123,7 @@ export const capAr: Capabilities = {
         id: "stores",
         icon: "globe",
         title: "المتاجر الإلكترونية والقنوات الرقمية",
-        text: "متجرك على سلة أو زد، ومنصة الجملة وردلي، ومنتجاتك على Google.",
+        text: "متجرك على سلة، ومنصة الجملة وردلي، ومنتجاتك على Google، وأي منصة أخرى حسب الطلب.",
         items: [
           {
             key: "salla",
@@ -140,14 +140,10 @@ export const capAr: Capabilities = {
           },
           {
             key: "zid",
-            name: "زد",
-            tag: "Zid",
-            text: "ربط متجرك على زد بـ Odoo ليعمل على مخزون واحد مع بقية قنواتك.",
-            features: [
-              "استيراد الطلبات تلقائياً إلى Odoo",
-              "مزامنة المخزون والأسعار مع المتجر",
-              "فوترة متوافقة مع فاتورة لكل طلب",
-            ],
+            name: "منصات أخرى حسب الطلب",
+            tag: "Custom",
+            text: "تبيع على منصة غير مذكورة هنا، مثل زد أو غيرها؟ ننفّذ لها ربطاً مخصصاً مع Odoo حسب احتياجك.",
+            features: ["دراسة واجهات المنصة وتحديد النطاق", "استيراد الطلبات ومزامنة المخزون والأسعار", "تسعير ومدة تنفيذ واضحة قبل البدء"],
           },
           {
             key: "warrdly",
@@ -426,7 +422,7 @@ export const capEn: Capabilities = {
     eyebrow: "Platforms & integrations",
     title: "Every sales channel on one inventory",
     text: "We connect Odoo to the major marketplaces in Saudi Arabia and the Gulf, so orders flow in automatically and stock and prices update on every platform from one place. We built these integrations and tested them in live operations.",
-    channels: ["Amazon", "noon", "Trendyol", "Salla", "Zid", "Warrdly B2B", "Google Shopping", "Aramex", "J&T Express"],
+    channels: ["Amazon", "noon", "Trendyol", "Salla", "Warrdly B2B", "Google Shopping", "Aramex", "J&T Express"],
     cta: "Integration details",
     addonsEyebrow: "Built by us",
     addonsTitle: "Ready-made tools you can add to Odoo",
@@ -434,15 +430,15 @@ export const capEn: Capabilities = {
     addonsCta: "Browse ready-built solutions",
   },
   integrations: {
-    metaTitle: "Odoo integrations: Amazon, noon, Salla, Zid",
+    metaTitle: "Odoo integrations: Amazon, noon, Trendyol, Salla",
     metaDescription:
-      "We connect Odoo to Amazon, noon, Trendyol, Salla, Zid and Warrdly, plus Aramex and J&T shipping: automatic stock and price sync, order and return import.",
+      "We connect Odoo to Amazon, noon, Trendyol, Salla and Warrdly, plus Aramex and J&T shipping: automatic stock and price sync, order and return import.",
     eyebrow: "Integrations",
     title: "Connect Odoo to every platform you sell on",
     intro:
       "We built Odoo integrations with the leading e-commerce platforms and couriers in Saudi Arabia, and tested them in live operations. The result: one inventory, consistent prices, and orders that reach the system with no manual entry.",
     stats: [
-      { value: "7", label: "Marketplaces & stores" },
+      { value: "6", label: "Marketplaces & stores" },
       { value: "2", label: "Couriers" },
       { value: "1", label: "Inventory for every channel" },
     ],
@@ -498,7 +494,7 @@ export const capEn: Capabilities = {
         id: "stores",
         icon: "globe",
         title: "Online stores & digital channels",
-        text: "Your Salla or Zid store, the Warrdly wholesale platform, and your products on Google.",
+        text: "Your Salla store, the Warrdly wholesale platform, your products on Google, and any other platform on request.",
         items: [
           {
             key: "salla",
@@ -515,10 +511,10 @@ export const capEn: Capabilities = {
           },
           {
             key: "zid",
-            name: "Zid",
-            tag: "Zid",
-            text: "Connect your Zid store to Odoo so it runs on one inventory with your other channels.",
-            features: ["Automatic order import into Odoo", "Stock and price sync with the store", "Fatoora-compliant invoicing for every order"],
+            name: "Other platforms on request",
+            tag: "Custom",
+            text: "Selling on a platform not listed here, such as Zid? We build a custom Odoo integration for it on request.",
+            features: ["Platform API review and scoping", "Order import plus stock and price sync", "Clear price and timeline before we start"],
           },
           {
             key: "warrdly",

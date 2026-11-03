@@ -45,7 +45,6 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
           </nav>
           <nav aria-label={dict.footer.links} className="flex flex-col gap-2.5 text-[15px]">
             <span className="font-semibold text-white">{dict.footer.links}</span>
-            <a href={site.marketplaceUrl} className="hover:text-white">{dict.footer.marketplace}</a>
             {site.email && <a href={`mailto:${site.email}`} className="hover:text-white" dir="ltr">{site.email}</a>}
             <span>{locale === "ar" ? site.company.cityAr : site.company.cityEn}</span>
           </nav>

@@ -17,7 +17,7 @@ export const homeAr = {
   band: {
     eyebrow: "التكاملات والامتثال",
     title: "كل قنوات بيعك في نظام واحد، وفواتيرك متوافقة",
-    text: "نربط Odoo بأمازون ونون وترينديول وسلة وزد وشركات الشحن، ونهيّئه للربط مع منصة فاتورة.",
+    text: "نربط Odoo بأمازون ونون وترينديول وسلة وشركات الشحن، ونهيّئه للربط مع منصة فاتورة.",
     channelsTitle: "القنوات والمنصات",
     zatcaTitle: "الامتثال لفاتورة",
     integrationsCta: "تفاصيل التكاملات",
@@ -45,7 +45,7 @@ export const homeEn: typeof homeAr = {
   band: {
     eyebrow: "Integrations & compliance",
     title: "Every sales channel in one system, every invoice compliant",
-    text: "We connect Odoo to Amazon, noon, Trendyol, Salla, Zid and couriers, and configure it for Fatoora integration.",
+    text: "We connect Odoo to Amazon, noon, Trendyol, Salla and couriers, and configure it for Fatoora integration.",
     channelsTitle: "Channels & platforms",
     zatcaTitle: "Fatoora compliance",
     integrationsCta: "Integration details",

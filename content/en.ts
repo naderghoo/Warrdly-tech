@@ -28,9 +28,9 @@ export const en: Dict = {
   hero: {
     badge: "Official Odoo Partner",
     title1: "We implement Odoo",
-    title2: "with expertise and confidentiality",
+    title2: "with expertise that delivers",
     subtitle:
-      "A team specialized in distribution, wholesale and retail. We understand your cycle from the warehouse to the tax invoice and build you an Odoo system that works from day one — with a full commitment to keeping your data confidential.",
+      "A team specialized in distribution, wholesale and retail. We understand your cycle from the warehouse to the tax invoice and build you an Odoo system that works from day one and protects your data.",
     primary: "Book a free consultation",
     secondary: "Take the readiness test",
     points: ["An NDA with every client", "Your system and data are fully yours", "ZATCA compliant"],
@@ -94,7 +94,7 @@ export const en: Dict = {
       slug: "retail",
       icon: "store",
       title: "Retail & E-commerce",
-      short: "Point of sale for branches, an online store, and Salla and Zid on one inventory.",
+      short: "Point of sale for branches, an online store, and Salla and marketplaces on one inventory.",
       intro:
         "Your customers buy in-store, online and through apps. We bring every channel together on one inventory and one set of reports.",
       challenges: [
@@ -106,7 +106,7 @@ export const en: Dict = {
       solution: [
         { title: "Compliant POS", text: "Simplified invoices with QR code, working even offline." },
         { title: "One inventory", text: "All branches and the online store on one real-time inventory." },
-        { title: "Store integrations", text: "Salla and Zid orders flow in automatically with stock updates." },
+        { title: "Store integrations", text: "Salla and marketplace orders flow in automatically with stock updates." },
         { title: "Loyalty programs", text: "Points, coupons and gift cards linked to the customer profile." },
       ],
       apps: ["Point of Sale", "Website", "Inventory", "Accounting", "Loyalty", "Amazon, noon & Trendyol connectors"],
@@ -185,7 +185,7 @@ export const en: Dict = {
   },
   integrations: {
     title: "We connect Odoo to the tools you use in the Saudi market",
-    items: ["Salla", "Zid", "mada", "Apple Pay", "SMSA", "Aramex", "WhatsApp", "Warrdly B2B"],
+    items: ["Salla", "mada", "Apple Pay", "SMSA", "Aramex", "WhatsApp", "Warrdly B2B"],
   },
   packages: {
     eyebrow: "Packages",
@@ -244,7 +244,7 @@ export const en: Dict = {
     required: "Please fill in your name and mobile number.",
   },
   footer: {
-    about: "Official Odoo Partner in Saudi Arabia, and the company behind the Warrdly B2B marketplace.",
+    about: "Official Odoo Partner in Saudi Arabia, and your technology partner for digital transformation.",
     partnerBadge: "Official Odoo Partner",
     solutions: "Solutions",
     company: "Company",

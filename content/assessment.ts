@@ -177,7 +177,7 @@ export const assessAr: AssessmentContent = {
     inventory: { name: "دقة المخزون", advice: "الجرد الأعمى، وتتبّع التشغيلات والصلاحية، والصرف حسب الأقرب انتهاءً تقلل الفروقات والهدر.", href: "/addons#inventory", link: "حلول المخزون" },
     sales: { name: "المبيعات والمناديب", advice: "قوائم أسعار تلقائية وتطبيق للمناديب يمنعان أخطاء التسعير ويسرّعان وصول الطلب للمستودع.", href: "/solutions/distribution", link: "حلول التوزيع" },
     credit: { name: "الائتمان والتحصيل", advice: "إيقاف البيع الآجل تلقائياً عند تجاوز الحد، واعتماد البيع حسب هامش الربح، يحميان سيولتك.", href: "/addons#sales", link: "حلول المبيعات والائتمان" },
-    channels: { name: "ربط المنصات", advice: "ربط أمازون ونون وسلة وزد بمخزون واحد يوقف الإدخال اليدوي ويمنع بيع ما ليس لديك.", href: "/integrations", link: "التكاملات" },
+    channels: { name: "ربط المنصات", advice: "ربط أمازون ونون وسلة والمنصات بمخزون واحد يوقف الإدخال اليدوي ويمنع بيع ما ليس لديك.", href: "/integrations", link: "التكاملات" },
     reporting: { name: "التقارير والربحية", advice: "تقارير فورية لكل علامة ومندوب تكشف أين تربح وأين تخسر، دون انتظار نهاية الشهر.", href: "/addons#sales", link: "التقارير" },
   },
   levels: [
@@ -283,7 +283,7 @@ export const assessEn: AssessmentContent = {
     inventory: { name: "Inventory accuracy", advice: "Blind counts, lot and expiry tracking and first-expiry-first-out picking reduce variances and waste.", href: "/addons#inventory", link: "Inventory solutions" },
     sales: { name: "Sales & reps", advice: "Automatic price lists and a rep app prevent pricing errors and get orders to the warehouse faster.", href: "/solutions/distribution", link: "Distribution solutions" },
     credit: { name: "Credit & collections", advice: "Automatic credit blocking and margin-based sales approval protect your cash flow.", href: "/addons#sales", link: "Sales & credit solutions" },
-    channels: { name: "Platform integration", advice: "Connecting Amazon, noon, Salla and Zid to one inventory ends manual entry and overselling.", href: "/integrations", link: "Integrations" },
+    channels: { name: "Platform integration", advice: "Connecting Amazon, noon, Salla and other platforms to one inventory ends manual entry and overselling.", href: "/integrations", link: "Integrations" },
     reporting: { name: "Reporting & margin", advice: "Instant reports per brand and rep show where you make and lose money, without waiting for month-end.", href: "/addons#sales", link: "Reports" },
   },
   levels: [

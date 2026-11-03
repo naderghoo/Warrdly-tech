@@ -67,7 +67,6 @@ function orgJsonLd(locale: "ar" | "en") {
     },
     ...(site.email ? { email: site.email } : {}),
     ...(site.whatsapp ? { telephone: `+${site.whatsapp}` } : {}),
-    sameAs: [site.marketplaceUrl],
   };
 }
 
