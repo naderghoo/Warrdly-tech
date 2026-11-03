@@ -1,6 +1,6 @@
 import type { OdooContent } from "@/content/odoo";
 import { Icon } from "./Icon";
-import { Container, Eyebrow } from "./ui";
+import { Container, Eyebrow, TextLink } from "./ui";
 
 /** Figures always read left-to-right (e.g. "+7,000", "€5B"), even inside Arabic text */
 function Figure({ value, className = "" }: { value: string; className?: string }) {
@@ -11,7 +11,22 @@ function Figure({ value, className = "" }: { value: string; className?: string }
   );
 }
 
-export function WhyOdoo({ c }: { c: OdooContent }) {
+export function WhyOdoo({
+  c,
+  compact = false,
+  moreHref,
+  moreLabel,
+  asPage = false,
+}: {
+  c: OdooContent;
+  /** homepage version: figures + advantages only */
+  compact?: boolean;
+  moreHref?: string;
+  moreLabel?: string;
+  /** render the intro title as the page's h1 */
+  asPage?: boolean;
+}) {
+  const Title = asPage ? "h1" : "h2";
   return (
     <>
       {/* ---------- Why Odoo: intro, key figures, advantages ---------- */}
@@ -19,8 +34,9 @@ export function WhyOdoo({ c }: { c: OdooContent }) {
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.1fr_1fr]">
             <div className="flex flex-col gap-3">
+              <span className="accent-line" aria-hidden="true" />
               <Eyebrow>{c.eyebrow}</Eyebrow>
-              <h2 className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{c.title}</h2>
+              <Title className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{c.title}</Title>
             </div>
             <p className="text-lg text-muted">{c.intro}</p>
           </div>
@@ -56,9 +72,17 @@ export function WhyOdoo({ c }: { c: OdooContent }) {
               </div>
             ))}
           </div>
+
+          {compact && moreHref && moreLabel && (
+            <div>
+              <TextLink href={moreHref}>{moreLabel}</TextLink>
+            </div>
+          )}
         </Container>
       </section>
 
+      {!compact && (
+        <>
       {/* ---------- Comparison table ---------- */}
       <section className="bg-transparent">
         <Container className="flex flex-col gap-8 pb-20 sm:pb-24">
@@ -166,6 +190,8 @@ export function WhyOdoo({ c }: { c: OdooContent }) {
           </details>
         </Container>
       </section>
+        </>
+      )}
     </>
   );
 }

@@ -2,73 +2,54 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
-import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLink } from "@/components/ui";
-import { DigitalTeaser } from "@/components/DigitalTeaser";
 import { WhyOdoo } from "@/components/WhyOdoo";
+import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLink } from "@/components/ui";
 import { getCap } from "@/content/capabilities";
 import { getDigital } from "@/content/digital";
-import { getOdoo } from "@/content/odoo";
+import { getHome } from "@/content/home";
 import { getDict, isLocale } from "@/content/i18n";
+import { getOdoo } from "@/content/odoo";
 import { site } from "@/content/site";
 
+const pad = (i: number) => String(i + 1).padStart(2, "0");
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const d = getDict(locale);
+  const h = getHome(locale);
+  const cap = getCap(locale);
+  const tech = getDigital(locale);
   const base = `/${locale}`;
   const badge = site.partnerLevel ? `${d.hero.badge} · ${site.partnerLevel}` : d.hero.badge;
-  const cap = getCap(locale);
-  const pickKeys = ["margin", "forecast", "count", "credit", "portal", "b2bapp"];
-  const addonPicks = cap.addons.groups
-    .flatMap((g) => g.items.map((it) => ({ ...it, group: g.id, icon: g.icon })))
-    .filter((it) => pickKeys.includes(it.key))
-    .sort((a, b) => pickKeys.indexOf(a.key) - pickKeys.indexOf(b.key));
-  const num = (i: number) => {
-    const s = String(i + 1).padStart(2, "0");
-    return s;
-  };
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-transparent">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <span className="animate-drift absolute top-10 h-[420px] w-[420px] rounded-full bg-plum/20 blur-[90px] ltr:right-[-80px] rtl:left-[-80px]" />
-          <span className="animate-drift-slow absolute bottom-[-120px] h-[360px] w-[360px] rounded-full bg-gold/15 blur-[90px] ltr:right-[28%] rtl:left-[28%]" />
-          <span className="absolute top-[-140px] h-[320px] w-[320px] rounded-full bg-lilac/35 blur-[80px] ltr:left-[20%] rtl:right-[20%]" />
-        </div>
-        <Container className="relative flex flex-wrap items-center gap-14 pb-24 pt-16 sm:pt-20">
+      {/* 1 ── Hero */}
+      <section className="bg-transparent">
+        <Container className="flex flex-wrap items-center gap-14 pb-20 pt-16 sm:pt-20">
           <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-6">
-            <span className="inline-flex items-center gap-2 self-start rounded-full bg-tint px-3.5 py-1.5 text-sm font-semibold text-plum-dark">
+            <span className="inline-flex items-center gap-2 self-start rounded-md border border-plum/20 bg-white px-3 py-1.5 text-sm font-semibold text-plum-dark">
               <Icon name="shield" size={16} />
               {badge}
             </span>
-            <h1 className="text-[40px] font-bold leading-[1.25] text-ink sm:text-[56px]">
+            <h1 className="text-[40px] font-bold leading-[1.22] text-ink sm:text-[54px]">
               {d.hero.title1}
               <br />
-              <span className="text-plum">{d.hero.title2}</span>
+              <span className="text-sheen">{d.hero.title2}</span>
             </h1>
-            <p className="max-w-[560px] text-lg text-muted sm:text-xl">{d.hero.subtitle}</p>
+            <p className="max-w-[560px] text-lg leading-relaxed text-muted sm:text-xl">{d.hero.subtitle}</p>
             <div className="flex flex-wrap gap-3">
               <PrimaryButton href={`${base}/contact`} arrow>
                 {d.hero.primary}
               </PrimaryButton>
               <SecondaryButton href={`${base}/assessment`}>{d.hero.secondary}</SecondaryButton>
             </div>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
-              {d.hero.points.map((p) => (
-                <li key={p} className="inline-flex items-center gap-1.5">
-                  <Icon name="check" size={16} stroke={2.4} className="text-plum" />
-                  {p}
-                </li>
-              ))}
-            </ul>
           </div>
 
-          {/* Dashboard illustration */}
-          <div className="animate-float min-w-0 flex-[1_1_420px]" aria-hidden="true">
-            <div className="rounded-[20px] glass-ink p-5 shadow-[0_24px_60px_rgba(36,21,42,0.25)]">
+          {/* Dashboard illustration (static) */}
+          <div className="min-w-0 flex-[1_1_420px]" aria-hidden="true">
+            <div className="sheen-edge rounded-2xl bg-ink p-5">
               <div className="flex items-center justify-between pb-4">
                 <span className="text-[15px] font-semibold text-mist-2">{d.dashboard.title}</span>
                 <span className="flex gap-1.5">
@@ -79,48 +60,54 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {d.dashboard.kpis.map((k, i) => (
-                  <div key={k} className="flex flex-col gap-1.5 rounded-xl glass-dark p-3.5">
+                  <div key={k} className="flex flex-col gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] p-3.5">
                     <span className="text-[13px] text-mist-2">{k}</span>
-                    <span
-                      className="h-2.5 rounded-md"
-                      style={{ width: ["70%", "55%", "82%"][i], background: ["#F2A93B", "#E7B3D6", "#C98BB8"][i] }}
-                    />
+                    <span className="h-2 rounded" style={{ width: ["70%", "55%", "82%"][i], background: ["#F2A93B", "#C98BB8", "#8F4A7C"][i] }} />
                   </div>
                 ))}
               </div>
-              <div className="mt-3 rounded-xl glass-dark p-4.5">
+              <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.04] p-4.5">
                 <div className="flex h-[150px] items-end gap-2.5">
-                  {[40, 58, 50, 72, 66, 88, 95].map((h, i) => (
+                  {[40, 58, 50, 72, 66, 88, 95].map((v, i) => (
                     <span
                       key={i}
-                      className={`animate-grow flex-1 rounded-t-md ${i > 4 ? "bg-lilac" : "bg-ink-3"}`}
-                      style={{ height: `${h}%`, animationDelay: `${200 + i * 80}ms` }}
+                      className="flex-1 rounded-t"
+                      style={{ height: `${v}%`, background: i > 4 ? "linear-gradient(180deg,#B0679A,#6D335D)" : "#553650" }}
                     />
                   ))}
                 </div>
               </div>
               <div className="mt-3 flex flex-wrap gap-2.5 text-[13px]">
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#4A2A44] px-3 py-1.5 text-[#F3D3E8]">
-                  <Icon name="check" size={14} stroke={2.4} />
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-white/[0.06] px-3 py-1.5 text-mist-2">
+                  <Icon name="check" size={14} stroke={2.4} className="text-gold" />
                   {d.dashboard.chip1}
                 </span>
-                <span className="rounded-lg bg-[#3D3220] px-3 py-1.5 text-[#F7D08F]">{d.dashboard.chip2}</span>
+                <span className="rounded-md bg-white/[0.06] px-3 py-1.5 text-[#F7D08F]">{d.dashboard.chip2}</span>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Why Odoo: features, comparison, regional figures */}
-      <WhyOdoo c={getOdoo(locale)} />
+      {/* 2 ── Trust strip */}
+      <section aria-label={h.trust[0]} className="border-y border-line bg-white">
+        <Container className="grid grid-cols-2 gap-y-4 py-5 lg:grid-cols-4">
+          {h.trust.map((t, i) => (
+            <div key={t} className={`flex items-center justify-center gap-2.5 px-3 text-[15px] font-semibold text-ink ${i > 0 ? "lg:border-s lg:border-line" : ""} ${i % 2 === 1 ? "border-s border-line lg:border-s" : ""}`}>
+              <Icon name={["shield", "check", "box", "globe"][i]} size={18} stroke={2} className="flex-none text-plum" />
+              <span className="text-center">{t}</span>
+            </div>
+          ))}
+        </Container>
+      </section>
 
-      {/* Stats (hidden until filled in content/site.ts) */}
+      {/* Optional own figures (hidden until filled in content/site.ts) */}
       {site.stats.length > 0 && (
-        <section className="border-y border-white/60 bg-white/30">
+        <section className="border-b border-line bg-white">
           <Container className="grid grid-cols-2 gap-6 py-10 text-center md:grid-cols-4">
             {site.stats.map((s) => (
               <div key={s.en}>
-                <div className="text-4xl font-bold text-ink">{s.value}</div>
+                <div dir="ltr" className="text-4xl font-bold text-ink">{s.value}</div>
                 <div className="text-[15px] text-muted-2">{locale === "ar" ? s.ar : s.en}</div>
               </div>
             ))}
@@ -128,25 +115,21 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </section>
       )}
 
-      {/* Sectors */}
-      <section id="sectors" className="scroll-mt-24 bg-white/25">
+      {/* 3 ── Sectors */}
+      <section id="sectors" className="scroll-mt-24 bg-transparent">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <SectionHead eyebrow={d.sectorsSection.eyebrow} title={d.sectorsSection.title} subtitle={d.sectorsSection.subtitle} />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {d.sectors.map((s) => (
-              <Link
-                key={s.slug}
-                href={`${base}/solutions/${s.slug}`}
-                className="group flex flex-col gap-3.5 rounded-2xl glass p-7 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
-              >
-                <span className="flex h-13 w-13 items-center justify-center rounded-xl bg-tint text-plum">
-                  <Icon name={s.icon} size={26} stroke={1.8} />
+              <Link key={s.slug} href={`${base}/solutions/${s.slug}`} className="group flex flex-col gap-3.5 rounded-xl glass p-7 text-ink">
+                <span className="flex h-12 w-12 items-center justify-center rounded-lg border border-plum/20 bg-plum/5 text-plum">
+                  <Icon name={s.icon} size={24} stroke={1.8} />
                 </span>
                 <span className="text-xl font-bold">{s.title}</span>
-                <span className="text-base text-muted">{s.short}</span>
-                <span className="mt-auto inline-flex items-center gap-1.5 text-[15px] font-semibold text-plum">
+                <span className="text-[15px] leading-relaxed text-muted">{s.short}</span>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-[15px] font-semibold text-plum">
                   {d.sectorsSection.more}
-                  <Icon name="arrow" size={16} className="transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
+                  <Icon name="arrow" size={16} className="rtl:-scale-x-100" />
                 </span>
               </Link>
             ))}
@@ -154,89 +137,122 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Container>
       </section>
 
-      {/* Services */}
-      <section id="services" className="scroll-mt-24 bg-transparent">
+      {/* 4 ── What we do: Odoo services + technology services */}
+      <section id="services" className="scroll-mt-24 border-y border-line bg-white">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div className="flex max-w-[640px] flex-col gap-3">
-              <Eyebrow>{d.services.eyebrow}</Eyebrow>
-              <h2 className="text-3xl font-bold leading-snug sm:text-[40px]">{d.services.title}</h2>
-            </div>
-            <TextLink href={`${base}/contact`}>{d.services.link}</TextLink>
-          </div>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl glass bg-white/30 md:grid-cols-2 lg:grid-cols-3">
-            {d.services.items.map((s) => (
-              <div key={s.title} className="flex gap-4.5 bg-white/45 p-8">
-                <Icon name={s.icon} size={28} stroke={1.8} className="flex-none text-ink" />
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="text-[19px] font-bold">{s.title}</h3>
-                  <p className="text-base text-muted">{s.text}</p>
-                </div>
+          <SectionHead eyebrow={h.what.eyebrow} title={h.what.title} subtitle={h.what.subtitle} />
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {/* Odoo column */}
+            <div className="flex flex-col rounded-xl border border-line">
+              <div className="flex items-center justify-between gap-3 border-b border-line bg-paper px-6 py-4">
+                <h3 className="text-lg font-bold text-ink">{h.what.odooTitle}</h3>
+                <span dir="ltr" className="rounded bg-plum px-2 py-0.5 text-[12px] font-bold text-white">Odoo</span>
               </div>
-            ))}
+              <ul className="flex flex-col">
+                {d.services.items.map((s, i) => (
+                  <li key={s.title} className={`flex gap-4 px-6 py-5 ${i > 0 ? "border-t border-line" : ""}`}>
+                    <Icon name={s.icon} size={22} stroke={1.8} className="mt-0.5 flex-none text-plum" />
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[16px] font-bold text-ink">{s.title}</span>
+                      <span className="text-[15px] leading-relaxed text-muted">{s.text}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto flex flex-wrap gap-x-6 gap-y-2 border-t border-line px-6 py-4">
+                {h.what.odooLinks.map((l) => (
+                  <TextLink key={l.href} href={`${base}${l.href}`}>
+                    {l.label}
+                  </TextLink>
+                ))}
+              </div>
+            </div>
+            {/* Technology column */}
+            <div className="flex flex-col rounded-xl border border-line">
+              <div className="flex items-center justify-between gap-3 border-b border-line bg-paper px-6 py-4">
+                <h3 className="text-lg font-bold text-ink">{h.what.techTitle}</h3>
+                <span dir="ltr" className="rounded bg-ink px-2 py-0.5 text-[12px] font-bold text-white">Web · Mobile</span>
+              </div>
+              <ul className="flex flex-col">
+                {tech.services.slice(0, 6).map((s, i) => (
+                  <li key={s.key} className={`flex gap-4 px-6 py-5 ${i > 0 ? "border-t border-line" : ""}`}>
+                    <Icon name={s.icon} size={22} stroke={1.8} className="mt-0.5 flex-none text-plum" />
+                    <div className="flex flex-col gap-1">
+                      <Link href={`${base}/services#${s.key}`} className="text-[16px] font-bold text-ink hover:text-plum">
+                        {s.title}
+                      </Link>
+                      <span className="text-[15px] leading-relaxed text-muted">{s.text}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto border-t border-line px-6 py-4">
+                <TextLink href={`${base}${h.what.techLink.href}`}>{h.what.techLink.label}</TextLink>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Full technology services */}
-      <DigitalTeaser c={getDigital(locale)} locale={locale} />
+      {/* 5 ── Why Odoo (compact: figures + advantages) */}
+      <WhyOdoo c={getOdoo(locale)} compact moreHref={`${base}/why-odoo`} moreLabel={h.whyLink} />
 
-      {/* ZATCA band */}
-      <section id="zatca" className="scroll-mt-24 glow-dark text-white">
-        <Container className="flex flex-wrap items-center gap-12 py-20 sm:py-22">
-          <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-4.5">
-            <Eyebrow light>{d.zatcaBand.eyebrow}</Eyebrow>
-            <h2 className="text-3xl font-bold leading-snug sm:text-[40px]">{d.zatcaBand.title}</h2>
-            <p className="text-lg text-mist-2">{d.zatcaBand.text}</p>
-            <div className="flex flex-wrap items-center gap-5 pt-2">
-              <Link
-                href={`${base}/assessment`}
-                className="inline-flex min-h-[52px] items-center rounded-xl bg-gold px-6 font-bold text-ink hover:bg-[#F5B95A]"
-              >
-                {d.zatcaBand.cta}
-              </Link>
-              <Link href={`${base}/zatca`} className="inline-flex items-center gap-1.5 font-semibold text-lilac hover:text-white">
-                {d.zatcaBand.more}
+      {/* 6 ── Integrations + Fatoora (single dark band) */}
+      <section id="integrations" className="scroll-mt-24 glow-dark text-white">
+        <Container className="flex flex-col gap-12 py-20 sm:py-24">
+          <div className="flex max-w-[760px] flex-col gap-3">
+            <span className="accent-line" aria-hidden="true" />
+            <Eyebrow light>{h.band.eyebrow}</Eyebrow>
+            <h2 className="text-3xl font-bold leading-snug sm:text-[40px]">{h.band.title}</h2>
+            <p className="text-lg text-mist-2">{h.band.text}</p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.25fr_1fr]">
+            <div className="flex flex-col gap-5 rounded-xl border border-white/12 bg-white/[0.03] p-6 sm:p-7">
+              <h3 className="text-lg font-bold">{h.band.channelsTitle}</h3>
+              <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+                {cap.home.channels.map((ch) => (
+                  <li key={ch} className="flex min-h-[56px] items-center justify-center rounded-lg border border-white/12 bg-white/[0.04] px-3 text-center text-[15px] font-semibold">
+                    {ch}
+                  </li>
+                ))}
+              </ul>
+              <Link href={`${base}/integrations`} className="mt-auto inline-flex items-center gap-1.5 self-start font-semibold text-gold hover:text-white">
+                {h.band.integrationsCta}
                 <Icon name="arrow" size={16} className="rtl:-scale-x-100" />
               </Link>
             </div>
-          </div>
-          <div className="grid min-w-0 flex-[1_1_420px] grid-cols-1 gap-3.5 sm:grid-cols-2">
-            {d.zatcaBand.items.map((it) => (
-              <div key={it.title} className="flex flex-col gap-2 rounded-[14px] glass-dark p-5.5">
-                <Icon name={it.icon} size={24} className="text-lilac" />
-                <span className="text-[17px] font-semibold">{it.title}</span>
-                <span className="text-[15px] text-mist">{it.text}</span>
+            <div className="flex flex-col gap-5 rounded-xl border border-white/12 bg-white/[0.03] p-6 sm:p-7">
+              <h3 className="text-lg font-bold">{h.band.zatcaTitle}</h3>
+              <ul className="flex flex-col">
+                {d.zatcaBand.items.map((it, i) => (
+                  <li key={it.title} className={`flex items-start gap-3 py-3 ${i > 0 ? "border-t border-white/10" : ""}`}>
+                    <Icon name={it.icon} size={20} className="mt-0.5 flex-none text-gold" />
+                    <div className="flex flex-col">
+                      <span className="text-[15px] font-semibold">{it.title}</span>
+                      <span className="text-[14px] text-mist-2">{it.text}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto flex flex-wrap items-center gap-4">
+                <Link href={`${base}/assessment`} className="inline-flex min-h-[48px] items-center rounded-lg bg-gold px-5 font-bold text-ink hover:bg-[#F5B95A]">
+                  {d.zatcaBand.cta}
+                </Link>
+                <Link href={`${base}/zatca`} className="inline-flex items-center gap-1.5 font-semibold text-mist-2 hover:text-white">
+                  {h.band.zatcaCta}
+                  <Icon name="arrow" size={16} className="rtl:-scale-x-100" />
+                </Link>
               </div>
-            ))}
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Process */}
-      <section className="bg-transparent">
-        <Container className="flex flex-col gap-12 py-20 sm:py-24">
-          <SectionHead eyebrow={d.process.eyebrow} title={d.process.title} />
-          <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {d.process.steps.map((s, i) => (
-              <li key={s.title} className="flex flex-col gap-2.5 rounded-2xl glass border-t-4 !border-t-plum p-7">
-                <span className="text-[15px] font-bold text-plum">{num(i)}</span>
-                <h3 className="text-xl font-bold">{s.title}</h3>
-                <p className="text-base text-muted">{s.text}</p>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* Trust & confidentiality */}
+      {/* 7 ── Trust & confidentiality + how we work */}
       <section id="trust" className="scroll-mt-24 bg-transparent">
-        <Container className="flex flex-col gap-10 py-20 sm:py-24">
+        <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.1fr_1fr]">
-            <div className="flex flex-col gap-3">
-              <Eyebrow>{d.caseStudy.eyebrow}</Eyebrow>
-              <h2 className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{d.caseStudy.title}</h2>
-            </div>
+            <SectionHead eyebrow={d.caseStudy.eyebrow} title={d.caseStudy.title} />
             <div className="flex flex-col gap-3">
               <p className="text-lg text-muted">{d.caseStudy.text}</p>
               <div>
@@ -250,76 +266,37 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 key={it.title}
                 className={`flex gap-4 border-line p-6 sm:p-7 ${i > 0 ? "border-t sm:border-t-0" : ""} ${i % 2 === 1 ? "sm:border-s" : ""} ${i >= 2 ? "sm:border-t" : ""} ${i % 3 !== 0 ? "lg:border-s" : "lg:border-s-0"} ${i >= 3 ? "lg:border-t" : "lg:border-t-0"}`}
               >
-                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-ink text-gold">
+                <span className="bg-sheen flex h-10 w-10 flex-none items-center justify-center rounded-lg text-white">
                   <Icon name={it.icon} size={20} stroke={1.8} />
                 </span>
                 <div className="flex flex-col gap-1.5">
-                  <h3 className="text-[17px] font-bold text-ink">{it.title}</h3>
+                  <h3 className="text-[16px] font-bold text-ink">{it.title}</h3>
                   <p className="text-[15px] leading-relaxed text-muted">{it.text}</p>
                 </div>
               </li>
             ))}
           </ul>
-        </Container>
-      </section>
 
-      {/* Integrations */}
-      <section id="integrations" className="scroll-mt-24 glow-dark text-white">
-        <Container className="flex flex-wrap items-center gap-12 py-20 sm:py-24">
-          <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-4.5">
-            <Eyebrow light>{cap.home.eyebrow}</Eyebrow>
-            <h2 className="text-3xl font-bold leading-snug sm:text-[40px]">{cap.home.title}</h2>
-            <p className="text-lg text-mist-2">{cap.home.text}</p>
-            <div className="pt-2">
-              <Link
-                href={`${base}/integrations`}
-                className="inline-flex min-h-[52px] items-center gap-2 rounded-xl bg-gold px-6 font-bold text-ink hover:bg-[#F5B95A]"
-              >
-                {cap.home.cta}
-                <Icon name="arrow" size={18} className="rtl:-scale-x-100" />
-              </Link>
-            </div>
-          </div>
-          <ul className="grid min-w-0 flex-[1_1_460px] grid-cols-2 gap-3 sm:grid-cols-3">
-            {cap.home.channels.map((ch) => (
-              <li
-                key={ch}
-                className="flex min-h-[72px] items-center justify-center rounded-2xl glass-dark px-3 text-center text-[17px] font-semibold"
-              >
-                {ch}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* Ready-built solutions teaser */}
-      <section className="bg-transparent">
-        <Container className="flex flex-col gap-10 py-20 sm:py-24">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHead eyebrow={cap.home.addonsEyebrow} title={cap.home.addonsTitle} subtitle={cap.home.addonsText} />
-            <TextLink href={`${base}/addons`}>{cap.home.addonsCta}</TextLink>
-          </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {addonPicks.map((it) => (
-              <Link
-                key={it.key}
-                href={`${base}/addons#${it.group}`}
-                className="flex flex-col gap-2.5 rounded-2xl glass p-6 text-ink transition-shadow hover:shadow-[0_12px_32px_rgba(36,21,42,0.08)]"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-tint text-plum">
-                  <Icon name={it.icon} size={22} stroke={1.8} />
-                </span>
-                <h3 className="text-lg font-bold">{it.name}</h3>
-                <p className="text-[15px] text-muted">{it.text}</p>
-              </Link>
-            ))}
+          <div className="flex flex-col gap-5">
+            <h3 className="text-2xl font-bold text-ink">{h.trustProcess.processTitle}</h3>
+            <ol className="grid grid-cols-1 gap-0 overflow-hidden rounded-xl border border-line bg-white sm:grid-cols-2 lg:grid-cols-4">
+              {d.process.steps.map((s, i) => (
+                <li
+                  key={s.title}
+                  className={`relative flex flex-col gap-2 p-6 ${i > 0 ? "border-t border-line sm:border-t-0" : ""} ${i % 2 === 1 ? "sm:border-s sm:border-line" : ""} ${i >= 2 ? "sm:border-t sm:border-line lg:border-t-0" : ""} ${i === 2 ? "lg:border-s" : ""}`}
+                >
+                  <span className="text-sm font-bold tabular-nums text-plum">{pad(i)}</span>
+                  <span className="text-[17px] font-bold text-ink">{s.title}</span>
+                  <span className="text-[15px] leading-relaxed text-muted">{s.text}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </Container>
       </section>
 
-      {/* Packages */}
-      <section id="packages" className="scroll-mt-24 bg-white/25">
+      {/* 8 ── Packages */}
+      <section id="packages" className="scroll-mt-24 border-y border-line bg-white">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
           <SectionHead center eyebrow={d.packages.eyebrow} title={d.packages.title} subtitle={d.packages.subtitle} />
           <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-3">
@@ -334,30 +311,26 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               return (
                 <div
                   key={t.key}
-                  className={`flex flex-col gap-4.5 rounded-[18px] p-8 ${
-                    featured ? "bg-ink text-white shadow-[0_20px_50px_rgba(36,21,42,0.22)]" : "glass"
-                  }`}
+                  className={`flex flex-col gap-4.5 rounded-xl p-8 ${featured ? "sheen-edge bg-ink text-white" : "border border-line bg-white"}`}
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-[22px] font-bold">{t.name}</h3>
-                    {featured && (
-                      <span className="rounded-full bg-gold px-3 py-1 text-[13px] font-bold text-ink">{d.packages.popular}</span>
-                    )}
+                    {featured && <span className="rounded bg-gold px-2.5 py-1 text-[12px] font-bold text-ink">{d.packages.popular}</span>}
                   </div>
                   <p className={`text-[15px] ${featured ? "text-mist-2" : "text-muted"}`}>{t.desc}</p>
-                  <p className="text-[26px] font-bold">{price}</p>
-                  <ul className="flex flex-col gap-2.5 text-base">
+                  <p className="border-b border-current/10 pb-4 text-[24px] font-bold">{price}</p>
+                  <ul className="flex flex-col gap-2.5 text-[15px]">
                     {t.features.map((f) => (
                       <li key={f} className="flex items-center gap-2">
-                        <Icon name="check" size={18} stroke={2.4} className={featured ? "text-lilac" : "text-plum"} />
+                        <Icon name="check" size={17} stroke={2.4} className={featured ? "text-gold" : "text-plum"} />
                         {f}
                       </li>
                     ))}
                   </ul>
                   <Link
                     href={`${base}/contact`}
-                    className={`mt-auto inline-flex min-h-[48px] items-center justify-center rounded-xl font-semibold ${
-                      featured ? "bg-gold font-bold text-ink hover:bg-[#F5B95A]" : "border-[1.5px] border-line-2 text-ink hover:border-plum"
+                    className={`mt-auto inline-flex min-h-[48px] items-center justify-center rounded-lg font-semibold ${
+                      featured ? "bg-plum text-white" : "border border-line-2 text-ink hover:border-plum hover:text-plum"
                     }`}
                   >
                     {t.key === "enterprise" ? d.packages.talk : d.packages.quote}
@@ -369,6 +342,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Container>
       </section>
 
+      {/* 9 ── Contact */}
       <ContactBlock dict={d} locale={locale} />
     </>
   );

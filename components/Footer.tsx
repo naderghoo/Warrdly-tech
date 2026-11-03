@@ -33,10 +33,10 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
           </nav>
           <nav aria-label={dict.footer.company} className="flex flex-col gap-2.5 text-[15px]">
             <span className="font-semibold text-white">{dict.footer.company}</span>
+            <Link href={`${base}/why-odoo`} className="hover:text-white">{locale === "ar" ? "لماذا Odoo" : "Why Odoo"}</Link>
             <Link href={`${base}/integrations`} className="hover:text-white">{getCap(locale).nav.integrations}</Link>
             <Link href={`${base}/addons`} className="hover:text-white">{getCap(locale).nav.addons}</Link>
             <Link href={`${base}/services`} className="hover:text-white">{locale === "ar" ? "الخدمات التقنية" : "Technology services"}</Link>
-            <Link href={`${base}#services`} className="hover:text-white">{locale === "ar" ? "خدمات Odoo" : "Odoo services"}</Link>
             <Link href={`${base}/zatca`} className="hover:text-white">{dict.nav.zatca}</Link>
             <Link href={`${base}/blog`} className="hover:text-white">{locale === "ar" ? "المدونة" : "Blog"}</Link>
             <Link href={`${base}/assessment`} className="hover:text-white">{locale === "ar" ? "اختبار الجاهزية" : "Readiness test"}</Link>

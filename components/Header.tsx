@@ -57,7 +57,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
     <>
       <a
         href="#main"
-        className="sr-only z-[60] rounded-lg bg-plum px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-3 focus:start-3"
+        className="sr-only z-[60] rounded-lg bg-plum-dark px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-3 focus:start-3"
       >
         {dict.nav.skip}
       </a>
@@ -72,7 +72,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
         </Link>
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-white/60 bg-white/60 backdrop-blur-xl backdrop-saturate-150">
+      <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur-xl backdrop-saturate-150">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-3 sm:px-6">
           <Link href={base} className="flex flex-none items-center gap-2.5 text-ink">
             <Image src="/logo.png" alt="" width={44} height={44} priority />
@@ -122,6 +122,9 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                     <div className="mt-1 flex flex-wrap justify-between gap-2 border-t border-line px-3 pt-3 pb-1">
                       <Link href={`${base}/addons`} className="text-sm font-semibold text-plum hover:text-plum-dark">
                         {cap.nav.addons}
+                      </Link>
+                      <Link href={`${base}/why-odoo`} className="text-sm font-semibold text-plum hover:text-plum-dark">
+                        {locale === "ar" ? "لماذا Odoo" : "Why Odoo"}
                       </Link>
                       <Link href={`${base}#sectors`} className="text-sm font-semibold text-muted-2 hover:text-plum">
                         {dict.nav.allSolutions}
@@ -178,6 +181,10 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
               <Link href={`${base}/addons`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
                 <Icon name="gear" size={20} stroke={1.8} />
                 {cap.nav.addons}
+              </Link>
+              <Link href={`${base}/why-odoo`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
+                <Icon name="globe" size={20} stroke={1.8} />
+                {locale === "ar" ? "لماذا Odoo" : "Why Odoo"}
               </Link>
               <Link href={`${base}/assessment`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
                 <Icon name="check" size={20} stroke={2} />

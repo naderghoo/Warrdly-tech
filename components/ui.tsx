@@ -22,6 +22,7 @@ export function SectionHead({
 }) {
   return (
     <div className={`flex max-w-[680px] flex-col gap-3 ${center ? "mx-auto items-center text-center" : ""}`}>
+      <span className="accent-line" aria-hidden="true" />
       <Eyebrow>{eyebrow}</Eyebrow>
       <h2 className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{title}</h2>
       {subtitle && <p className="text-lg text-muted">{subtitle}</p>}
