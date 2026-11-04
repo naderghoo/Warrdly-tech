@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { sendMail, smtpConfigured } from "@/lib/mailer";
 import { site } from "@/content/site";
 
 export type Lead = {
@@ -20,6 +20,8 @@ const subject = (lead: Lead) =>
     .join(" - ");
 
 const env = (k: string) => process.env[k]?.trim() || "";
+
+const EMAIL_RE = /^[^\s@<>(),;:"]+@[^\s@<>(),;:"]+\.[a-z]{2,}$/i;
 
 function describe(lead: Lead) {
   return [
@@ -71,20 +73,11 @@ async function sendToOdooApi(lead: Lead) {
 }
 
 /** Option B — email the lead to the Odoo CRM mail alias (works on every Odoo plan) */
-const transport = () =>
-  nodemailer.createTransport({
-    host: env("SMTP_HOST"),
-    port: Number(env("SMTP_PORT") || 587),
-    secure: env("SMTP_PORT") === "465",
-    auth: { user: env("SMTP_USER"), pass: env("SMTP_PASS") },
-  });
-
 async function sendByEmail(lead: Lead) {
-  const transporter = transport();
-  await transporter.sendMail({
+  await sendMail({
     from: env("SMTP_FROM") || env("SMTP_USER"),
     to: env("LEAD_TO_EMAIL"),
-    replyTo: lead.email || undefined,
+    replyTo: lead.email && EMAIL_RE.test(lead.email) ? lead.email : undefined,
     subject: subject(lead),
     text: describe(lead),
   });
@@ -93,11 +86,9 @@ async function sendByEmail(lead: Lead) {
 const esc = (v: string) =>
   v.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
 
-const EMAIL_RE = /^[^\s@<>(),;:"]+@[^\s@<>(),;:"]+\.[a-z]{2,}$/i;
-
 /** Confirmation email to the customer — fixed copy only; user input limited to an escaped first name */
 async function sendConfirmation(lead: Lead) {
-  if (!env("SMTP_HOST") || !lead.email || !EMAIL_RE.test(lead.email)) return;
+  if (!smtpConfigured() || !lead.email || !EMAIL_RE.test(lead.email)) return;
   const en = lead.locale === "en";
   const first = esc(lead.name.split(/\s+/)[0].slice(0, 40));
   const wa = site.whatsapp;
@@ -133,7 +124,7 @@ ${wa ? `<p style="margin:18px 0 0"><a href="https://wa.me/${wa}" style="display:
 </td></tr>
 <tr><td style="padding:14px 24px;border-top:1px solid #e7e3e6;color:#7a6f78;font-size:12px;text-align:${en ? "left" : "right"}"><a href="${site.url}/${en ? "en" : "ar"}" style="color:#6b2d5c">tech.warrdly.com</a></td></tr>
 </table></body></html>`;
-  await transport().sendMail({
+  await sendMail({
     from: env("SMTP_FROM") || env("SMTP_USER"),
     to: lead.email,
     subject,

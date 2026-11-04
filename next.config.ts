@@ -10,6 +10,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: { unoptimized: true },
+  turbopack: { resolveAlias: { "cloudflare:sockets": "./lib/cf-sockets.ts" } },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

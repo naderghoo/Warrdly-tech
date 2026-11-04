@@ -4,8 +4,6 @@ import "@fontsource/ibm-plex-sans-arabic/600.css";
 import "@fontsource/ibm-plex-sans-arabic/700.css";
 import "../globals.css";
 
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
@@ -96,8 +94,13 @@ export default async function LocaleLayout({
         <Footer dict={dict} locale={locale} />
         <WhatsAppFloat label={dict.contact.whatsapp} />
         <Reveal />
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN })}
+          />
+        )}
       </body>
     </html>
   );

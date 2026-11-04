@@ -5,3 +5,8 @@ node_modules
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# Cloudflare
+.open-next
+.wrangler
+.dev.vars*

@@ -52,3 +52,13 @@ npm run dev
 - **الخيار (ب) — بريد:** إذا ضُبطت متغيرات `SMTP_*` و`LEAD_TO_EMAIL` يُرسل الطلب إلى بريد فريق المبيعات في Odoo، فيتحول تلقائياً إلى فرصة. يعمل على كل الباقات.
 
 بدون أي إعداد، يرفض الموقع المنشور الطلبات ويظهر للزائر رسالة خطأ، حتى لا تضيع الطلبات دون علمك.
+
+## Deploying to Cloudflare Workers
+
+The site runs on Cloudflare Workers through `@opennextjs/cloudflare`.
+
+- Build command: `npx opennextjs-cloudflare build`
+- Deploy command: `npx opennextjs-cloudflare deploy`
+- Runtime variables (SMTP_*, LEAD_TO_EMAIL) go in the Worker's **Variables and Secrets**; SMTP_PASS as a **Secret**.
+- Local Worker preview: `npm run preview` (put variables in `.dev.vars`).
+- Email is sent over SMTP with `worker-mailer` on Workers (port 465 or 587; port 25 is blocked) and `nodemailer` under Node.js.
