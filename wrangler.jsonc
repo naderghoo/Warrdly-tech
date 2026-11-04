@@ -15,6 +15,8 @@
     }
   ],
   "keep_vars": true,
+  "workers_dev": false,
+  "preview_urls": false,
   "observability": {
     "enabled": true
   }
