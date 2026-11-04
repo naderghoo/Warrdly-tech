@@ -17,7 +17,7 @@ export const site = {
   email: "nader@warrdly.com",
 
   /** رمز إحصاءات Cloudflare (Web Analytics) — ليس سراً، يظهر في كود الصفحة. فارغ = معطّل */
-  cfAnalyticsToken: "",
+  cfAnalyticsToken: "16d6891bfdb841d8b4be4e06e4126da6",
 
   /** رابط صفحة حجز المواعيد في Odoo (Appointments). فارغ = يُستخدم نموذج التواصل */
   appointmentUrl: "",
