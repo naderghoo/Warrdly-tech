@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { Icon } from "./Icon";
 import { LeadForm } from "./LeadForm";
 import { Container, Eyebrow } from "./ui";
+import { WhatsAppLogo } from "@/components/WhatsAppFloat";
 
 export function ContactBlock({ dict, locale, heading = true }: { dict: Dict; locale: Locale; heading?: boolean }) {
   return (
@@ -25,8 +26,8 @@ export function ContactBlock({ dict, locale, heading = true }: { dict: Dict; loc
               </a>
             )}
             {site.whatsapp && (
-              <a href={`https://wa.me/${site.whatsapp}`} className="inline-flex items-center gap-2.5 text-ink hover:text-plum">
-                <Icon name="chat" size={22} className="text-plum" />
+              <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 text-ink hover:text-plum">
+                <WhatsAppLogo size={22} className="text-[#25D366]" />
                 {dict.contact.whatsapp}: <span dir="ltr">+{site.whatsapp}</span>
               </a>
             )}
