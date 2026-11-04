@@ -78,6 +78,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDict(locale);
+  const cfToken = site.cfAnalyticsToken || process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
   return (
     <html lang={locale} dir={dirOf(locale)}>
@@ -94,11 +95,11 @@ export default async function LocaleLayout({
         <Footer dict={dict} locale={locale} />
         <WhatsAppFloat label={dict.contact.whatsapp} />
         <Reveal />
-        {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
+        {cfToken && (
           <script
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={JSON.stringify({ token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN })}
+            data-cf-beacon={JSON.stringify({ token: cfToken })}
           />
         )}
       </body>
