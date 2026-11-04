@@ -14,7 +14,9 @@ export type Lead = {
 };
 
 const subject = (lead: Lead) =>
-  `${lead.source === "readiness-assessment" ? "اختبار الجاهزية" : "طلب استشارة من الموقع"} - ${lead.company || lead.name}`;
+  [lead.source === "readiness-assessment" ? "اختبار الجاهزية" : "طلب استشارة", lead.company, lead.name, lead.phone]
+    .filter(Boolean)
+    .join(" - ");
 
 const env = (k: string) => process.env[k]?.trim() || "";
 
