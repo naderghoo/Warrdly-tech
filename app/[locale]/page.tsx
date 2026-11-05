@@ -10,6 +10,7 @@ import { getHome } from "@/content/home";
 import { getDict, isLocale } from "@/content/i18n";
 import { getOdoo } from "@/content/odoo";
 import { site } from "@/content/site";
+import { HeroVideo } from "@/components/HeroVideo";
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 
@@ -47,44 +48,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
           </div>
 
-          {/* Dashboard illustration (static) */}
-          <div className="min-w-0 flex-[1_1_420px]" aria-hidden="true">
-            <div className="sheen-edge rounded-2xl bg-ink p-5">
-              <div className="flex items-center justify-between pb-4">
-                <span className="text-[15px] font-semibold text-mist-2">{d.dashboard.title}</span>
-                <span className="flex gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-ink-3" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-ink-3" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-ink-3" />
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {d.dashboard.kpis.map((k, i) => (
-                  <div key={k} className="flex flex-col gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] p-3.5">
-                    <span className="text-[13px] text-mist-2">{k}</span>
-                    <span className="h-2 rounded" style={{ width: ["70%", "55%", "82%"][i], background: ["#F2A93B", "#C98BB8", "#8F4A7C"][i] }} />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.04] p-4.5">
-                <div className="flex h-[150px] items-end gap-2.5">
-                  {[40, 58, 50, 72, 66, 88, 95].map((v, i) => (
-                    <span
-                      key={i}
-                      className="flex-1 rounded-t"
-                      style={{ height: `${v}%`, background: i > 4 ? "linear-gradient(180deg,#B0679A,#6D335D)" : "#553650" }}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2.5 text-[13px]">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-white/[0.06] px-3 py-1.5 text-mist-2">
-                  <Icon name="check" size={14} stroke={2.4} className="text-gold" />
-                  {d.dashboard.chip1}
-                </span>
-                <span className="rounded-md bg-white/[0.06] px-3 py-1.5 text-[#F7D08F]">{d.dashboard.chip2}</span>
-              </div>
-            </div>
+          {/* Animated hero banner (Remotion) */}
+          <div className="min-w-0 flex-[1_1_420px]">
+            <HeroVideo locale={locale} />
           </div>
         </Container>
       </section>

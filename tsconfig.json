@@ -36,8 +36,9 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "worker.ts",
+    ".open-next",
     "node_modules",
-    ".open-next"
+    "video",
+    "worker.ts"
   ]
 }

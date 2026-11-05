@@ -10,3 +10,7 @@ next-env.d.ts
 .open-next
 .wrangler
 .dev.vars*
+
+# Remotion
+video/node_modules
+video/out
