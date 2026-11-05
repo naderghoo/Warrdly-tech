@@ -1,5 +1,8 @@
+import "@fontsource/ibm-plex-sans-arabic/400.css";
+import "@fontsource/ibm-plex-sans-arabic/500.css";
+import "@fontsource/ibm-plex-sans-arabic/600.css";
+import "@fontsource/ibm-plex-sans-arabic/700.css";
 import "../globals.css";
-import localFont from "next/font/local";
 
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
@@ -10,30 +13,6 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { dirOf, getDict, isLocale, locales } from "@/content/i18n";
 import { site } from "@/content/site";
 
-// Self-hosted IBM Plex Sans Arabic via next/font: preloaded, swap, and a metric-matched fallback (less layout shift)
-const plexArabic = localFont({
-  src: [
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2", weight: "400" },
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-500-normal.woff2", weight: "500" },
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-600-normal.woff2", weight: "600" },
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-700-normal.woff2", weight: "700" },
-  ],
-  variable: "--font-plex-arabic",
-  display: "swap",
-  preload: false,
-});
-
-const plexLatin = localFont({
-  src: [
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-400-normal.woff2", weight: "400" },
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-500-normal.woff2", weight: "500" },
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-600-normal.woff2", weight: "600" },
-    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-700-normal.woff2", weight: "700" },
-  ],
-  variable: "--font-plex-latin",
-  display: "swap",
-  preload: false,
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -114,7 +93,7 @@ export default async function LocaleLayout({
   const cfToken = site.cfAnalyticsToken || process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
   return (
-    <html lang={locale} dir={dirOf(locale)} className={`${plexArabic.variable} ${plexLatin.variable}`}>
+    <html lang={locale} dir={dirOf(locale)}>
       <body className="font-sans">
         <div className="mesh" aria-hidden="true" />
         <script
