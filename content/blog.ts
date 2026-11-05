@@ -12,6 +12,8 @@ export type Block =
 
 export type PostContent = {
   title: string;
+  /** Shorter title for search results (optional) */
+  seoTitle?: string;
   description: string;
   category: string;
   readMinutes: number;
@@ -250,6 +252,7 @@ export const posts: Post[] = [
     },
     en: {
       title: "Connecting Amazon and noon to Odoo: one inventory for every channel",
+      seoTitle: "Connect Amazon and noon to Odoo: one inventory",
       description:
         "How Odoo integration with Amazon and noon works in practice: product linking, stock and price sync, orders and returns, and tips from daily operation.",
       category: "E-commerce",
@@ -305,6 +308,7 @@ export const posts: Post[] = [
     related: { label: { ar: "حلول التوزيع والجملة", en: "Distribution solutions" }, href: "/solutions/distribution" },
     ar: {
       title: "كيف تختار نظام ERP لشركة توزيع في السعودية: 10 أسئلة قبل أن توقّع",
+      seoTitle: "كيف تختار نظام ERP لشركة توزيع في السعودية: 10 أسئلة",
       description:
         "عشرة أسئلة يجب أن تطرحها على أي مزود نظام ERP قبل التعاقد، من الامتثال لفاتورة إلى قوائم الأسعار والصلاحية والمناديب والتكلفة الكاملة.",
       category: "إدارة الأعمال",
@@ -357,6 +361,7 @@ export const posts: Post[] = [
     },
     en: {
       title: "Choosing an ERP for a Saudi distribution company: 10 questions before you sign",
+      seoTitle: "Choosing an ERP for Saudi distributors: 10 questions",
       description:
         "Ten questions to ask any ERP vendor before signing, from Fatoora compliance to price lists, expiry dates, sales reps and total cost.",
       category: "Business",

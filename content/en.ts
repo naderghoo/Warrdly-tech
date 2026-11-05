@@ -50,6 +50,8 @@ export const en: Dict = {
   sectors: [
     {
       slug: "distribution",
+      metaTitle: "Odoo for distribution & wholesale",
+      metaDesc: "Odoo for Saudi distributors and wholesalers: sales-rep app and routes, multiple price lists, credit limits and multi-warehouse, ZATCA compliant.",
       icon: "truck",
       title: "Distribution & Wholesale",
       short: "Sales reps and routes, multiple price lists, credit limits and multiple warehouses.",
@@ -71,6 +73,8 @@ export const en: Dict = {
     },
     {
       slug: "beauty",
+      metaTitle: "Odoo for beauty & personal care",
+      metaDesc: "Odoo for beauty distributors in Saudi Arabia: lot and expiry tracking (FEFO), promotions and free goods, and sales and margin reports per brand.",
       icon: "drop",
       title: "Beauty & Personal Care",
       short: "Lot and expiry tracking, promotions, and agency and brand management.",
@@ -92,6 +96,8 @@ export const en: Dict = {
     },
     {
       slug: "retail",
+      metaTitle: "Odoo for retail & e-commerce",
+      metaDesc: "ZATCA-compliant POS, an online store, and Salla, Amazon and noon on one inventory across all branches. Odoo for retailers in Saudi Arabia.",
       icon: "store",
       title: "Retail & E-commerce",
       short: "Point of sale for branches, an online store, and Salla and marketplaces on one inventory.",
@@ -113,6 +119,8 @@ export const en: Dict = {
     },
     {
       slug: "import",
+      metaTitle: "Odoo for import & light manufacturing",
+      metaDesc: "See the true landed cost in Odoo: freight and customs allocated per item, multi-currency purchasing, and bills of materials for kitting and packing.",
       icon: "box",
       title: "Import & Light Manufacturing",
       short: "Freight and customs on item cost, foreign purchasing and bills of materials.",
@@ -301,6 +309,8 @@ export const en: Dict = {
     others: "Other industries",
   },
   contactPage: {
+    metaTitle: "Book a free Odoo consultation",
+    metaDesc: "Contact Warrdly Technologies, the official Odoo partner in Jeddah. Book a free 30-minute consultation and an expert will reply within one business day.",
     title: "Contact us",
     intro: "Fill in the form and one of our experts will contact you within one business day.",
   },

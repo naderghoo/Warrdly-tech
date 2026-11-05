@@ -5,6 +5,7 @@ import { ContactBlock } from "@/components/ContactBlock";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { getCap } from "@/content/capabilities";
 import { getDict, isLocale } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string }>;
 
@@ -12,11 +13,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const c = getCap(locale).integrations;
-  return {
-    title: c.metaTitle,
-    description: c.metaDescription,
-    alternates: { canonical: `/${locale}/integrations`, languages: { ar: "/ar/integrations", en: "/en/integrations", "x-default": "/ar/integrations" } },
-  };
+  return pageMeta(locale, "/integrations", c.metaTitle, c.metaDescription);
 }
 
 export default async function IntegrationsPage({ params }: { params: Params }) {

@@ -5,6 +5,7 @@ import { Icon } from "@/components/Icon";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { getDigital } from "@/content/digital";
 import { getDict, isLocale } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string }>;
 
@@ -12,11 +13,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const c = getDigital(locale);
-  return {
-    title: c.metaTitle,
-    description: c.metaDescription,
-    alternates: { canonical: `/${locale}/services`, languages: { ar: "/ar/services", en: "/en/services", "x-default": "/ar/services" } },
-  };
+  return pageMeta(locale, "/services", c.metaTitle, c.metaDescription);
 }
 
 export default async function ServicesPage({ params }: { params: Params }) {

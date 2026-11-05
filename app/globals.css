@@ -18,7 +18,7 @@
   --color-lilac: #e7b3d6;
   --color-mist: #c9b8c5;
   --color-mist-2: #dccdd8;
-  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-sans: var(--font-plex-latin), var(--font-plex-arabic), system-ui, sans-serif;
 }
 
 html {

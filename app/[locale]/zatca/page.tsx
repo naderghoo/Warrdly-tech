@@ -4,6 +4,7 @@ import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { getDict, isLocale } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string }>;
 
@@ -11,11 +12,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const d = getDict(locale);
-  return {
-    title: d.zatcaPage.title,
-    description: d.zatcaBand.text,
-    alternates: { canonical: `/${locale}/zatca`, languages: { ar: "/ar/zatca", en: "/en/zatca", "x-default": "/ar/zatca" } },
-  };
+  return pageMeta(locale, "/zatca", d.zatcaPage.title, d.zatcaBand.text);
 }
 
 export default async function ZatcaPage({ params }: { params: Params }) {

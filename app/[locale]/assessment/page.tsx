@@ -4,6 +4,7 @@ import { Assessment } from "@/components/Assessment";
 import { Container, Eyebrow } from "@/components/ui";
 import { getAssessment } from "@/content/assessment";
 import { getDict, isLocale } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string }>;
 
@@ -11,11 +12,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const c = getAssessment(locale);
-  return {
-    title: c.metaTitle,
-    description: c.metaDescription,
-    alternates: { canonical: `/${locale}/assessment`, languages: { ar: "/ar/assessment", en: "/en/assessment", "x-default": "/ar/assessment" } },
-  };
+  return pageMeta(locale, "/assessment", c.metaTitle, c.metaDescription);
 }
 
 export default async function AssessmentPage({ params }: { params: Params }) {

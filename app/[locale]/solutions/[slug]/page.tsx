@@ -6,6 +6,7 @@ import { Icon } from "@/components/Icon";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { ar } from "@/content/ar";
 import { getDict, isLocale, locales } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => ar.sectors.map((s) => ({ locale, slug: s.slug })));
@@ -18,11 +19,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!isLocale(locale)) return {};
   const sector = getDict(locale).sectors.find((s) => s.slug === slug);
   if (!sector) return {};
-  return {
-    title: sector.title,
-    description: sector.short,
-    alternates: { canonical: `/${locale}/solutions/${slug}`, languages: { ar: `/ar/solutions/${slug}`, en: `/en/solutions/${slug}`, "x-default": `/ar/solutions/${slug}` } },
-  };
+  return pageMeta(locale, `/solutions/${slug}`, sector.metaTitle, sector.metaDesc);
 }
 
 export default async function SectorPage({ params }: { params: Params }) {

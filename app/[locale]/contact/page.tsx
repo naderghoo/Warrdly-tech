@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Container } from "@/components/ui";
 import { getDict, isLocale } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string }>;
 
@@ -10,11 +11,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const d = getDict(locale);
-  return {
-    title: d.contactPage.title,
-    description: d.contactPage.intro,
-    alternates: { canonical: `/${locale}/contact`, languages: { ar: "/ar/contact", en: "/en/contact", "x-default": "/ar/contact" } },
-  };
+  return pageMeta(locale, "/contact", d.contactPage.metaTitle, d.contactPage.metaDesc);
 }
 
 export default async function ContactPage({ params }: { params: Params }) {

@@ -6,6 +6,7 @@ import { Container, PrimaryButton, TextLink } from "@/components/ui";
 import { blogUi, getPost, posts, type Block } from "@/content/blog";
 import { isLocale, locales } from "@/content/i18n";
 import { site } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string; slug: string }>;
 
@@ -18,13 +19,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const post = getPost(slug);
   if (!isLocale(locale) || !post) return {};
   const c = post[locale];
-  return {
-    // Article titles are long enough on their own; skip the brand suffix
-    title: { absolute: c.title },
-    description: c.description,
-    alternates: { canonical: `/${locale}/blog/${slug}`, languages: { ar: `/ar/blog/${slug}`, en: `/en/blog/${slug}`, "x-default": `/ar/blog/${slug}` } },
-    openGraph: { type: "article", title: c.title, description: c.description, publishedTime: post.date, images: ["/og.png"] },
-  };
+  return pageMeta(locale, `/blog/${slug}`, c.seoTitle ?? c.title, c.description, { absoluteTitle: true, publishedTime: post.date });
 }
 
 function Render({ block }: { block: Block }) {

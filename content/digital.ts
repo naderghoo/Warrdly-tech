@@ -202,7 +202,7 @@ export const digitalAr: DigitalContent = {
 };
 
 export const digitalEn: DigitalContent = {
-  metaTitle: "Tech services: web, platforms & mobile apps",
+  metaTitle: "Websites, platforms & mobile apps",
   metaDescription:
     "Websites, online stores, B2B platforms, mobile apps and custom software, integrated with Odoo, plus hosting and support.",
   nav: "Tech services",

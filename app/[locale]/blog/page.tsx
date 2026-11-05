@@ -5,6 +5,7 @@ import { Icon } from "@/components/Icon";
 import { Container } from "@/components/ui";
 import { blogUi, posts } from "@/content/blog";
 import { isLocale } from "@/content/i18n";
+import { pageMeta } from "@/lib/seo";
 
 type Params = Promise<{ locale: string }>;
 
@@ -12,11 +13,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const ui = blogUi[locale];
-  return {
-    title: ui.title,
-    description: ui.intro,
-    alternates: { canonical: `/${locale}/blog`, languages: { ar: "/ar/blog", en: "/en/blog", "x-default": "/ar/blog" } },
-  };
+  return pageMeta(
+    locale,
+    "/blog",
+    locale === "ar" ? "مدونة Odoo والتحول الرقمي" : "Odoo & digital transformation blog",
+    ui.intro,
+  );
 }
 
 export default async function BlogIndex({ params }: { params: Params }) {

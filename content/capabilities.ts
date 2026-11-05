@@ -430,7 +430,7 @@ export const capEn: Capabilities = {
     addonsCta: "Browse ready-built solutions",
   },
   integrations: {
-    metaTitle: "Odoo integrations: Amazon, noon, Trendyol, Salla",
+    metaTitle: "Odoo integrations: Amazon, noon and Salla",
     metaDescription:
       "We connect Odoo to Amazon, noon, Trendyol, Salla and Warrdly, plus Aramex and J&T shipping: automatic stock and price sync, order and return import.",
     eyebrow: "Integrations",
@@ -609,7 +609,7 @@ export const capEn: Capabilities = {
     ctaText: "Tell us where you sell and we'll recommend the right integration plan.",
   },
   addons: {
-    metaTitle: "Ready-built Odoo solutions for distributors",
+    metaTitle: "Odoo add-ons for distributors",
     metaDescription:
       "Odoo modules we built for Saudi distributors: margin-based sales approval, purchase forecasting, secure stock counts, KPI evaluation and mobile apps.",
     eyebrow: "Ready-built solutions",

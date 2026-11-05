@@ -1,8 +1,5 @@
-import "@fontsource/ibm-plex-sans-arabic/400.css";
-import "@fontsource/ibm-plex-sans-arabic/500.css";
-import "@fontsource/ibm-plex-sans-arabic/600.css";
-import "@fontsource/ibm-plex-sans-arabic/700.css";
 import "../globals.css";
+import localFont from "next/font/local";
 
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
@@ -12,6 +9,31 @@ import { Reveal } from "@/components/Reveal";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { dirOf, getDict, isLocale, locales } from "@/content/i18n";
 import { site } from "@/content/site";
+
+// Self-hosted IBM Plex Sans Arabic via next/font: preloaded, swap, and a metric-matched fallback (less layout shift)
+const plexArabic = localFont({
+  src: [
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2", weight: "400" },
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-500-normal.woff2", weight: "500" },
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-600-normal.woff2", weight: "600" },
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-700-normal.woff2", weight: "700" },
+  ],
+  variable: "--font-plex-arabic",
+  display: "swap",
+  preload: false,
+});
+
+const plexLatin = localFont({
+  src: [
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-400-normal.woff2", weight: "400" },
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-500-normal.woff2", weight: "500" },
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-600-normal.woff2", weight: "600" },
+    { path: "../../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-700-normal.woff2", weight: "700" },
+  ],
+  variable: "--font-plex-latin",
+  display: "swap",
+  preload: false,
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,6 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     icons: { icon: "/logo.png", apple: "/logo.png" },
     alternates: { canonical: `/${locale}`, languages: { ar: "/ar", en: "/en", "x-default": "/ar" } },
     openGraph: {
+      url: `/${locale}`,
       title: dict.meta.title,
       description: dict.meta.description,
       siteName: dict.brand.name,
@@ -46,6 +69,7 @@ function orgJsonLd(locale: "ar" | "en") {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": `${site.url}/#organization`,
     name: locale === "ar" ? "وردلي تيكنولوجيز" : "Warrdly Technologies",
     legalName: site.company.legalNameEn,
     alternateName: [site.company.legalNameAr, "Warrdly Technologies"],
@@ -63,6 +87,15 @@ function orgJsonLd(locale: "ar" | "en") {
       postalCode: "22252",
       addressCountry: "SA",
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
+    ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
     ...(site.email ? { email: site.email } : {}),
     ...(site.whatsapp ? { telephone: `+${site.whatsapp}` } : {}),
   };
@@ -81,7 +114,7 @@ export default async function LocaleLayout({
   const cfToken = site.cfAnalyticsToken || process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
   return (
-    <html lang={locale} dir={dirOf(locale)}>
+    <html lang={locale} dir={dirOf(locale)} className={`${plexArabic.variable} ${plexLatin.variable}`}>
       <body className="font-sans">
         <div className="mesh" aria-hidden="true" />
         <script
