@@ -95,6 +95,12 @@ export default async function LocaleLayout({
         <Footer dict={dict} locale={locale} />
         <WhatsAppFloat label={dict.contact.whatsapp} />
         <Reveal />
+        {site.odooLivechat.url && (
+          <>
+            <script defer src={`${site.odooLivechat.url}/im_livechat/loader/${site.odooLivechat.channelId}`} />
+            <script defer src={`${site.odooLivechat.url}/im_livechat/assets_embed.js`} />
+          </>
+        )}
         {cfToken && (
           <script
             defer

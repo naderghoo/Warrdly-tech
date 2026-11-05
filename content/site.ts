@@ -19,6 +19,9 @@ export const site = {
   /** رمز إحصاءات Cloudflare (Web Analytics) — ليس سراً، يظهر في كود الصفحة. فارغ = معطّل */
   cfAnalyticsToken: "16d6891bfdb841d8b4be4e06e4126da6",
 
+  /** المحادثة المباشرة من Odoo (Live Chat). فارغ = معطّلة */
+  odooLivechat: { url: "https://warrdly.odoo.com", channelId: 1 },
+
   /** رابط صفحة حجز المواعيد في Odoo (Appointments). فارغ = يُستخدم نموذج التواصل */
   appointmentUrl: "",
 

@@ -17,7 +17,7 @@ export function WhatsAppFloat({ label }: { label: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="fixed bottom-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform hover:scale-105 ltr:right-5 rtl:left-5"
+      className="fixed bottom-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform hover:scale-105 left-5"
     >
       <WhatsAppLogo size={30} />
     </a>
