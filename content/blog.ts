@@ -413,6 +413,288 @@ export const posts: Post[] = [
       ],
     },
   },
+  // -------------------------------------------------------------------
+  {
+    slug: "odoo-cost-saudi-arabia",
+    date: "2026-11-05",
+    related: { label: { ar: "الباقات والاستشارة المجانية", en: "Packages and free consultation" }, href: "/contact" },
+    ar: {
+      title: "كم تكلفة Odoo في السعودية؟ دليل واضح لميزانية الاشتراك والتطبيق",
+      seoTitle: "سعر Odoo في السعودية: ما الذي يحدد التكلفة؟",
+      description:
+        "تكلفة Odoo في السعودية تتكون من اشتراك المستخدمين والتطبيق والدعم. نشرح كل بند، والفرق بين باقتي Standard وCustom، وكيف تقدّر ميزانيتك بدقة قبل التعاقد.",
+      category: "Odoo",
+      readMinutes: 6,
+      body: [
+        {
+          type: "p",
+          text: "«كم سعر Odoo؟» هو أول سؤال يطرحه كل مدير يفكر في نظام ERP، والجواب الدقيق يعتمد على ثلاثة بنود منفصلة: اشتراك Odoo نفسه، وتكلفة التطبيق والتهيئة، والدعم بعد الإطلاق. الخلط بين هذه البنود هو السبب الأكثر شيوعاً لتجاوز الميزانية.",
+        },
+        { type: "h2", text: "البند الأول: اشتراك Odoo" },
+        {
+          type: "p",
+          text: "تبيع Odoo اشتراكها بالمستخدم شهرياً، ويُدفع عادة سنوياً، والسعر يختلف حسب الدولة. لكل دولة سعرها المنشور على صفحة الأسعار في موقع Odoo، ولذلك نوصي دائماً بمراجعتها وقت اتخاذ القرار، لأن الأسعار والعروض تتغير.",
+        },
+        {
+          type: "ul",
+          items: [
+            "تطبيق واحد مجاناً (One App Free): تطبيق واحد فقط بعدد مستخدمين غير محدود، ويناسب التجربة لا التشغيل الكامل.",
+            "باقة Standard: كل تطبيقات Odoo على السحابة (Odoo Online)، ولا تسمح بتثبيت وحدات برمجية مخصصة.",
+            "باقة Custom: تضيف Studio للتخصيص، وإمكانية الاستضافة على Odoo.sh أو على خوادمك، وتثبيت وحدات مخصصة وتكاملات خاصة.",
+            "المستخدم هو من يدخل النظام فعلياً؛ أما العملاء والموردون الذين يستخدمون بوابة العملاء فلا يُحتسبون مستخدمين.",
+          ],
+        },
+        {
+          type: "note",
+          text: "انتبه لخصم السنة الأولى: سعر الاشتراك في السنة الأولى مخفّض للمستخدمين المطلوبين في البداية، ويرتفع عند التجديد بنحو الربع. ابنِ ميزانيتك على سعر التجديد لا على سعر العرض.",
+        },
+        { type: "h2", text: "Standard أم Custom؟ القرار الذي يغيّر التكلفة" },
+        {
+          type: "p",
+          text: "أهم سؤال هنا: هل تحتاج وحدات مخصصة أو تكاملات غير موجودة في Odoo القياسي؟ ربط أمازون ونون وسلة، أو اعتماد البيع حسب هامش الربح، أو تطبيق خاص للمندوبين، كلها تتطلب وحدات إضافية، وهذه لا تعمل على باقة Standard. شركات التوزيع والتجارة الإلكترونية تحتاج غالباً باقة Custom، والشركات الصغيرة التي تكفيها المبيعات والمخزون والمحاسبة القياسية تكفيها Standard.",
+        },
+        { type: "h2", text: "البند الثاني: تكلفة التطبيق والتهيئة" },
+        {
+          type: "p",
+          text: "هذا البند يدفعه العميل لشريك Odoo مقابل تحويل النظام من برنامج عام إلى نظام يعمل على طريقة شركتك. لا يوجد سعر ثابت له، لأنه يعتمد على النطاق، وأهم ما يحدده:",
+        },
+        {
+          type: "ol",
+          items: [
+            "عدد التطبيقات المطلوبة: المبيعات والمخزون والمحاسبة أبسط بكثير من إضافة التصنيع والموارد البشرية ونقاط البيع.",
+            "عدد الفروع والمستودعات والشركات، فكل مستودع وفرع يضيف إعدادات ومسارات.",
+            "ترحيل البيانات: نقل الأصناف والعملاء والأرصدة الافتتاحية من نظامك الحالي، وحالة هذه البيانات ونظافتها.",
+            "التكاملات: كل منصة بيع أو شركة شحن أو جهاز بصمة يُربط بالنظام.",
+            "التخصيص: تقارير خاصة، ونماذج فواتير وعروض أسعار مطبوعة، وسير اعتماد خاص بشركتك.",
+            "الربط مع منصة فاتورة (هيئة الزكاة والضريبة والجمارك)، وعدد نقاط البيع التي تصدر فواتير مبسطة.",
+            "التدريب: عدد الأقسام والموظفين ومدة التدريب.",
+          ],
+        },
+        { type: "h2", text: "البند الثالث: الدعم بعد الإطلاق" },
+        {
+          type: "p",
+          text: "بعد التشغيل ستحتاج من يجيب عن أسئلة الموظفين، ويعالج الفواتير المرفوضة من منصة فاتورة، ويضيف تقريراً أو يعدّل إجراءً. يُقدَّم الدعم عادة بباقة شهرية بعدد ساعات وزمن استجابة محددين. شركة تعمل بلا دعم بعد الإطلاق تعود غالباً إلى ملفات Excel خلال أشهر.",
+        },
+        { type: "h2", text: "كيف تقدّر ميزانيتك قبل التعاقد" },
+        {
+          type: "ul",
+          items: [
+            "عدّ المستخدمين الفعليين الذين سيدخلون النظام، لا كل موظفي الشركة.",
+            "حدد التطبيقات التي تحتاجها في السنة الأولى، وأجّل الباقي إلى مرحلة ثانية.",
+            "اكتب قائمة بالتكاملات: منصات البيع، والشحن، والدفع، والبصمة.",
+            "اطلب من الشريك عرضاً يفصل البنود الثلاثة: الاشتراك، والتطبيق، والدعم.",
+            "احسب الاشتراك على سعر التجديد، وأضف هامشاً للمستخدمين الذين ستضيفهم خلال السنة.",
+          ],
+        },
+        {
+          type: "note",
+          text: "في وردلي تيكنولوجيز نعطيك في الاستشارة المجانية تقديراً أولياً يفصل الاشتراك والتطبيق والدعم، بناءً على عدد مستخدميك وتطبيقاتك وتكاملاتك الفعلية، قبل أي التزام.",
+        },
+      ],
+    },
+    en: {
+      title: "How much does Odoo cost in Saudi Arabia? A clear guide to subscription and implementation budgets",
+      seoTitle: "Odoo cost in Saudi Arabia: what drives the price",
+      description:
+        "Odoo's cost in Saudi Arabia has three parts: subscription, implementation and support. We explain each, Standard vs Custom, and how to budget before you sign.",
+      category: "Odoo",
+      readMinutes: 6,
+      body: [
+        {
+          type: "p",
+          text: "\"How much is Odoo?\" is the first question every manager asks about an ERP, and the honest answer depends on three separate items: the Odoo subscription itself, implementation and configuration, and support after go-live. Mixing them up is the most common reason budgets overrun.",
+        },
+        { type: "h2", text: "Item one: the Odoo subscription" },
+        {
+          type: "p",
+          text: "Odoo sells its subscription per user per month, usually billed yearly, and the price varies by country. Each country's price is published on Odoo's pricing page, so we always recommend checking it when you decide, because prices and offers change.",
+        },
+        {
+          type: "ul",
+          items: [
+            "One App Free: a single app with unlimited users, suitable for trying Odoo rather than running the business.",
+            "Standard: all Odoo apps on Odoo Online, without custom modules.",
+            "Custom: adds Studio, hosting on Odoo.sh or your own servers, and custom modules and integrations.",
+            "A user is someone who logs into the system; customers and suppliers using the portal are not counted as users.",
+          ],
+        },
+        {
+          type: "note",
+          text: "Watch the first-year discount: the first-year price applies to the users ordered at the start and rises at renewal by roughly a quarter. Budget on the renewal price, not the promotional one.",
+        },
+        { type: "h2", text: "Standard or Custom? The decision that changes the cost" },
+        {
+          type: "p",
+          text: "The key question is whether you need custom modules or integrations that standard Odoo doesn't include. Connecting Amazon, noon and Salla, margin-based sales approval, or a dedicated sales-rep app all require extra modules, and these don't run on Standard. Distributors and e-commerce businesses usually need Custom; small companies that only need standard sales, inventory and accounting can stay on Standard.",
+        },
+        { type: "h2", text: "Item two: implementation and configuration" },
+        {
+          type: "p",
+          text: "This is what you pay an Odoo partner to turn a general product into a system that works the way your company does. There's no fixed price, because it depends on scope. The main drivers are:",
+        },
+        {
+          type: "ol",
+          items: [
+            "Number of apps: sales, inventory and accounting are far simpler than adding manufacturing, HR and point of sale.",
+            "Number of branches, warehouses and companies; each adds settings and routes.",
+            "Data migration: moving items, customers and opening balances from your current system, and how clean that data is.",
+            "Integrations: every sales channel, courier or attendance device connected to the system.",
+            "Customisation: special reports, printed invoice and quotation layouts, and approval flows specific to your company.",
+            "Connecting to ZATCA's Fatoora platform, and the number of points of sale issuing simplified invoices.",
+            "Training: number of departments and staff, and training duration.",
+          ],
+        },
+        { type: "h2", text: "Item three: support after go-live" },
+        {
+          type: "p",
+          text: "After go-live you'll need someone to answer staff questions, handle invoices rejected by Fatoora, and add a report or adjust a process. Support is usually a monthly package with set hours and response times. Companies that run without support often drift back to Excel within months.",
+        },
+        { type: "h2", text: "How to estimate your budget before signing" },
+        {
+          type: "ul",
+          items: [
+            "Count the people who will actually log in, not every employee.",
+            "Pick the apps you need in year one and leave the rest for a second phase.",
+            "List your integrations: sales channels, couriers, payments and attendance.",
+            "Ask your partner for a quote that separates subscription, implementation and support.",
+            "Calculate the subscription at the renewal price and allow for users you'll add during the year.",
+          ],
+        },
+        {
+          type: "note",
+          text: "At Warrdly Technologies, the free consultation gives you an initial estimate that separates subscription, implementation and support, based on your actual users, apps and integrations, before any commitment.",
+        },
+      ],
+    },
+  },
+  // -------------------------------------------------------------------
+  {
+    slug: "salla-odoo-integration",
+    date: "2026-11-05",
+    related: { label: { ar: "صفحة التكاملات", en: "Integrations page" }, href: "/integrations" },
+    ar: {
+      title: "ربط متجر سلة مع Odoo: المنتجات والطلبات والمخزون والفواتير في نظام واحد",
+      seoTitle: "ربط سلة مع Odoo: دليل عملي للتجار",
+      description:
+        "كيف يعمل ربط متجر سلة مع نظام Odoo: مزامنة المنتجات والمخزون، واستيراد الطلبات، وتحديث حالتها، والفوترة المتوافقة مع فاتورة، مع خطوات التطبيق والأخطاء الشائعة.",
+      category: "التجارة الإلكترونية",
+      readMinutes: 5,
+      body: [
+        {
+          type: "p",
+          text: "سلة منصة ممتازة لعرض منتجاتك واستقبال الطلبات، لكنها ليست نظاماً لإدارة المستودع والمشتريات والمحاسبة. عندما يكبر متجرك تظهر الفجوة: طلبات تُنقل يدوياً إلى البرنامج المحاسبي، ومخزون في سلة لا يطابق المستودع، وفواتير تُصدر من مكانين. ربط سلة مع Odoo يغلق هذه الفجوة.",
+        },
+        { type: "h2", text: "ماذا يُزامَن بين سلة وOdoo؟" },
+        {
+          type: "ul",
+          items: [
+            "التصنيفات والعلامات التجارية: تُدار من مكان واحد وتنعكس على الطرف الآخر.",
+            "المنتجات: تُستورد من سلة إلى Odoo عند البداية، ثم يمكن إدارتها من Odoo وتصديرها إلى سلة.",
+            "العملاء: يُنشأ عميل سلة في Odoo مع أول طلب، فتجتمع مشترياته وتاريخه في ملف واحد.",
+            "الطلبات: تدخل Odoo كأوامر بيع، فيبدأ المستودع التجهيز مباشرة.",
+            "حالة الطلب: عندما يُشحن الطلب في Odoo تتحدث حالته في سلة تلقائياً، فيرى العميل التحديث.",
+          ],
+        },
+        { type: "h2", text: "كيف يعمل الربط تقنياً، بلغة بسيطة" },
+        {
+          type: "p",
+          text: "يتم الربط عبر واجهات سلة الرسمية للتجار. تمنح Odoo صلاحية الوصول لمتجرك بموافقتك من لوحة سلة، وتتجدد هذه الصلاحية تلقائياً دون أن تشارك كلمة مرورك. وعندما يحدث شيء في متجرك، كطلب جديد، ترسل سلة إشعاراً يتحقق Odoo من توقيعه قبل قبوله، فلا يستطيع أحد إرسال طلبات مزيفة إلى نظامك.",
+        },
+        { type: "h2", text: "الفوترة والامتثال لفاتورة" },
+        {
+          type: "p",
+          text: "بعد دخول الطلب إلى Odoo تصدر الفاتورة من النظام نفسه، بالرقم الضريبي ورمز QR، وتُرسل إلى منصة فاتورة عند الحاجة. بذلك تصبح كل مبيعات متجرك الإلكتروني في السجلات المحاسبية نفسها التي تضم مبيعات الفروع والجملة، ويُستخرج إقرار ضريبة القيمة المضافة من مكان واحد.",
+        },
+        { type: "h2", text: "خطوات التطبيق" },
+        {
+          type: "ol",
+          items: [
+            "مراجعة المتجر: عدد المنتجات، والخيارات (المقاسات والألوان)، وطرق الدفع والشحن المستخدمة.",
+            "توحيد رموز الأصناف (SKU) بين سلة وOdoo، وهي الخطوة الأهم.",
+            "تثبيت الربط ومنح الصلاحية من لوحة سلة.",
+            "الاستيراد الأولي للتصنيفات والمنتجات والعملاء.",
+            "تجربة دورة كاملة: طلب تجريبي، ثم تجهيز وشحن وفاتورة، ثم مراجعة حالة الطلب في سلة.",
+            "التشغيل الفعلي ومراجعة سجل المزامنة يومياً في الأسبوعين الأولين.",
+          ],
+        },
+        { type: "h2", text: "أخطاء شائعة تجنّبها" },
+        {
+          type: "ul",
+          items: [
+            "منتجات بلا رموز أصناف، أو برموز مكررة، فتفشل المطابقة.",
+            "إدارة الأسعار والمخزون من سلة وOdoo معاً؛ حدّد مصدراً واحداً لكل معلومة.",
+            "تجاهل المنتجات ذات الخيارات، فكل خيار صنف مستقل في المخزون.",
+            "نسيان طرق الدفع عند الاستلام، فتحتاج معالجة محاسبية مختلفة عن الدفع المسبق.",
+          ],
+        },
+        {
+          type: "note",
+          text: "تكامل سلة الذي نقدمه يعمل عبر واجهات سلة الرسمية، ويُنفّذ على حساب متجرك أنت وبصلاحيات تستطيع إلغاءها في أي وقت من لوحة سلة.",
+        },
+      ],
+    },
+    en: {
+      title: "Connecting your Salla store to Odoo: products, orders, stock and invoices in one system",
+      seoTitle: "Salla and Odoo integration: a practical guide",
+      description:
+        "How a Salla store connects to Odoo: product and stock sync, order import, status updates and ZATCA-compliant invoicing, plus implementation steps.",
+      category: "E-commerce",
+      readMinutes: 5,
+      body: [
+        {
+          type: "p",
+          text: "Salla is an excellent platform for showcasing products and taking orders, but it isn't a system for running your warehouse, purchasing and accounting. As your store grows the gap shows: orders retyped into the accounting software, Salla stock that doesn't match the warehouse, and invoices issued from two places. Connecting Salla to Odoo closes that gap.",
+        },
+        { type: "h2", text: "What syncs between Salla and Odoo?" },
+        {
+          type: "ul",
+          items: [
+            "Categories and brands: managed in one place and reflected on the other side.",
+            "Products: imported from Salla into Odoo at the start, then managed in Odoo and exported to Salla.",
+            "Customers: a Salla customer is created in Odoo with their first order, so their history sits in one record.",
+            "Orders: arrive in Odoo as sales orders, so the warehouse can start picking immediately.",
+            "Order status: when an order ships in Odoo, its status updates in Salla automatically and the customer sees it.",
+          ],
+        },
+        { type: "h2", text: "How the connection works, in plain terms" },
+        {
+          type: "p",
+          text: "The connection uses Salla's official merchant APIs. You grant Odoo access to your store from the Salla dashboard, and that access renews automatically without sharing your password. When something happens in your store, such as a new order, Salla sends a notification whose signature Odoo verifies before accepting it, so nobody can push fake orders into your system.",
+        },
+        { type: "h2", text: "Invoicing and Fatoora compliance" },
+        {
+          type: "p",
+          text: "Once the order is in Odoo, the invoice is issued from the same system with your VAT number and QR code, and sent to the Fatoora platform when required. All your online sales sit in the same accounting records as your branch and wholesale sales, and your VAT return comes from one place.",
+        },
+        { type: "h2", text: "Implementation steps" },
+        {
+          type: "ol",
+          items: [
+            "Review the store: number of products, variants (sizes and colours), and the payment and shipping methods used.",
+            "Align item codes (SKUs) between Salla and Odoo; this is the most important step.",
+            "Install the connector and grant access from the Salla dashboard.",
+            "Initial import of categories, products and customers.",
+            "Test a full cycle: a test order, then picking, shipping and invoicing, then check the order status in Salla.",
+            "Go live and review the sync log daily for the first two weeks.",
+          ],
+        },
+        { type: "h2", text: "Common mistakes to avoid" },
+        {
+          type: "ul",
+          items: [
+            "Products without item codes, or with duplicates, so matching fails.",
+            "Managing prices and stock in both Salla and Odoo; pick one source for each piece of data.",
+            "Ignoring variants: every variant is its own stock item.",
+            "Forgetting cash on delivery, which needs different accounting treatment from prepaid orders.",
+          ],
+        },
+        {
+          type: "note",
+          text: "Our Salla integration uses Salla's official APIs and runs on your own store account, with access you can revoke at any time from the Salla dashboard.",
+        },
+      ],
+    },
+  },
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
