@@ -22,6 +22,7 @@ export const ar = {
   },
   announcement: "شريك Odoo الرسمي في المملكة العربية السعودية",
   announcementCta: "احجز استشارتك المجانية",
+  portal: "بوابة العملاء",
   notFound: { title: "الصفحة غير موجودة", text: "ربما تغيّر الرابط أو حُذفت الصفحة.", home: "العودة للرئيسية" },
   hero: {
     badge: "Official Odoo Partner",

@@ -42,6 +42,7 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
             <Link href={`${base}/assessment`} className="hover:text-white">{locale === "ar" ? "اختبار الجاهزية" : "Readiness test"}</Link>
             <Link href={`${base}#packages`} className="hover:text-white">{dict.nav.packages}</Link>
             <Link href={`${base}/contact`} className="hover:text-white">{dict.nav.contact}</Link>
+            <a href={site.portalUrl} target="_blank" rel="noopener" className="hover:text-white">{dict.portal}</a>
           </nav>
           <nav aria-label={dict.footer.links} className="flex flex-col gap-2.5 text-[15px]">
             <span className="font-semibold text-white">{dict.footer.links}</span>

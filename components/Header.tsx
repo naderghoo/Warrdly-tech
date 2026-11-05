@@ -8,6 +8,7 @@ import type { Dict } from "@/content/ar";
 import { getCap } from "@/content/capabilities";
 import type { Locale } from "@/content/i18n";
 import { Icon } from "./Icon";
+import { site } from "@/content/site";
 
 export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
   const [open, setOpen] = useState(false);
@@ -62,14 +63,27 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
         {dict.nav.skip}
       </a>
 
-      <div className="bg-ink px-5 py-2.5 text-center text-sm text-mist-2">
-        <span>{dict.announcement}</span>
-        <span className="mx-2 hidden opacity-50 sm:inline" aria-hidden="true">
-          ·
-        </span>
-        <Link href={`${base}/contact`} className="hidden font-semibold text-gold underline-offset-4 hover:underline sm:inline">
-          {dict.announcementCta}
-        </Link>
+      <div className="bg-ink text-sm text-mist-2">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-2.5 sm:px-6">
+          <p className="min-w-0 truncate">
+            <span>{dict.announcement}</span>
+            <span className="mx-2 hidden opacity-50 sm:inline" aria-hidden="true">
+              ·
+            </span>
+            <Link href={`${base}/contact`} className="hidden font-semibold text-gold underline-offset-4 hover:underline sm:inline">
+              {dict.announcementCta}
+            </Link>
+          </p>
+          <a
+            href={site.portalUrl}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex flex-none items-center gap-1.5 whitespace-nowrap font-semibold text-white hover:text-gold"
+          >
+            <Icon name="user" size={16} stroke={2} />
+            {dict.portal}
+          </a>
+        </div>
       </div>
 
       <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur-xl backdrop-saturate-150">
@@ -196,6 +210,10 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                   {l.label}
                 </Link>
               ))}
+              <a href={site.portalUrl} target="_blank" rel="noopener" className="flex items-center gap-2 border-b border-line py-3.5 text-base font-semibold text-plum">
+                <Icon name="user" size={20} stroke={1.8} />
+                {dict.portal}
+              </a>
               <Link href={switchHref} hrefLang={other} lang={other} className="py-3.5 text-base font-medium text-muted-2">
                 {dict.nav.lang}
               </Link>

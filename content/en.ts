@@ -24,6 +24,7 @@ export const en: Dict = {
   },
   announcement: "Official Odoo Partner in Saudi Arabia",
   announcementCta: "Book your free consultation",
+  portal: "Client portal",
   notFound: { title: "Page not found", text: "The link may have changed or the page was removed.", home: "Back to home" },
   hero: {
     badge: "Official Odoo Partner",

@@ -19,6 +19,9 @@ export const site = {
   /** رمز إحصاءات Cloudflare (Web Analytics) — ليس سراً، يظهر في كود الصفحة. فارغ = معطّل */
   cfAnalyticsToken: "16d6891bfdb841d8b4be4e06e4126da6",
 
+  /** بوابة العملاء في Odoo (المشاريع والمهام والفواتير والتذاكر) */
+  portalUrl: "https://warrdly.odoo.com/my",
+
   /** روابط الحسابات الرسمية (ملف Google التجاري، لينكدإن...) لمحركات البحث */
   sameAs: [] as string[],
 
