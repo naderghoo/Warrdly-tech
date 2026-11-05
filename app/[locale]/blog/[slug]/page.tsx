@@ -52,6 +52,42 @@ function Render({ block }: { block: Block }) {
           ))}
         </ol>
       );
+    case "table":
+      return (
+        <figure className="flex flex-col gap-2">
+          <div className="overflow-x-auto rounded-2xl border border-line bg-white">
+            <table className="w-full min-w-[520px] border-collapse text-start text-[15px]">
+              <thead>
+                <tr className="bg-tint text-plum-dark">
+                  {block.head.map((h) => (
+                    <th key={h} scope="col" className="px-4 py-3 text-start font-semibold">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.rows.map((row) => (
+                  <tr key={row.join("|")} className="border-t border-line">
+                    {row.map((cell, i) =>
+                      i === 0 ? (
+                        <th key={i} scope="row" className="px-4 py-3 text-start font-semibold text-ink">
+                          {cell}
+                        </th>
+                      ) : (
+                        <td key={i} className="px-4 py-3 text-[#3E3242]" dir="auto">
+                          {cell}
+                        </td>
+                      ),
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {block.caption && <figcaption className="text-sm text-mist-2">{block.caption}</figcaption>}
+        </figure>
+      );
     case "note":
       return (
         <aside className="flex gap-3 rounded-2xl glass-tint p-5 text-[16px] font-medium leading-[1.8] text-plum-dark">

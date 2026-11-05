@@ -8,7 +8,8 @@ export type Block =
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
-  | { type: "note"; text: string };
+  | { type: "note"; text: string }
+  | { type: "table"; head: string[]; rows: string[][]; caption?: string };
 
 export type PostContent = {
   title: string;
@@ -420,9 +421,9 @@ export const posts: Post[] = [
     related: { label: { ar: "الباقات والاستشارة المجانية", en: "Packages and free consultation" }, href: "/contact" },
     ar: {
       title: "كم تكلفة Odoo في السعودية؟ دليل واضح لميزانية الاشتراك والتطبيق",
-      seoTitle: "سعر Odoo في السعودية: ما الذي يحدد التكلفة؟",
+      seoTitle: "سعر Odoo في السعودية 2026: الأسعار الرسمية وما يحدد التكلفة",
       description:
-        "تكلفة Odoo في السعودية تتكون من اشتراك المستخدمين والتطبيق والدعم. نشرح كل بند، والفرق بين باقتي Standard وCustom، وكيف تقدّر ميزانيتك بدقة قبل التعاقد.",
+        "أسعار Odoo الرسمية في السعودية 2026: باقة Standard من 13.50 دولاراً وCustom من 25.50 دولاراً للمستخدم شهرياً، مع تكلفة التطبيق والدعم وكيف تقدّر ميزانيتك.",
       category: "Odoo",
       readMinutes: 6,
       body: [
@@ -433,14 +434,28 @@ export const posts: Post[] = [
         { type: "h2", text: "البند الأول: اشتراك Odoo" },
         {
           type: "p",
-          text: "تبيع Odoo اشتراكها بالمستخدم شهرياً، ويُدفع عادة سنوياً، والسعر يختلف حسب الدولة. لكل دولة سعرها المنشور على صفحة الأسعار في موقع Odoo، ولذلك نوصي دائماً بمراجعتها وقت اتخاذ القرار، لأن الأسعار والعروض تتغير.",
+          text: "تبيع Odoo اشتراكها بالمستخدم شهرياً، والسعر يختلف حسب الدولة. هذه الأسعار الرسمية المعروضة للسعودية على صفحة أسعار Odoo بالدولار الأمريكي، في نوفمبر 2026:",
+        },
+        {
+          type: "table",
+          head: ["الباقة", "الدفع السنوي (السنة الأولى)", "الدفع السنوي (بعد التجديد)", "الدفع الشهري"],
+          rows: [
+            ["تطبيق واحد مجاني", "0 دولار", "0 دولار", "0 دولار"],
+            ["قياسي (Standard)", "13.50 دولار ≈ 50.6 ريال", "16.90 دولار ≈ 63.4 ريال", "16.90 دولار (21.10 بعد العرض)"],
+            ["مخصص (Custom)", "25.50 دولار ≈ 95.6 ريال", "32.00 دولار ≈ 120 ريال", "32.00 دولار (40.00 بعد العرض)"],
+          ],
+          caption: "السعر للمستخدم الواحد شهرياً. التحويل إلى الريال بسعر 3.75. المصدر: odoo.com/ar/pricing، نوفمبر 2026. الأسعار قابلة للتغيير، وتأكد من ضريبة القيمة المضافة عند الطلب.",
+        },
+        {
+          type: "p",
+          text: "مثال: شركة بعشرة مستخدمين على باقة Custom بالدفع السنوي تدفع نحو 3,060 دولاراً (≈ 11,475 ريالاً) في السنة الأولى، ونحو 3,840 دولاراً (≈ 14,400 ريال) سنوياً بعد التجديد. وعلى باقة Standard: نحو 1,620 دولاراً (≈ 6,075 ريالاً) ثم 2,028 دولاراً (≈ 7,605 ريالات).",
         },
         {
           type: "ul",
           items: [
-            "تطبيق واحد مجاناً (One App Free): تطبيق واحد فقط بعدد مستخدمين غير محدود، ويناسب التجربة لا التشغيل الكامل.",
+            "تطبيق واحد مجاناً: تطبيق واحد فقط بعدد مستخدمين غير محدود على Odoo Online، ويناسب التجربة لا التشغيل الكامل.",
             "باقة Standard: كل تطبيقات Odoo على السحابة (Odoo Online)، ولا تسمح بتثبيت وحدات برمجية مخصصة.",
-            "باقة Custom: تضيف Studio للتخصيص، وإمكانية الاستضافة على Odoo.sh أو على خوادمك، وتثبيت وحدات مخصصة وتكاملات خاصة.",
+            "باقة Custom: تضيف الاستوديو والذكاء الاصطناعي، وتعدد الشركات، والواجهة البرمجية الخارجية (API)، والاستضافة على Odoo.sh أو على خوادمك، وتثبيت وحدات مخصصة وتكاملات خاصة.",
             "المستخدم هو من يدخل النظام فعلياً؛ أما العملاء والموردون الذين يستخدمون بوابة العملاء فلا يُحتسبون مستخدمين.",
           ],
         },
@@ -494,9 +509,9 @@ export const posts: Post[] = [
     },
     en: {
       title: "How much does Odoo cost in Saudi Arabia? A clear guide to subscription and implementation budgets",
-      seoTitle: "Odoo cost in Saudi Arabia: what drives the price",
+      seoTitle: "Odoo price in Saudi Arabia 2026: official plans and costs",
       description:
-        "Odoo's cost in Saudi Arabia has three parts: subscription, implementation and support. We explain each, Standard vs Custom, and how to budget before you sign.",
+        "Official Odoo prices for Saudi Arabia in 2026: Standard from $13.50 and Custom from $25.50 per user per month, plus implementation and support costs.",
       category: "Odoo",
       readMinutes: 6,
       body: [
@@ -507,14 +522,28 @@ export const posts: Post[] = [
         { type: "h2", text: "Item one: the Odoo subscription" },
         {
           type: "p",
-          text: "Odoo sells its subscription per user per month, usually billed yearly, and the price varies by country. Each country's price is published on Odoo's pricing page, so we always recommend checking it when you decide, because prices and offers change.",
+          text: "Odoo sells its subscription per user per month, and the price varies by country. These are the official prices shown for Saudi Arabia on Odoo's pricing page, in US dollars, in November 2026:",
+        },
+        {
+          type: "table",
+          head: ["Plan", "Yearly (first year)", "Yearly (renewal)", "Monthly"],
+          rows: [
+            ["One App Free", "$0", "$0", "$0"],
+            ["Standard", "$13.50 ≈ SAR 50.6", "$16.90 ≈ SAR 63.4", "$16.90 ($21.10 after offer)"],
+            ["Custom", "$25.50 ≈ SAR 95.6", "$32.00 ≈ SAR 120", "$32.00 ($40.00 after offer)"],
+          ],
+          caption: "Per user per month. Converted at SAR 3.75 per USD. Source: odoo.com/ar/pricing, November 2026. Prices may change; confirm VAT when ordering.",
+        },
+        {
+          type: "p",
+          text: "Example: a company with ten users on Custom, billed yearly, pays about $3,060 (≈ SAR 11,475) in year one and about $3,840 (≈ SAR 14,400) a year after renewal. On Standard: about $1,620 (≈ SAR 6,075), then $2,028 (≈ SAR 7,605).",
         },
         {
           type: "ul",
           items: [
-            "One App Free: a single app with unlimited users, suitable for trying Odoo rather than running the business.",
+            "One App Free: a single app with unlimited users on Odoo Online, suitable for trying Odoo rather than running the business.",
             "Standard: all Odoo apps on Odoo Online, without custom modules.",
-            "Custom: adds Studio, hosting on Odoo.sh or your own servers, and custom modules and integrations.",
+            "Custom: adds Studio and AI, multi-company, the external API, hosting on Odoo.sh or your own servers, and custom modules and integrations.",
             "A user is someone who logs into the system; customers and suppliers using the portal are not counted as users.",
           ],
         },
