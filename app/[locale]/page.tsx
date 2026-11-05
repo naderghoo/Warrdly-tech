@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
+import { getExisting } from "@/content/existing";
 import { Icon } from "@/components/Icon";
 import { WhyOdoo } from "@/components/WhyOdoo";
 import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLink } from "@/components/ui";
@@ -159,6 +160,27 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </Container>
       </section>
+
+      {/* 4b ── Existing Odoo users */}
+      {(() => {
+        const x = getExisting(locale);
+        return (
+          <section className="bg-transparent">
+            <Container className="py-10">
+              <div className="flex flex-col items-start gap-6 rounded-3xl glass-tint border-s-4 !border-s-gold p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex max-w-[720px] flex-col gap-3">
+                  <Eyebrow>{x.homeBand.eyebrow}</Eyebrow>
+                  <h2 className="text-2xl font-bold leading-snug text-ink sm:text-3xl">{x.homeBand.title}</h2>
+                  <p className="text-base text-muted sm:text-lg">{x.homeBand.text}</p>
+                </div>
+                <PrimaryButton href={`${base}${x.path}`} arrow>
+                  {x.homeBand.cta}
+                </PrimaryButton>
+              </div>
+            </Container>
+          </section>
+        );
+      })()}
 
       {/* 5 ── Why Odoo (compact: figures + advantages) */}
       <WhyOdoo c={getOdoo(locale)} compact moreHref={`${base}/why-odoo`} moreLabel={h.whyLink} />

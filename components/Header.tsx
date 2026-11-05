@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Dict } from "@/content/ar";
 import { getCap } from "@/content/capabilities";
+import { getExisting } from "@/content/existing";
 import type { Locale } from "@/content/i18n";
 import { Icon } from "./Icon";
 import { site } from "@/content/site";
@@ -133,6 +134,18 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                         </span>
                       </Link>
                     ))}
+                    <Link
+                      href={`${base}/odoo-support`}
+                      className="flex items-start gap-3 rounded-xl border border-line bg-tint/60 p-3 hover:bg-tint"
+                    >
+                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-plum text-white">
+                        <Icon name="buoy" size={20} stroke={1.8} />
+                      </span>
+                      <span className="flex flex-col">
+                        <span className="text-[15px] font-semibold text-ink">{getExisting(locale).nav}</span>
+                        <span className="text-[13px] leading-snug text-muted-2">{getExisting(locale).homeBand.cta}</span>
+                      </span>
+                    </Link>
                     <div className="mt-1 flex flex-wrap justify-between gap-2 border-t border-line px-3 pt-3 pb-1">
                       <Link href={`${base}/addons`} className="text-sm font-semibold text-plum hover:text-plum-dark">
                         {cap.nav.addons}
@@ -192,6 +205,10 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                   {s.title}
                 </Link>
               ))}
+              <Link href={`${base}/odoo-support`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
+                <Icon name="buoy" size={20} stroke={1.8} />
+                {getExisting(locale).nav}
+              </Link>
               <Link href={`${base}/addons`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
                 <Icon name="gear" size={20} stroke={1.8} />
                 {cap.nav.addons}

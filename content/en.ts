@@ -243,7 +243,7 @@ export const en: Dict = {
     users: "Expected number of users",
     usersOptions: ["1 – 5", "6 – 20", "21 – 50", "More than 50"],
     sector: "Industry",
-    sectorOptions: ["Distribution & Wholesale", "Beauty & Personal Care", "Retail & E-commerce", "Import & Manufacturing", "Tech project (website, store, app, platform)", "Other"],
+    sectorOptions: ["Distribution & Wholesale", "Beauty & Personal Care", "Retail & E-commerce", "Import & Manufacturing", "Tech project (website, store, app, platform)", "We already use Odoo and need support or development", "Other"],
     message: "What would you like to improve?",
     messagePh: "e.g. inventory is inaccurate and invoices are issued manually",
     submit: "Book my free consultation",

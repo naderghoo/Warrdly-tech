@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Dict } from "@/content/ar";
 import { getCap } from "@/content/capabilities";
+import { getExisting } from "@/content/existing";
 import type { Locale } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -36,6 +37,7 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
             <Link href={`${base}/why-odoo`} className="hover:text-white">{locale === "ar" ? "لماذا Odoo" : "Why Odoo"}</Link>
             <Link href={`${base}/integrations`} className="hover:text-white">{getCap(locale).nav.integrations}</Link>
             <Link href={`${base}/addons`} className="hover:text-white">{getCap(locale).nav.addons}</Link>
+            <Link href={`${base}/odoo-support`} className="hover:text-white">{getExisting(locale).nav}</Link>
             <Link href={`${base}/services`} className="hover:text-white">{locale === "ar" ? "الخدمات التقنية" : "Technology services"}</Link>
             <Link href={`${base}/zatca`} className="hover:text-white">{dict.nav.zatca}</Link>
             <Link href={`${base}/blog`} className="hover:text-white">{locale === "ar" ? "المدونة" : "Blog"}</Link>

@@ -5,7 +5,7 @@ import { locales } from "@/content/i18n";
 import { site } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/services", "/why-odoo", "/integrations", "/addons", "/zatca", "/contact", "/blog", "/assessment", ...ar.sectors.map((s) => `/solutions/${s.slug}`)];
+  const pages = ["", "/services", "/why-odoo", "/integrations", "/addons", "/zatca", "/odoo-support", "/contact", "/blog", "/assessment", ...ar.sectors.map((s) => `/solutions/${s.slug}`)];
   const entries = locales.flatMap((l) =>
     pages.map((p) => ({ url: `${site.url}/${l}${p}`, changeFrequency: "monthly" as const, priority: p === "" ? 1 : 0.8 })),
   );
