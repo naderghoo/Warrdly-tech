@@ -16,6 +16,15 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
   const [open, setOpen] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
   const solRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openMenu = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setSolOpen(true);
+  };
+  const closeMenuSoon = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setSolOpen(false), 160);
+  };
   const pathname = usePathname() || `/${locale}`;
   const other: Locale = locale === "ar" ? "en" : "ar";
   const switchHref = pathname.replace(/^\/(ar|en)/, `/${other}`);
@@ -89,7 +98,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur-xl backdrop-saturate-150">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-3 sm:px-6">
+        <div className="relative mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-3 sm:px-6">
           <Link href={base} className="flex flex-none items-center gap-2.5 text-ink">
             <Image src="/logo.png" alt="" width={44} height={44} priority />
             <span className="flex flex-col whitespace-nowrap leading-tight">
@@ -99,12 +108,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
           </Link>
 
           <nav aria-label={dict.nav.menu} className="hidden items-center gap-7 xl:flex">
-            <div
-              ref={solRef}
-              className="relative"
-              onMouseEnter={() => setSolOpen(true)}
-              onMouseLeave={() => setSolOpen(false)}
-            >
+            <div ref={solRef} onMouseEnter={openMenu} onMouseLeave={closeMenuSoon}>
               <button
                 type="button"
                 aria-expanded={solOpen}
@@ -118,47 +122,77 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                 </svg>
               </button>
               {solOpen && (
-                <div className="absolute start-0 top-full w-[340px] pt-2">
-                  <div className="flex flex-col rounded-2xl glass-strong p-2">
-                    {dict.sectors.map((s) => (
-                      <Link
-                        key={s.slug}
-                        href={`${base}/solutions/${s.slug}`}
-                        className="flex items-start gap-3 rounded-xl p-3 hover:bg-paper"
-                      >
-                        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-tint text-plum">
-                          <Icon name={s.icon} size={20} stroke={1.8} />
+                <div className="absolute inset-x-5 top-full z-50 pt-2 sm:inset-x-6">
+                  <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_24px_60px_-20px_rgba(36,23,43,0.35)]">
+                    <div className="grid grid-cols-[1.7fr_1fr]">
+                      {/* Sectors */}
+                      <div className="flex flex-col gap-3 p-6">
+                        <span className="px-3 text-[12px] font-bold uppercase tracking-wide text-muted-2">
+                          {locale === "ar" ? "حلول حسب القطاع" : "Solutions by sector"}
                         </span>
-                        <span className="flex flex-col">
-                          <span className="text-[15px] font-semibold text-ink">{s.title}</span>
-                          <span className="text-[13px] leading-snug text-muted-2">{s.short}</span>
-                        </span>
-                      </Link>
-                    ))}
-                    <Link
-                      href={`${base}/odoo-support`}
-                      className="flex items-start gap-3 rounded-xl border border-line bg-tint/60 p-3 hover:bg-tint"
-                    >
-                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-plum text-white">
-                        <Icon name="buoy" size={20} stroke={1.8} />
-                      </span>
-                      <span className="flex flex-col">
-                        <span className="text-[15px] font-semibold text-ink">{getExisting(locale).nav}</span>
-                        <span className="text-[13px] leading-snug text-muted-2">{getExisting(locale).homeBand.cta}</span>
-                      </span>
-                    </Link>
-                    <div className="mt-1 flex flex-wrap justify-between gap-2 border-t border-line px-3 pt-3 pb-1">
-                      <Link href={`${base}/addons`} className="text-sm font-semibold text-plum hover:text-plum-dark">
-                        {cap.nav.addons}
-                      </Link>
-                      <Link href={`${base}/odoo-cost-calculator`} className="text-sm font-semibold text-plum hover:text-plum-dark">
-                        {getCalc(locale).nav}
-                      </Link>
-                      <Link href={`${base}/why-odoo`} className="text-sm font-semibold text-plum hover:text-plum-dark">
-                        {locale === "ar" ? "لماذا Odoo" : "Why Odoo"}
-                      </Link>
-                      <Link href={`${base}#sectors`} className="text-sm font-semibold text-muted-2 hover:text-plum">
+                        <div className="grid grid-cols-2 gap-1">
+                          {dict.sectors.map((s) => (
+                            <Link
+                              key={s.slug}
+                              href={`${base}/solutions/${s.slug}`}
+                              className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-paper"
+                            >
+                              <span className="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-tint text-plum transition-colors group-hover:bg-plum group-hover:text-white">
+                                <Icon name={s.icon} size={20} stroke={1.8} />
+                              </span>
+                              <span className="flex flex-col gap-1">
+                                <span className="text-[15px] font-bold text-ink">{s.title}</span>
+                                <span className="text-[13px] leading-relaxed text-muted-2">{s.short}</span>
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Existing customers + tools */}
+                      <div className="flex flex-col gap-4 border-s border-line bg-paper/70 p-6">
+                        <Link
+                          href={`${base}/odoo-support`}
+                          className="group flex flex-col gap-2 rounded-xl bg-plum p-4 text-white transition-colors hover:bg-plum-dark"
+                        >
+                          <span className="flex items-center gap-2 text-[15px] font-bold">
+                            <Icon name="buoy" size={18} stroke={1.9} />
+                            {getExisting(locale).nav}
+                          </span>
+                          <span className="text-[13px] leading-relaxed text-white/80">{getExisting(locale).homeBand.text}</span>
+                        </Link>
+                        <div className="flex flex-col">
+                          <span className="px-2 pb-1 text-[12px] font-bold uppercase tracking-wide text-muted-2">
+                            {locale === "ar" ? "أدوات وموارد" : "Tools & resources"}
+                          </span>
+                          {[
+                            { href: `${base}/odoo-cost-calculator`, icon: "calc", label: getCalc(locale).nav },
+                            { href: `${base}/assessment`, icon: "check", label: locale === "ar" ? "اختبار جاهزية شركتك" : "Readiness test" },
+                            { href: `${base}/addons`, icon: "gear", label: cap.nav.addons },
+                            { href: `${base}/why-odoo`, icon: "globe", label: locale === "ar" ? "لماذا Odoo" : "Why Odoo" },
+                          ].map((t) => (
+                            <Link
+                              key={t.href}
+                              href={t.href}
+                              className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-[14px] font-semibold text-ink transition-colors hover:bg-white hover:text-plum"
+                            >
+                              <Icon name={t.icon} size={17} stroke={1.9} className="text-plum" />
+                              {t.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between gap-4 border-t border-line bg-white px-6 py-3.5">
+                      <Link href={`${base}#sectors`} className="text-[14px] font-semibold text-muted-2 hover:text-plum">
                         {dict.nav.allSolutions}
+                      </Link>
+                      <Link
+                        href={`${base}/contact`}
+                        className="inline-flex items-center gap-1.5 text-[14px] font-bold text-plum hover:text-plum-dark"
+                      >
+                        {locale === "ar" ? "غير متأكد من الحل المناسب؟ احجز استشارة مجانية" : "Not sure which fits? Book a free consultation"}
+                        <Icon name="arrow" size={16} stroke={2.2} className="rtl:-scale-x-100" />
                       </Link>
                     </div>
                   </div>
@@ -200,35 +234,38 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
         </div>
 
         {open && (
-          <nav aria-label={dict.nav.menu} className="max-h-[calc(100vh-120px)] overflow-y-auto border-t border-line glass-strong xl:hidden">
+          <nav aria-label={dict.nav.menu} className="max-h-[calc(100vh-120px)] overflow-y-auto border-t border-line bg-white shadow-lg xl:hidden">
             <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-3">
-              <span className="pt-2 text-[13px] font-semibold text-muted-2">{dict.nav.solutions}</span>
+              <span className="pt-2 text-[12px] font-bold uppercase tracking-wide text-muted-2">
+                {locale === "ar" ? "حلول حسب القطاع" : "Solutions by sector"}
+              </span>
               {dict.sectors.map((s) => (
                 <Link key={s.slug} href={`${base}/solutions/${s.slug}`} className="flex items-center gap-3 py-2.5 text-base text-ink">
                   <Icon name={s.icon} size={20} stroke={1.8} className="text-plum" />
                   {s.title}
                 </Link>
               ))}
-              <Link href={`${base}/odoo-support`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
+              <Link
+                href={`${base}/odoo-support`}
+                className="my-2 flex items-center gap-3 rounded-xl bg-plum px-4 py-3 text-base font-semibold text-white"
+              >
                 <Icon name="buoy" size={20} stroke={1.8} />
                 {getExisting(locale).nav}
               </Link>
-              <Link href={`${base}/addons`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
-                <Icon name="gear" size={20} stroke={1.8} />
-                {cap.nav.addons}
-              </Link>
-              <Link href={`${base}/why-odoo`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
-                <Icon name="globe" size={20} stroke={1.8} />
-                {locale === "ar" ? "لماذا Odoo" : "Why Odoo"}
-              </Link>
-              <Link href={`${base}/odoo-cost-calculator`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
-                <Icon name="calendar" size={20} stroke={1.8} />
-                {getCalc(locale).nav}
-              </Link>
-              <Link href={`${base}/assessment`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
-                <Icon name="check" size={20} stroke={2} />
-                {locale === "ar" ? "اختبار جاهزية شركتك" : "Readiness test"}
-              </Link>
+              <span className="pt-3 text-[12px] font-bold uppercase tracking-wide text-muted-2">
+                {locale === "ar" ? "أدوات وموارد" : "Tools & resources"}
+              </span>
+              {[
+                { href: `${base}/odoo-cost-calculator`, icon: "calc", label: getCalc(locale).nav },
+                { href: `${base}/assessment`, icon: "check", label: locale === "ar" ? "اختبار جاهزية شركتك" : "Readiness test" },
+                { href: `${base}/addons`, icon: "gear", label: cap.nav.addons },
+                { href: `${base}/why-odoo`, icon: "globe", label: locale === "ar" ? "لماذا Odoo" : "Why Odoo" },
+              ].map((t) => (
+                <Link key={t.href} href={t.href} className="flex items-center gap-3 py-2.5 text-base text-ink">
+                  <Icon name={t.icon} size={20} stroke={1.8} className="text-plum" />
+                  {t.label}
+                </Link>
+              ))}
               <div className="my-2 border-t border-line" />
               {links.map((l) => (
                 <Link key={l.href} href={l.href} className="border-b border-line py-3.5 text-base font-medium text-ink last:border-0">
