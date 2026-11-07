@@ -4,6 +4,7 @@ import type { Dict } from "@/content/ar";
 import { getCap } from "@/content/capabilities";
 import { getExisting } from "@/content/existing";
 import { getCalc } from "@/content/calculator";
+import { getPrivacy } from "@/content/privacy";
 import type { Locale } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -55,7 +56,11 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
           </nav>
         </div>
         <div className="flex flex-wrap justify-between gap-3 border-t border-ink-2 pt-6 text-sm">
-          <span>© {year} {legal}. {dict.footer.rights}</span>
+          <span>
+            © {year} {legal}. {dict.footer.rights}
+            <span className="mx-2 opacity-50" aria-hidden="true">·</span>
+            <Link href={`${base}/privacy`} className="hover:text-white">{getPrivacy(locale).nav}</Link>
+          </span>
           <span>
             {dict.footer.unified}: {site.company.unifiedNumber} · {dict.footer.vat}: {site.company.vatNumber}
           </span>

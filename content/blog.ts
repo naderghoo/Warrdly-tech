@@ -950,6 +950,306 @@ export const posts: Post[] = [
       ],
     },
   },
+  // -------------------------------------------------------------------
+  {
+    slug: "common-odoo-problems",
+    date: "2026-11-07",
+    related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
+    ar: {
+      title: "أشهر مشكلات Odoo بعد التطبيق وكيف تُحل",
+      seoTitle: "مشاكل Odoo الشائعة بعد التطبيق وحلولها",
+      description:
+        "المخزون لا يطابق، والتكلفة غير دقيقة، والفواتير ترفضها منصة فاتورة، والنظام بطيء، والفريق عاد إلى Excel. أسباب أشهر مشكلات Odoo بعد التطبيق وطريقة حل كل منها.",
+      category: "إدارة النظام",
+      readMinutes: 8,
+      body: [
+        {
+          type: "p",
+          text: "أغلب مشكلات Odoo التي نراها عند الشركات بعد التطبيق ليست عيوباً في النظام نفسه. هي في الغالب إعداد لم يكتمل، أو إجراء لا يتبعه الفريق، أو تخصيص بُني على عجل. والخبر الجيد أن معظمها يُحل دون إعادة التطبيق من الصفر. هذا ملخص لأشهرها، ثم تفصيل لكل منها.",
+        },
+        {
+          type: "table",
+          head: ["المشكلة", "السبب الأكثر شيوعاً", "اتجاه الحل"],
+          rows: [
+            ["المخزون في النظام لا يطابق المستودع", "عمليات تُنفّذ خارج النظام أو تحويلات غير مؤكدة", "جرد شامل، ثم ضبط الإجراءات والصلاحيات"],
+            ["تكلفة المنتج والربحية غير دقيقة", "طريقة تقييم غير مناسبة أو تكاليف شحن وجمارك غير محمّلة", "مراجعة طريقة التقييم وتفعيل التكاليف المحمّلة"],
+            ["فواتير ترفضها منصة فاتورة", "بيانات عملاء ناقصة أو إعداد ضريبي غير مكتمل", "تنظيف بيانات العملاء ومراجعة إعداد الضرائب"],
+            ["النظام بطيء", "تخصيصات ثقيلة أو بيانات متراكمة أو موارد خادم غير كافية", "قياس مصدر البطء قبل أي تعديل"],
+            ["الفريق عاد إلى Excel", "تقارير لا تجيب عن أسئلة الإدارة أو تدريب غير كافٍ", "بناء التقارير المطلوبة وإعادة التدريب"],
+            ["التكاملات تتوقف", "مفاتيح منتهية أو أخطاء لا يراقبها أحد", "مراقبة التكاملات وتنبيهات عند الفشل"],
+            ["بيانات مكررة", "إدخال يدوي متكرر واستيراد دون تدقيق", "دمج المكرر وضوابط عند الإدخال"],
+            ["الترقية مؤجلة", "وحدات مخصصة يخشى الجميع أن تتعطل", "ترقية على نسخة تجريبية أولاً"],
+          ],
+          caption: "ملخص أشهر مشكلات Odoo بعد التطبيق",
+        },
+        { type: "h2", text: "1. المخزون في النظام لا يطابق المستودع" },
+        {
+          type: "p",
+          text: "هذه أكثر مشكلة تُفقد الإدارة ثقتها بالنظام. السبب نادراً ما يكون في Odoo نفسه، بل في عمليات تتم خارجه: صرف من المستودع دون تسجيل، أو استلام لم يُؤكَّد، أو مرتجعات تُعاد إلى الرف دون إذن إرجاع.",
+        },
+        {
+          type: "ul",
+          items: [
+            "ابدأ بجرد شامل وسجّله في النظام، ليكون نقطة بداية صحيحة.",
+            "راجع التحويلات المعلقة بحالة «جاهز» أو «بانتظار»، فكثير منها حركات حدثت فعلاً ولم تُؤكَّد.",
+            "اجعل تعديل الكميات اليدوي بصلاحية محدودة، وراجع سجل التعديلات أسبوعياً.",
+            "فعّل الجرد الدوري لأصناف محددة بدل انتظار الجرد السنوي.",
+          ],
+        },
+        { type: "h2", text: "2. تكلفة المنتج والربحية غير دقيقة" },
+        {
+          type: "p",
+          text: "إذا كانت تقارير الربحية لا تقنع المحاسب، فالسبب غالباً في طريقة تقييم المخزون أو في تكاليف لا تصل إلى المنتج. شركات الاستيراد تحديداً تخسر دقة كبيرة عندما لا تُحمَّل تكاليف الشحن والجمارك على الأصناف.",
+        },
+        {
+          type: "ul",
+          items: [
+            "راجع طريقة التقييم لكل فئة منتجات: التكلفة القياسية، أو المتوسط المرجّح، أو الوارد أولاً صادر أولاً، واختر ما يناسب نشاطك.",
+            "فعّل التكاليف المحمّلة، ووزّع تكاليف الشحن والجمارك والتأمين على الأصناف المستلمة.",
+            "تأكد أن التقييم الآلي للمخزون مربوط بالحسابات الصحيحة في دليل الحسابات.",
+            "راجع الأصناف التي تكلفتها صفر أو سالبة، فهي تشوّه تقارير الربحية كلها.",
+          ],
+        },
+        { type: "h2", text: "3. فواتير ترفضها منصة فاتورة" },
+        {
+          type: "p",
+          text: "الرفض المتكرر يأتي في الغالب من بيانات ناقصة لا من الربط نفسه. فاتورة الشركات الضريبية تتطلب بيانات كاملة للمشتري، وأي حقل ناقص يكفي للرفض.",
+        },
+        {
+          type: "ul",
+          items: [
+            "راجع بيانات عملاء الشركات: الرقم الضريبي، والسجل التجاري، والعنوان الوطني كاملاً.",
+            "تأكد من إعداد الضرائب ومواقعها الضريبية، خاصة للعملاء المعفيين أو خارج المملكة.",
+            "اقرأ رسالة الرفض في سجل الفاتورة، فهي تحدد الحقل المسبب غالباً.",
+            "تأكد أن الإشعارات الدائنة مرتبطة بالفاتورة الأصلية.",
+          ],
+        },
+        { type: "h2", text: "4. النظام بطيء" },
+        {
+          type: "p",
+          text: "البطء له أسباب متعددة، والخطأ الأشهر هو معالجته قبل معرفة مصدره. قد يكون في تخصيص يحسب بيانات كثيرة عند كل فتح شاشة، أو في تقرير يُشغَّل على سنوات من البيانات، أو في خادم موارده غير كافية لعدد المستخدمين.",
+        },
+        {
+          type: "ul",
+          items: [
+            "حدّد الشاشات أو العمليات البطيئة بالتحديد، ومتى يحدث البطء.",
+            "افحص التخصيصات أولاً، فالحقول المحسوبة دون تخزين والحلقات الثقيلة سبب شائع.",
+            "على الخوادم الخاصة، راجع الموارد وإعدادات قاعدة البيانات وعدد العمليات.",
+            "أرشف البيانات القديمة غير المستخدمة، واجعل التقارير الثقيلة تُفلتر بفترة زمنية.",
+          ],
+        },
+        { type: "h2", text: "5. الفريق عاد إلى Excel" },
+        {
+          type: "p",
+          text: "عندما يعود الفريق إلى الملفات الجانبية فهذه رسالة: النظام لا يعطيهم ما يحتاجونه بالسرعة المطلوبة. الحل ليس منع Excel، بل معرفة لماذا يُستخدم.",
+        },
+        {
+          type: "ul",
+          items: [
+            "اجمع ملفات Excel المستخدمة فعلاً، واسأل: ما السؤال الذي يجيب عنه كل ملف؟",
+            "ابنِ هذه التقارير داخل Odoo، كلوحات متابعة أو تقارير محفوظة.",
+            "أعد تدريب الفريق على الإجراءات الصحيحة، بأمثلة من عملهم اليومي.",
+            "اعتمد أرقام النظام في اجتماعات الإدارة، فهذا وحده يغيّر السلوك.",
+          ],
+        },
+        { type: "h2", text: "6. التكاملات تتوقف دون أن يلاحظ أحد" },
+        {
+          type: "p",
+          text: "تكامل متوقف مع منصة بيع يعني طلبات لا تصل ومخزوناً لا يتحدث، وقد يُكتشف بعد أيام. السبب غالباً مفتاح ربط انتهت صلاحيته، أو تغيير في واجهة المنصة، أو خطأ يتكرر في السجلات دون تنبيه.",
+        },
+        {
+          type: "ul",
+          items: [
+            "وثّق كل تكامل: ما يفعله، وأين تُدار مفاتيحه، ومتى تنتهي صلاحيتها.",
+            "فعّل تنبيهات بالبريد أو داخل Odoo عند فشل المزامنة.",
+            "راجع سجلات الأخطاء أسبوعياً، ولا تنتظر شكوى العميل.",
+          ],
+        },
+        { type: "h2", text: "7. بيانات مكررة" },
+        {
+          type: "p",
+          text: "عميل مسجل ثلاث مرات أو منتج بأكثر من رمز يعني تقارير غير صحيحة وأرصدة موزعة. يحدث هذا عادة من الإدخال اليدوي المتكرر أو من استيراد دون تدقيق.",
+        },
+        {
+          type: "ul",
+          items: [
+            "استخدم أدوات الدمج في Odoo لدمج السجلات المكررة مع الحفاظ على حركاتها.",
+            "اجعل الرقم الضريبي ورمز المنتج حقولاً إلزامية وفريدة حيث يناسب.",
+            "حدّد من يملك صلاحية إنشاء العملاء والمنتجات.",
+          ],
+        },
+        { type: "h2", text: "8. الترقية مؤجلة منذ فترة" },
+        {
+          type: "p",
+          text: "كل إصدار جديد يحمل تحسينات وإصلاحات، وتأجيل الترقية طويلاً يجعلها أصعب وأكثر تكلفة. والخوف الأكبر عادة من الوحدات المخصصة.",
+        },
+        {
+          type: "ul",
+          items: [
+            "ابدأ بقائمة الوحدات المخصصة والإضافات، وتحقق من توفر كل منها للإصدار المستهدف.",
+            "نفّذ الترقية على نسخة تجريبية واختبر الإجراءات اليومية عليها مع المستخدمين الأساسيين.",
+            "لا تجمع الترقية مع تغييرات كبيرة أخرى في الوقت نفسه.",
+          ],
+        },
+        { type: "h2", text: "متى تحتاج مراجعة شاملة للنظام؟" },
+        {
+          type: "p",
+          text: "إذا كانت لديك ثلاث مشكلات أو أكثر من هذه القائمة، فالأفضل مراجعة شاملة بدل إصلاح كل مشكلة منفردة. كثير من هذه المشكلات مترابط: مخزون غير دقيق يعني تكلفة غير دقيقة، وتكلفة غير دقيقة تعني أن الإدارة تعود إلى Excel.",
+        },
+        {
+          type: "note",
+          text: "نراجع أنظمة Odoo القائمة ونرتّب مشكلاتها حسب أثرها على العمل، ثم نبدأ بما يؤثر عليك اليوم، سواء كنت تعمل معنا أو مع شريك آخر. ابدأ بجلسة مراجعة مجانية مدتها 30 دقيقة.",
+        },
+      ],
+    },
+    en: {
+      title: "The most common Odoo problems after implementation, and how to fix them",
+      seoTitle: "Common Odoo problems after go-live and how to fix them",
+      description:
+        "Stock doesn't match, costs are off, Fatoora rejects invoices, the system is slow and the team is back on Excel. The causes of the most common post-implementation Odoo problems and how to fix each one.",
+      category: "System management",
+      readMinutes: 8,
+      body: [
+        {
+          type: "p",
+          text: "Most Odoo problems we see after implementation are not flaws in the system itself. They are usually incomplete configuration, a process the team doesn't follow, or a customisation built in a hurry. The good news is that most can be fixed without re-implementing from scratch. Here is a summary of the most common ones, followed by detail on each.",
+        },
+        {
+          type: "table",
+          head: ["Problem", "Most common cause", "Direction of the fix"],
+          rows: [
+            ["System stock doesn't match the warehouse", "Operations done outside the system, or unconfirmed transfers", "A full count, then tightened processes and access"],
+            ["Product cost and margins are off", "Unsuitable valuation method, or freight and customs not allocated", "Review valuation and use landed costs"],
+            ["Fatoora rejects invoices", "Incomplete customer data or tax setup", "Clean customer data and review tax setup"],
+            ["The system is slow", "Heavy customisations, accumulated data or under-sized server", "Measure the source before changing anything"],
+            ["The team is back on Excel", "Reports that don't answer management's questions, or too little training", "Build the needed reports and retrain"],
+            ["Integrations stop", "Expired keys or errors nobody monitors", "Integration monitoring and failure alerts"],
+            ["Duplicate data", "Repeated manual entry and unchecked imports", "Merge duplicates and add entry controls"],
+            ["The upgrade keeps slipping", "Custom modules everyone fears will break", "Upgrade a staging copy first"],
+          ],
+          caption: "Summary of common Odoo problems after implementation",
+        },
+        { type: "h2", text: "1. System stock doesn't match the warehouse" },
+        {
+          type: "p",
+          text: "This is the problem that most damages management's trust in the system. The cause is rarely Odoo itself; it is operations happening outside it: goods issued without being recorded, receipts never confirmed, or returns put back on the shelf without a return order.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Start with a full stock count recorded in the system, to give you a correct baseline.",
+            "Review transfers stuck in Ready or Waiting; many are movements that already happened and were never confirmed.",
+            "Restrict manual quantity adjustments and review the adjustment log weekly.",
+            "Use cycle counts for selected items instead of waiting for the annual count.",
+          ],
+        },
+        { type: "h2", text: "2. Product cost and margins are off" },
+        {
+          type: "p",
+          text: "If the margin reports don't convince your accountant, the cause is usually the stock valuation method or costs that never reach the product. Importers in particular lose a lot of accuracy when freight and customs are not allocated to items.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Review the costing method for each product category: standard, average or FIFO, and choose what fits your business.",
+            "Use landed costs to spread freight, customs and insurance over received items.",
+            "Make sure automated stock valuation posts to the right accounts in your chart of accounts.",
+            "Check items with zero or negative cost; they distort every margin report.",
+          ],
+        },
+        { type: "h2", text: "3. Fatoora rejects invoices" },
+        {
+          type: "p",
+          text: "Repeated rejections usually come from incomplete data, not from the integration itself. B2B tax invoices need complete buyer details, and a single missing field is enough for a rejection.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Review B2B customer data: VAT number, commercial registration and the full national address.",
+            "Check taxes and fiscal positions, especially for exempt customers or customers outside Saudi Arabia.",
+            "Read the rejection message in the invoice log; it usually names the field at fault.",
+            "Make sure credit notes are linked to the original invoice.",
+          ],
+        },
+        { type: "h2", text: "4. The system is slow" },
+        {
+          type: "p",
+          text: "Slowness has many causes, and the classic mistake is treating it before knowing where it comes from. It may be a customisation that computes a lot of data whenever a screen opens, a report run over years of data, or a server too small for the number of users.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Pin down exactly which screens or operations are slow, and when.",
+            "Check customisations first; non-stored computed fields and heavy loops are a common cause.",
+            "On your own servers, review resources, database settings and worker configuration.",
+            "Archive old unused data and make heavy reports filter by period.",
+          ],
+        },
+        { type: "h2", text: "5. The team is back on Excel" },
+        {
+          type: "p",
+          text: "When the team goes back to side files, it is a message: the system isn't giving them what they need quickly enough. The fix is not banning Excel but understanding why it is used.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Collect the Excel files actually in use and ask what question each one answers.",
+            "Build those reports inside Odoo as dashboards or saved reports.",
+            "Retrain the team on the right processes, using examples from their daily work.",
+            "Use system figures in management meetings; that alone changes behaviour.",
+          ],
+        },
+        { type: "h2", text: "6. Integrations stop without anyone noticing" },
+        {
+          type: "p",
+          text: "A stopped marketplace integration means orders that don't arrive and stock that doesn't update, sometimes discovered days later. The cause is usually an expired key, a change on the platform's side, or an error repeating in the logs with no alert.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Document every integration: what it does, where its keys are managed and when they expire.",
+            "Set up email or in-app alerts when a sync fails.",
+            "Review error logs weekly instead of waiting for a customer complaint.",
+          ],
+        },
+        { type: "h2", text: "7. Duplicate data" },
+        {
+          type: "p",
+          text: "A customer recorded three times or a product with several codes means wrong reports and split balances. It usually comes from repeated manual entry or unchecked imports.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Use Odoo's merge tools to combine duplicates while keeping their transactions.",
+            "Make VAT number and product code mandatory and unique where appropriate.",
+            "Limit who can create customers and products.",
+          ],
+        },
+        { type: "h2", text: "8. The upgrade keeps slipping" },
+        {
+          type: "p",
+          text: "Every new version brings improvements and fixes, and postponing the upgrade for long makes it harder and more expensive. The biggest fear is usually the custom modules.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Start with a list of custom modules and add-ons, and check each is available for the target version.",
+            "Upgrade a staging copy first and test daily processes on it with key users.",
+            "Don't combine the upgrade with other major changes at the same time.",
+          ],
+        },
+        { type: "h2", text: "When do you need a full system review?" },
+        {
+          type: "p",
+          text: "If you have three or more problems from this list, a full review beats fixing each one separately. Many of them are linked: inaccurate stock means inaccurate cost, and inaccurate cost sends management back to Excel.",
+        },
+        {
+          type: "note",
+          text: "We review existing Odoo systems, rank their issues by business impact and start with what affects you today, whether you work with us or another partner. Start with a free 30-minute review session.",
+        },
+      ],
+    },
+  },
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);

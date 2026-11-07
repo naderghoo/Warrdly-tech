@@ -15,6 +15,7 @@ export const existingAr = {
   },
   pains: {
     title: "هل يبدو هذا مألوفاً؟",
+    guide: { label: "اقرأ: أشهر مشكلات Odoo بعد التطبيق وكيف تُحل", href: "/blog/common-odoo-problems" },
     items: [
       { icon: "x", title: "مشكلات عالقة", text: "أخطاء أو إجراءات لا تعمل كما يجب، وطلبات إصلاح مفتوحة منذ أسابيع." },
       { icon: "chat", title: "دعم بطيء أو منقطع", text: "ردود متأخرة، أو تواصل انقطع مع الشريك الذي طبّق النظام." },
@@ -111,6 +112,7 @@ export const existingEn: typeof existingAr = {
   },
   pains: {
     title: "Does this sound familiar?",
+    guide: { label: "Read: the most common Odoo problems after implementation", href: "/blog/common-odoo-problems" },
     items: [
       { icon: "x", title: "Stuck issues", text: "Errors or processes that don't work as they should, and fix requests open for weeks." },
       { icon: "chat", title: "Slow or no support", text: "Late replies, or contact lost with the partner who implemented the system." },

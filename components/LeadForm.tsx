@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { Dict } from "@/content/ar";
+import { getPrivacy } from "@/content/privacy";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -118,6 +120,13 @@ export function LeadForm({
       >
         {status === "sending" ? f.sending : f.submit}
       </button>
+      <p className="text-[13px] text-muted-2 sm:col-span-2">
+        {getPrivacy(locale === "en" ? "en" : "ar").formNote}{" "}
+        <Link href={`/${locale}/privacy`} className="underline underline-offset-2 hover:text-plum">
+          {getPrivacy(locale === "en" ? "en" : "ar").nav}
+        </Link>
+        .
+      </p>
     </form>
   );
 }

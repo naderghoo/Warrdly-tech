@@ -62,6 +62,9 @@ export default async function OdooSupportPage({ params }: { params: Params }) {
               </div>
             ))}
           </div>
+          <div>
+            <TextLink href={`/${locale}${x.pains.guide.href}`}>{x.pains.guide.label}</TextLink>
+          </div>
         </Container>
       </section>
 
