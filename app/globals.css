@@ -243,6 +243,11 @@ a.bg-plum:hover::after,
 button.bg-plum:hover:not(:disabled)::after {
   transform: translateX(120%);
 }
+/* Gold variant of the primary button (used on dark heroes): keep it gold, not plum */
+a.bg-plum[class*="!bg-gold"] {
+  background-image: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 14px rgba(0, 0, 0, 0.25);
+}
 
 /* Glossy brand text for key words in headlines */
 .text-sheen {

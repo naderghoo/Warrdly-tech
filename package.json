@@ -9,6 +9,7 @@
     "lint": "next lint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "og": "node scripts/og-images.mjs http://localhost:3000",
     "cf-build": "opennextjs-cloudflare build"
   },
   "dependencies": {

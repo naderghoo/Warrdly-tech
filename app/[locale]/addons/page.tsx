@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ld, serviceLd } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import { CapabilityGroups, GroupNav } from "@/components/CapabilityGroups";
 import { ContactBlock } from "@/components/ContactBlock";
@@ -25,6 +27,8 @@ export default async function AddonsPage({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: getCap(locale).nav.addons }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(serviceLd(locale, "/addons", c.metaTitle, c.metaDescription, locale === "ar" ? "تطوير إضافات Odoo" : "Odoo add-on development"))} />
       <section className="glow-dark text-white">
         <Container className="flex flex-col gap-6 pb-16 pt-16 sm:pt-20">
           <Eyebrow light>{c.eyebrow}</Eyebrow>

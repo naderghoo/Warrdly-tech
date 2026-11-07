@@ -1,7 +1,4 @@
-import "@fontsource/ibm-plex-sans-arabic/400.css";
-import "@fontsource/ibm-plex-sans-arabic/500.css";
-import "@fontsource/ibm-plex-sans-arabic/600.css";
-import "@fontsource/ibm-plex-sans-arabic/700.css";
+import "../fonts.css";
 import "../globals.css";
 
 import type { Metadata, Viewport } from "next";
@@ -95,6 +92,17 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dirOf(locale)}>
       <body className="font-sans">
+        {/* Preload the weights used above the fold so text paints in IBM Plex, not a fallback that later reflows */}
+        {[400, 600, 700].map((w) => (
+          <link
+            key={w}
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            href={`/fonts/ibm-plex-sans-arabic-${locale === "ar" ? "arabic" : "latin"}-${w}-normal.woff2`}
+          />
+        ))}
         <div className="mesh" aria-hidden="true" />
         <script
           type="application/ld+json"

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { faqLd, ld, serviceLd } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
@@ -23,6 +25,9 @@ export default async function ZatcaPage({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: d.nav.zatca }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(serviceLd(locale, "/zatca", z.title, d.zatcaBand.text, locale === "ar" ? "ربط Odoo بمنصة فاتورة" : "Odoo ZATCA e-invoicing integration"))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(faqLd(z.faq))} />
       <section className="glow-dark text-white">
         <Container className="flex flex-col gap-6 pb-20 pt-16 sm:pt-20">
           <Eyebrow light>{d.zatcaBand.eyebrow}</Eyebrow>

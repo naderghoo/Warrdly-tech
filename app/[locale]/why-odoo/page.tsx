@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { WhyOdoo } from "@/components/WhyOdoo";
@@ -28,6 +29,7 @@ export default async function WhyOdooPage({ params }: { params: Params }) {
   const d = getDict(locale);
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: locale === "ar" ? "لماذا Odoo" : "Why Odoo" }]} />
       <WhyOdoo c={getOdoo(locale)} asPage />
       <ContactBlock dict={d} locale={locale} />
     </>

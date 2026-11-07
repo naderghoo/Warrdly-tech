@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ld, serviceLd } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
@@ -25,6 +27,8 @@ export default async function ServicesPage({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: locale === "ar" ? "الخدمات التقنية" : "Technology services" }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(serviceLd(locale, "/services", c.metaTitle, c.metaDescription, locale === "ar" ? "تطوير المواقع والمتاجر والتطبيقات" : "Web, store and app development"))} />
       {/* Hero */}
       <section className="bg-ink text-white">
         <Container className="flex flex-col gap-10 pb-16 pt-16 sm:pt-20">

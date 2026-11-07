@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { faqLd, ld, serviceLd } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
@@ -22,15 +24,11 @@ export default async function OdooSupportPage({ params }: { params: Params }) {
   const d = getDict(locale);
   const x = getExisting(locale);
 
-  const faqLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: x.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <Breadcrumbs locale={locale} trail={[{ label: x.nav }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(serviceLd(locale, x.path, x.metaTitle, x.metaDescription, locale === "ar" ? "دعم وتطوير Odoo" : "Odoo support and development"))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(faqLd(x.faq))} />
 
       <section className="glow-dark text-white">
         <Container className="flex flex-col gap-6 pb-20 pt-16 sm:pt-20">

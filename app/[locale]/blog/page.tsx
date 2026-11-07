@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Icon } from "@/components/Icon";
@@ -29,6 +30,7 @@ export default async function BlogIndex({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: locale === "ar" ? "المدونة" : "Blog" }]} />
       <section className="bg-tint/40">
         <Container className="flex flex-col gap-4 py-16">
           <h1 className="text-4xl font-bold sm:text-5xl">{ui.title}</h1>

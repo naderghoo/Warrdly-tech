@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { faqLd, ld, serviceLd } from "@/lib/schema";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
@@ -33,6 +35,9 @@ export default async function SectorPage({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: sector.title }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(serviceLd(locale, `/solutions/${slug}`, sector.metaTitle, sector.metaDesc, locale === "ar" ? "تطبيق نظام Odoo" : "Odoo implementation"))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ld(faqLd(sector.faq))} />
       <section className="bg-transparent">
         <Container className="flex flex-col gap-6 pb-16 pt-14 sm:pt-20">
           <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-tint text-plum">
@@ -96,6 +101,27 @@ export default async function SectorPage({ params }: { params: Params }) {
                   {s.title}
                 </Link>
               ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-transparent">
+        <Container className="flex flex-col gap-6 py-20">
+          <h2 className="text-2xl font-bold sm:text-3xl">
+            {locale === "ar" ? `أسئلة شائعة عن Odoo لقطاع ${sector.title}` : `Odoo for ${sector.title}: FAQ`}
+          </h2>
+          <div className="flex flex-col gap-3">
+            {sector.faq.map((f) => (
+              <details key={f.q} className="group rounded-2xl glass p-6 open:shadow-sm">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">
+                  {f.q}
+                  <span className="text-2xl leading-none text-plum transition-transform group-open:rotate-45" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="pt-3 text-base text-muted">{f.a}</p>
+              </details>
+            ))}
           </div>
         </Container>
       </section>

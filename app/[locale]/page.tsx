@@ -8,6 +8,7 @@ import { Container, Eyebrow, PrimaryButton, SecondaryButton, SectionHead, TextLi
 import { getCap } from "@/content/capabilities";
 import { getDigital } from "@/content/digital";
 import { getHome } from "@/content/home";
+import { faqLd, ld } from "@/lib/schema";
 import { getDict, isLocale } from "@/content/i18n";
 import { getOdoo } from "@/content/odoo";
 import { site } from "@/content/site";
@@ -27,6 +28,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <>
+      <link rel="preload" as="image" href={`/hero/hero-${locale}.webp`} fetchPriority="high" />
       {/* 1 ── Hero */}
       <section className="bg-transparent">
         <Container className="flex flex-wrap items-center gap-14 pb-20 pt-16 sm:pt-20">
@@ -326,6 +328,27 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </div>
               );
             })}
+          </div>
+        </Container>
+      </section>
+
+      {/* 8b ── FAQ */}
+      <section className="bg-transparent">
+        <Container className="flex flex-col gap-6 py-20">
+          <h2 className="text-2xl font-bold sm:text-3xl">{h.faqTitle}</h2>
+          <script type="application/ld+json" dangerouslySetInnerHTML={ld(faqLd(h.faq))} />
+          <div className="flex flex-col gap-3">
+            {h.faq.map((f) => (
+              <details key={f.q} className="group rounded-2xl glass p-6 open:shadow-sm">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">
+                  {f.q}
+                  <span className="text-2xl leading-none text-plum transition-transform group-open:rotate-45" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="pt-3 text-base text-muted">{f.a}</p>
+              </details>
+            ))}
           </div>
         </Container>
       </section>

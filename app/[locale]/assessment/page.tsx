@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import { Assessment } from "@/components/Assessment";
 import { Container, Eyebrow } from "@/components/ui";
@@ -23,6 +24,7 @@ export default async function AssessmentPage({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: locale === "ar" ? "اختبار الجاهزية" : "Readiness test" }]} />
       <section className="glow-dark text-white">
         <Container className="flex max-w-[860px] flex-col gap-5 pb-14 pt-14 sm:pt-16">
           <Eyebrow light>{c.eyebrow}</Eyebrow>

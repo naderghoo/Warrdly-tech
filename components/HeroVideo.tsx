@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Animated hero banner (rendered with Remotion, see /video).
- * The still poster paints first; the looping video is attached only after the page has loaded,
+ * The still poster paints first; the looping video is attached on the visitor's first interaction,
  * and never for visitors who prefer reduced motion or have Data Saver on.
  */
 export function HeroVideo({ locale }: { locale: "ar" | "en" }) {
@@ -16,13 +16,15 @@ export function HeroVideo({ locale }: { locale: "ar" | "en" }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     if (conn?.saveData) return;
-    const start = () => setPlay(true);
-    if (document.readyState === "complete") {
-      const id = window.setTimeout(start, 600);
-      return () => window.clearTimeout(id);
-    }
-    window.addEventListener("load", start, { once: true });
-    return () => window.removeEventListener("load", start);
+    // Start on the first interaction: the still poster stays the page's largest paint (fast LCP),
+    // and the motion begins as soon as the visitor moves, scrolls or touches.
+    const events = ["pointermove", "pointerdown", "scroll", "keydown", "touchstart", "wheel"] as const;
+    const start = () => {
+      setPlay(true);
+      events.forEach((e) => window.removeEventListener(e, start));
+    };
+    events.forEach((e) => window.addEventListener(e, start, { once: true, passive: true }));
+    return () => events.forEach((e) => window.removeEventListener(e, start));
   }, []);
 
   return (
@@ -34,6 +36,7 @@ export function HeroVideo({ locale }: { locale: "ar" | "en" }) {
         width={960}
         height={720}
         decoding="async"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {play && (

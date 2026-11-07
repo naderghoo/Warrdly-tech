@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Icon } from "@/components/Icon";
-import { Container, PrimaryButton, TextLink } from "@/components/ui";
+import { Container, PrimaryButton } from "@/components/ui";
 import { blogUi, getPost, posts, type Block } from "@/content/blog";
 import { isLocale, locales } from "@/content/i18n";
 import { site } from "@/content/site";
 import { pageMeta } from "@/lib/seo";
+import { defaultAuthor } from "@/content/authors";
+import { ORG_ID } from "@/lib/schema";
 
 type Params = Promise<{ locale: string; slug: string }>;
 
@@ -111,6 +114,7 @@ export default async function BlogPost({ params }: { params: Params }) {
     day: "numeric",
   }).format(new Date(post.date));
 
+  const author = defaultAuthor;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -119,13 +123,20 @@ export default async function BlogPost({ params }: { params: Params }) {
     datePublished: post.date,
     inLanguage: locale,
     mainEntityOfPage: `${site.url}/${locale}/blog/${slug}`,
-    image: `${site.url}/og.png`,
-    author: { "@type": "Organization", name: locale === "ar" ? "وردلي تيكنولوجيز" : "Warrdly Technologies" },
-    publisher: { "@type": "Organization", name: "Warrdly Technologies", logo: { "@type": "ImageObject", url: `${site.url}/logo.png` } },
+    image: `${site.url}/og/${locale}/blog/${slug}.jpg`,
+    author: {
+      "@type": "Person",
+      "@id": `${site.url}/#person-${author.slug}`,
+      name: author[locale].name,
+      jobTitle: author[locale].role,
+      url: `${site.url}/${locale}/team/${author.slug}`,
+    },
+    publisher: { "@id": ORG_ID },
   };
 
   return (
     <>
+      <Breadcrumbs locale={locale} trail={[{ label: locale === "ar" ? "المدونة" : "Blog", path: "/blog" }, { label: c.title }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article>
         <header className="bg-tint/40">
@@ -141,6 +152,10 @@ export default async function BlogPost({ params }: { params: Params }) {
               <span>
                 {c.readMinutes} {ui.minutes}
               </span>
+              <span>·</span>
+              <Link href={`/${locale}/team/${author.slug}`} rel="author" className="font-semibold text-ink hover:text-plum">
+                {author[locale].name}
+              </Link>
             </div>
             <h1 className="text-3xl font-bold leading-tight sm:text-[44px]">{c.title}</h1>
             <p className="text-lg text-muted">{c.description}</p>
@@ -152,10 +167,26 @@ export default async function BlogPost({ params }: { params: Params }) {
             {c.body.map((b, i) => (
               <Render key={i} block={b} />
             ))}
-            <div className="pt-4">
-              <TextLink href={`/${locale}${post.related.href}`}>
-                {ui.related}: {post.related.label[locale]}
-              </TextLink>
+            <Link
+              href={`/${locale}${post.related.href}`}
+              className="mt-4 flex items-center justify-between gap-4 rounded-2xl glass-tint border-s-4 !border-s-plum p-6 hover:shadow-sm"
+            >
+              <span className="flex flex-col gap-1">
+                <span className="text-sm font-semibold text-muted-2">{locale === "ar" ? "الخدمة المرتبطة بهذا المقال" : "Related service"}</span>
+                <span className="text-lg font-bold text-ink">{post.related.label[locale]}</span>
+              </span>
+              <Icon name="arrow" size={22} className="flex-none text-plum rtl:-scale-x-100" />
+            </Link>
+            <div className="flex items-start gap-4 rounded-2xl border border-line bg-white/60 p-6">
+              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-plum font-bold text-white" aria-hidden="true">
+                {author[locale].name.split(" ").map((w) => (locale === "ar" ? w.replace(/^ال/, "")[0] : w[0])).join(locale === "ar" ? "\u200c" : "")}
+              </span>
+              <span className="flex flex-col gap-1">
+                <Link href={`/${locale}/team/${author.slug}`} rel="author" className="font-bold text-ink hover:text-plum">
+                  {author[locale].name}
+                </Link>
+                <span className="text-sm text-muted">{author[locale].bio[0]}</span>
+              </span>
             </div>
           </Container>
         </div>

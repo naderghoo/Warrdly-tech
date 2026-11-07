@@ -71,6 +71,12 @@ export const en: Dict = {
         { title: "Credit limits", text: "Automatic blocking of credit sales over the limit, plus aged receivables reports." },
       ],
       apps: ["Sales", "Inventory", "Purchase", "Accounting", "CRM", "Field Service"],
+      faq: [
+        { q: "Does Odoo support different price lists per customer?", a: "Yes. Odoo price lists can depend on the customer, customer group, quantity or period, and apply automatically on every sales order, with no Excel files." },
+        { q: "Can sales reps work from their phones?", a: "Yes. Reps record orders, visits and collections on their phones, and the data reaches the system immediately so the warehouse and accounts see it at once." },
+        { q: "Can credit sales be controlled by credit limit?", a: "Yes. Each customer gets a credit limit with a warning when it is exceeded, and we can block order confirmation if you prefer, with aged receivables reports for collections." },
+        { q: "Are invoices compliant with the Fatoora platform?", a: "Yes. We configure Odoo's Saudi localisation, connect it to Fatoora and test invoices before go-live." },
+      ],
     },
     {
       slug: "beauty",
@@ -94,6 +100,12 @@ export const en: Dict = {
         { title: "B2B marketplaces", text: "Connect to wholesale platforms such as Warrdly to receive orders automatically." },
       ],
       apps: ["Inventory", "Sales", "Point of Sale", "Accounting", "Marketing", "Quality"],
+      faq: [
+        { q: "Does Odoo track expiry dates and batches?", a: "Yes. Batch numbers and expiry dates are recorded on receipt, stock is issued first-expiry-first-out, and alerts fire before products expire." },
+        { q: "How do we handle a product recall?", a: "Batch tracing shows every customer who received a given batch and the quantities, so a recall is fast and documented." },
+        { q: "Can promotions and free gifts be applied automatically?", a: "Yes. Buy-X-get-Y offers, volume discounts and gifts are added automatically to sales orders or point of sale based on your rules." },
+        { q: "Can we see profitability per brand?", a: "Yes. We classify products by brand or agency and build sales, stock and profitability reports for each one." },
+      ],
     },
     {
       slug: "retail",
@@ -117,6 +129,12 @@ export const en: Dict = {
         { title: "Loyalty programs", text: "Points, coupons and gift cards linked to the customer profile." },
       ],
       apps: ["Point of Sale", "Website", "Inventory", "Accounting", "Loyalty", "Amazon, noon & Trendyol connectors"],
+      faq: [
+        { q: "Does point of sale work when the internet is down?", a: "Yes. Odoo point of sale keeps working offline and syncs orders automatically when the connection returns." },
+        { q: "Can a Salla store be connected to Odoo?", a: "Yes. Salla orders flow into Odoo automatically and stock syncs both ways, so you never sell what you don't have." },
+        { q: "Does point of sale issue compliant simplified invoices?", a: "Yes. Simplified invoices are issued with a QR code in line with ZATCA requirements." },
+        { q: "Can branch and online stock be unified?", a: "Yes. All branches, the online store and marketplaces run on one stock, with daily reports for each branch." },
+      ],
     },
     {
       slug: "import",
@@ -140,6 +158,12 @@ export const en: Dict = {
         { title: "Cost-based pricing", text: "Margins calculated from actual cost, not estimates." },
       ],
       apps: ["Purchase", "Inventory", "Manufacturing", "Accounting", "Quality"],
+      faq: [
+        { q: "How does Odoo calculate the real cost of imported goods?", a: "Freight, customs and insurance are spread over received items through landed costs, so stock value reflects the true cost." },
+        { q: "Does Odoo support purchasing in multiple currencies?", a: "Yes. Purchase orders are raised in the supplier's currency, and exchange differences are posted in accounting automatically." },
+        { q: "Is Odoo suitable for light manufacturing and packing?", a: "Yes. Odoo bills of materials cover assembly, packing and light manufacturing, costing materials and operations." },
+        { q: "Can shipments be tracked until arrival?", a: "Yes. We follow each shipment from purchase order to warehouse receipt, with documents and expected dates." },
+      ],
     },
   ],
   services: {
