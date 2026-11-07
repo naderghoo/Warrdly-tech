@@ -1250,6 +1250,328 @@ export const posts: Post[] = [
       ],
     },
   },
+  // -------------------------------------------------------------------
+  {
+    slug: "odoo-online-vs-odoo-sh-vs-on-premise",
+    date: "2026-11-07",
+    related: { label: { ar: "احسب تكلفة اشتراك Odoo لشركتك", en: "Calculate your Odoo subscription cost" }, href: "/odoo-cost-calculator" },
+    ar: {
+      title: "Odoo Online أم Odoo.sh أم خادم خاص: أي استضافة تناسب شركتك؟",
+      seoTitle: "Odoo Online أم Odoo.sh أم خادم خاص؟ دليل الاختيار",
+      description:
+        "الفرق بين خيارات استضافة Odoo الثلاثة: Odoo Online و Odoo.sh والخادم الخاص، من حيث التخصيص والتكلفة والترقيات والنسخ الاحتياطي، ومتى يناسب كل خيار شركتك.",
+      category: "دليل الاختيار",
+      readMinutes: 6,
+      body: [
+        {
+          type: "p",
+          text: "قبل التعاقد على Odoo، هناك قرار يغفل عنه كثيرون: أين سيعمل النظام؟ يوفّر Odoo ثلاثة خيارات للاستضافة، والاختيار بينها يحدد ما يمكنك تخصيصه، ومن يتولى الترقيات والنسخ الاحتياطي، والباقة التي تحتاجها. الخبر الجيد أن القرار ليس نهائياً، فالانتقال بين الخيارات ممكن لاحقاً.",
+        },
+        {
+          type: "table",
+          head: ["", "Odoo Online", "Odoo.sh", "خادم خاص"],
+          rows: [
+            ["من يدير الخوادم؟", "Odoo", "Odoo", "شركتك أو شريكك"],
+            ["الوحدات البرمجية المخصصة", "غير متاحة", "متاحة", "متاحة"],
+            ["الباقة المطلوبة", "Standard أو Custom", "Custom", "Custom"],
+            ["تكلفة استضافة إضافية", "لا", "نعم، حسب الموارد", "تكلفة الخادم وإدارته"],
+            ["النسخ الاحتياطي", "تلقائي من Odoo", "تلقائي من Odoo", "مسؤوليتك"],
+            ["الترقيات", "الأسهل، وتُتاح أولاً", "بإشرافك أو إشراف شريكك", "بإشرافك أو إشراف شريكك"],
+            ["الأنسب لـ", "أغلب الشركات الصغيرة والمتوسطة", "من يحتاج تطويراً مخصصاً دون إدارة خوادم", "متطلبات خاصة بمكان البيانات أو البنية"],
+          ],
+          caption: "مقارنة خيارات استضافة Odoo الثلاثة",
+        },
+        { type: "h2", text: "Odoo Online: الأبسط والأسرع" },
+        {
+          type: "p",
+          text: "النظام يعمل على سحابة Odoo مباشرة، ولا تحتاج أي خادم أو فريق تقني لإدارته. تتولى Odoo التشغيل والنسخ الاحتياطي والأمان، وتصل إليه إصدارات وسيطة جديدة كل شهرين تقريباً لا تصل إلى الخيارين الآخرين.",
+        },
+        {
+          type: "ul",
+          items: [
+            "يناسبك إن كانت تطبيقات Odoo القياسية تغطي احتياجك، مع تعديلات عبر الإعدادات و Studio.",
+            "يعمل على باقة Standard، وهي الأقل تكلفة، أو على باقة Custom إذا احتجت Studio أو تعدد الشركات.",
+            "القيد الأساسي: لا يمكن تثبيت وحدات برمجية مخصصة أو إضافات من أطراف أخرى.",
+          ],
+        },
+        { type: "h2", text: "Odoo.sh: سحابة Odoo مع حرية التطوير" },
+        {
+          type: "p",
+          text: "منصة سحابية تديرها Odoo أيضاً، لكنها مصممة للتطوير المخصص. الشيفرة في مستودع GitHub، ولكل تعديل بيئة اختبار قبل نقله إلى النظام الفعلي، والنسخ الاحتياطي تلقائي.",
+        },
+        {
+          type: "ul",
+          items: [
+            "يناسبك إن كنت تحتاج وحدات مخصصة أو تكاملات غير موجودة في Odoo القياسي، دون أن تدير خوادم بنفسك.",
+            "يتطلب باقة Custom، ورسوم استضافة إضافية تعتمد على الموارد المطلوبة.",
+            "تأكد أن مستودع GitHub ومشروع Odoo.sh مسجلان بحسابات تملكها شركتك.",
+          ],
+        },
+        { type: "h2", text: "الخادم الخاص: تحكم كامل ومسؤولية كاملة" },
+        {
+          type: "p",
+          text: "تشغّل Odoo على خوادمك أو خوادم مزود تختاره. تملك التحكم الكامل في البيئة ومكان البيانات، لكنك تتحمل مسؤولية كل شيء: التشغيل، والنسخ الاحتياطي، والأمان، والأداء، والترقيات.",
+        },
+        {
+          type: "ul",
+          items: [
+            "يناسبك إن كانت لديك متطلبات نظامية أو تعاقدية بإبقاء البيانات في مكان محدد، كخوادم داخل المملكة.",
+            "يتطلب باقة Custom لاستخدام Odoo Enterprise، وفريقاً أو شريكاً يدير الخادم.",
+            "احسب تكلفة الخادم وإدارته ضمن الميزانية، فهي ليست ضمن اشتراك Odoo.",
+          ],
+        },
+        { type: "h2", text: "كيف تختار؟ ثلاثة أسئلة" },
+        {
+          type: "ol",
+          items: [
+            "هل تحتاج تطويراً برمجياً مخصصاً أو تكاملاً غير موجود في Odoo القياسي؟ إن كان الجواب لا، فـ Odoo Online هو الخيار الأبسط والأقل تكلفة.",
+            "إن احتجت تطويراً مخصصاً: هل لديك متطلبات تفرض مكان البيانات أو بنية خاصة؟ إن كان الجواب لا، فـ Odoo.sh.",
+            "إن كانت لديك هذه المتطلبات، فالخادم الخاص، مع خطة واضحة لإدارته ونسخه الاحتياطي.",
+          ],
+        },
+        {
+          type: "note",
+          text: "ابدأ بأبسط خيار يغطي احتياجك الفعلي اليوم. الانتقال من Odoo Online إلى Odoo.sh ممكن لاحقاً عندما يظهر احتياج حقيقي للتطوير المخصص، وفي جلسة الاستشارة المجانية نحدد معك الخيار المناسب قبل التعاقد.",
+        },
+      ],
+    },
+    en: {
+      title: "Odoo Online, Odoo.sh or your own server: which hosting suits your company?",
+      seoTitle: "Odoo Online vs Odoo.sh vs on-premise: how to choose",
+      description:
+        "The differences between Odoo's three hosting options, Odoo Online, Odoo.sh and on-premise, in customisation, cost, upgrades and backups, and when each one fits your company.",
+      category: "Buyer's guide",
+      readMinutes: 6,
+      body: [
+        {
+          type: "p",
+          text: "Before signing up for Odoo, there is a decision many people overlook: where will the system run? Odoo offers three hosting options, and the choice decides what you can customise, who handles upgrades and backups, and which plan you need. The good news is that the decision isn't final; you can move between options later.",
+        },
+        {
+          type: "table",
+          head: ["", "Odoo Online", "Odoo.sh", "Own server"],
+          rows: [
+            ["Who runs the servers?", "Odoo", "Odoo", "Your company or partner"],
+            ["Custom code modules", "Not available", "Available", "Available"],
+            ["Plan required", "Standard or Custom", "Custom", "Custom"],
+            ["Extra hosting cost", "No", "Yes, based on resources", "Server and its management"],
+            ["Backups", "Automatic, by Odoo", "Automatic, by Odoo", "Your responsibility"],
+            ["Upgrades", "Easiest, available first", "Managed by you or your partner", "Managed by you or your partner"],
+            ["Best for", "Most small and mid-sized companies", "Custom development without running servers", "Specific data-location or infrastructure needs"],
+          ],
+          caption: "Comparing Odoo's three hosting options",
+        },
+        { type: "h2", text: "Odoo Online: the simplest and fastest" },
+        {
+          type: "p",
+          text: "The system runs directly on Odoo's cloud, with no server or technical team to manage it. Odoo handles operations, backups and security, and Odoo Online receives intermediate versions roughly every two months that the other two options don't get.",
+        },
+        {
+          type: "ul",
+          items: [
+            "It suits you if standard Odoo apps cover your needs, with adjustments through settings and Studio.",
+            "It runs on the Standard plan, the lowest cost, or on Custom if you need Studio or multi-company.",
+            "The main limit: you can't install custom code modules or third-party add-ons.",
+          ],
+        },
+        { type: "h2", text: "Odoo.sh: Odoo's cloud with freedom to develop" },
+        {
+          type: "p",
+          text: "A cloud platform also run by Odoo, but built for custom development. Code lives in a GitHub repository, every change gets a test environment before reaching production, and backups are automatic.",
+        },
+        {
+          type: "ul",
+          items: [
+            "It suits you if you need custom modules or integrations not in standard Odoo, without managing servers yourself.",
+            "It requires the Custom plan, plus hosting fees based on the resources you need.",
+            "Make sure the GitHub repository and the Odoo.sh project are registered to accounts your company owns.",
+          ],
+        },
+        { type: "h2", text: "Own server: full control, full responsibility" },
+        {
+          type: "p",
+          text: "You run Odoo on your own servers or a provider you choose. You control the environment and where data lives, but you are responsible for everything: operations, backups, security, performance and upgrades.",
+        },
+        {
+          type: "ul",
+          items: [
+            "It suits you if you have legal or contractual requirements to keep data in a specific place, such as servers inside Saudi Arabia.",
+            "It requires the Custom plan to use Odoo Enterprise, and a team or partner to manage the server.",
+            "Budget for the server and its management; they are not part of the Odoo subscription.",
+          ],
+        },
+        { type: "h2", text: "How to choose: three questions" },
+        {
+          type: "ol",
+          items: [
+            "Do you need custom development or an integration not in standard Odoo? If not, Odoo Online is the simplest and lowest-cost choice.",
+            "If you do need custom development: do you have requirements that dictate where data lives or a specific infrastructure? If not, choose Odoo.sh.",
+            "If you do have those requirements, choose your own server, with a clear plan for running and backing it up.",
+          ],
+        },
+        {
+          type: "note",
+          text: "Start with the simplest option that covers what you actually need today. Moving from Odoo Online to Odoo.sh later is possible when a real need for custom development appears, and in the free consultation we help you pick the right option before you sign.",
+        },
+      ],
+    },
+  },
+  // -------------------------------------------------------------------
+  {
+    slug: "odoo-upgrade-guide",
+    date: "2026-11-07",
+    related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
+    ar: {
+      title: "ترقية Odoo: الخطوات والمدة وما تحتاج معرفته قبل البدء",
+      seoTitle: "ترقية Odoo إلى إصدار أحدث: الخطوات والمخاطر",
+      description:
+        "متى تحتاج ترقية Odoo، وما الذي يشمله الاشتراك، وخطوات الترقية الآمنة من النسخة التجريبية حتى التشغيل، وكيف تتعامل مع الوحدات المخصصة.",
+      category: "إدارة النظام",
+      readMinutes: 6,
+      body: [
+        {
+          type: "p",
+          text: "يصدر Odoo إصداراً رئيسياً جديداً كل عام تقريباً، ويقدم الدعم وإصلاح الأخطاء لآخر ثلاثة إصدارات رئيسية فقط. أي أن كل إصدار يبقى مدعوماً نحو ثلاث سنوات. وفق جدول Odoo المنشور، انتهى دعم Odoo 17 في أكتوبر 2026، ويستمر دعم Odoo 18 حتى أكتوبر 2027.",
+        },
+        {
+          type: "p",
+          text: "إذا كان نظامك على إصدار قديم، فالترقية ليست رفاهية: الإصدارات غير المدعومة لا تصلها إصلاحات، وتصبح الترقية منها أصعب كلما طال التأجيل. والخبر الجيد أن Odoo تتيح الترقية من أي إصدار.",
+        },
+        { type: "h2", text: "ما الذي يشمله اشتراك Odoo؟" },
+        {
+          type: "p",
+          text: "خدمة الترقية للتطبيقات القياسية مشمولة في اشتراك Odoo Enterprise: تُرقّى بياناتك وإعداداتك إلى الإصدار الجديد. أما الوحدات المخصصة والإضافات من أطراف أخرى فلا تشملها هذه الخدمة، وتحتاج تحديثاً من الشريك أو المطور ليتوافق كل منها مع الإصدار الجديد.",
+        },
+        { type: "h2", text: "حسب نوع الاستضافة" },
+        {
+          type: "table",
+          head: ["الاستضافة", "كيف تتم الترقية"],
+          rows: [
+            ["Odoo Online", "الأبسط. تدعو Odoo مديري قواعد البيانات إلى الترقية بانتظام، ويمكن تجربة الترقية على نسخة اختبار أولاً من صفحة إدارة قواعد البيانات"],
+            ["Odoo.sh", "تُجرّب الترقية على فرع اختبار، وتُحدَّث الوحدات المخصصة في المستودع، ثم تُنقل إلى الفرع الفعلي"],
+            ["خادم خاص", "تُطلب نسخة مرقّاة من قاعدة البيانات عبر خدمة الترقية في Odoo، وتُثبّت على الخادم مع الوحدات المخصصة المحدّثة"],
+          ],
+        },
+        { type: "h2", text: "خطوات الترقية الآمنة" },
+        {
+          type: "ol",
+          items: [
+            "حدد إصدارك الحالي وتاريخ انتهاء دعمه، والإصدار المستهدف.",
+            "اجرد الوحدات المخصصة والإضافات المثبتة، وتحقق من توفر كل إضافة للإصدار المستهدف.",
+            "خذ نسخة احتياطية كاملة، واطلب ترقية تجريبية لقاعدة البيانات.",
+            "حدّث الوحدات المخصصة لتتوافق مع الإصدار الجديد، واختبرها على النسخة التجريبية.",
+            "اطلب من المستخدمين الأساسيين في كل قسم اختبار عملياتهم اليومية: البيع، والشراء، والمخزون، والفوترة، والتقارير.",
+            "اختبر الفوترة الإلكترونية والتكاملات تحديداً، فهي الأكثر حساسية لأي تغيير.",
+            "حدد موعد التشغيل في فترة هادئة، بعيداً عن إقفال الشهر ومواسم الذروة، وأبلغ الفريق مسبقاً.",
+            "بعد التشغيل، تابع الأيام الأولى عن قرب وجهّز قناة سريعة لاستقبال الملاحظات.",
+          ],
+        },
+        { type: "h2", text: "كم تستغرق الترقية؟" },
+        {
+          type: "p",
+          text: "لا توجد مدة ثابتة. ترقية نظام على Odoo Online دون تخصيصات قد تتم بسرعة، أما نظام فيه وحدات مخصصة كثيرة وتكاملات متعددة فيحتاج أسابيع للتحديث والاختبار. أهم ما يحدد المدة:",
+        },
+        {
+          type: "ul",
+          items: [
+            "عدد الوحدات المخصصة وحجمها، وجودة كتابتها وتوثيقها.",
+            "عدد الإصدارات بين إصدارك الحالي والمستهدف.",
+            "عدد التكاملات مع المنصات والأنظمة الخارجية.",
+            "حجم البيانات، ومدى توفر المستخدمين للاختبار.",
+          ],
+        },
+        { type: "h2", text: "أخطاء تجعل الترقية مؤلمة" },
+        {
+          type: "ul",
+          items: [
+            "التشغيل مباشرة دون ترقية تجريبية واختبار من المستخدمين.",
+            "نسيان الإضافات المشتراة من متجر Odoo، ثم اكتشاف أنها غير متوفرة للإصدار الجديد.",
+            "الجمع بين الترقية وتغييرات كبيرة أخرى، كتغيير الشريك أو إعادة تصميم الإجراءات.",
+            "تأجيل الترقية سنوات، فتصبح قفزة عبر عدة إصدارات بدل خطوة واحدة.",
+          ],
+        },
+        {
+          type: "note",
+          text: "نرقّي أنظمة Odoo القائمة، بما فيها الوحدات المخصصة، على نسخة تجريبية أولاً حتى يطمئن فريقك قبل التشغيل. ابدأ بجلسة مراجعة مجانية نحدد فيها حجم الترقية ومدتها المتوقعة.",
+        },
+      ],
+    },
+    en: {
+      title: "Upgrading Odoo: the steps, timing and what to know before you start",
+      seoTitle: "Upgrading Odoo to a newer version: steps and risks",
+      description:
+        "When you need to upgrade Odoo, what the subscription covers, the safe upgrade steps from test copy to go-live, and how to handle custom modules.",
+      category: "System management",
+      readMinutes: 6,
+      body: [
+        {
+          type: "p",
+          text: "Odoo releases a new major version roughly every year and provides support and bug fixes for the last three major versions only, so each version stays supported for about three years. According to Odoo's published schedule, support for Odoo 17 ended in October 2026, and Odoo 18 is supported until October 2027.",
+        },
+        {
+          type: "p",
+          text: "If your system is on an old version, upgrading isn't a luxury: unsupported versions get no fixes, and the upgrade gets harder the longer you wait. The good news is that Odoo lets you upgrade from any version.",
+        },
+        { type: "h2", text: "What does the Odoo subscription cover?" },
+        {
+          type: "p",
+          text: "The upgrade service for standard apps is included in the Odoo Enterprise subscription: your data and settings are upgraded to the new version. Custom modules and third-party add-ons are not covered by this service; each one needs updating by your partner or developer to work with the new version.",
+        },
+        { type: "h2", text: "By hosting type" },
+        {
+          type: "table",
+          head: ["Hosting", "How the upgrade works"],
+          rows: [
+            ["Odoo Online", "The simplest. Odoo invites database admins to upgrade regularly, and you can test the upgrade on a test copy first from the database management page"],
+            ["Odoo.sh", "The upgrade is tested on a staging branch, custom modules are updated in the repository, then it moves to production"],
+            ["Own server", "You request an upgraded copy of the database through Odoo's upgrade service and install it on the server with the updated custom modules"],
+          ],
+        },
+        { type: "h2", text: "The safe upgrade steps" },
+        {
+          type: "ol",
+          items: [
+            "Identify your current version, its end-of-support date and the target version.",
+            "List the custom modules and add-ons installed, and check each add-on is available for the target version.",
+            "Take a full backup and request a test upgrade of the database.",
+            "Update custom modules for the new version and test them on the test copy.",
+            "Ask key users in each department to test their daily processes: sales, purchasing, stock, invoicing and reports.",
+            "Test e-invoicing and integrations specifically; they are the most sensitive to change.",
+            "Schedule go-live in a quiet period, away from month-end close and peak seasons, and tell the team in advance.",
+            "After go-live, watch the first days closely and set up a fast channel for feedback.",
+          ],
+        },
+        { type: "h2", text: "How long does an upgrade take?" },
+        {
+          type: "p",
+          text: "There is no fixed duration. An Odoo Online system with no customisations can be upgraded quickly, while a system with many custom modules and integrations needs weeks of updating and testing. The main factors are:",
+        },
+        {
+          type: "ul",
+          items: [
+            "The number and size of custom modules, and how well they are written and documented.",
+            "How many versions lie between your current and target versions.",
+            "The number of integrations with marketplaces and external systems.",
+            "Data volume, and how available users are for testing.",
+          ],
+        },
+        { type: "h2", text: "Mistakes that make upgrades painful" },
+        {
+          type: "ul",
+          items: [
+            "Going live without a test upgrade and user testing.",
+            "Forgetting add-ons bought on the Odoo Apps store, then finding they aren't available for the new version.",
+            "Combining the upgrade with other big changes, such as changing partner or redesigning processes.",
+            "Postponing for years, so the upgrade becomes a jump across several versions instead of one step.",
+          ],
+        },
+        {
+          type: "note",
+          text: "We upgrade existing Odoo systems, custom modules included, on a test copy first so your team is confident before go-live. Start with a free review session where we size the upgrade and its expected timeline.",
+        },
+      ],
+    },
+  },
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
