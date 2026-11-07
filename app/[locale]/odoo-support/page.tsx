@@ -4,7 +4,7 @@ import { faqLd, ld, serviceLd } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Icon } from "@/components/Icon";
-import { Container, Eyebrow, PrimaryButton, SectionHead } from "@/components/ui";
+import { Container, Eyebrow, PrimaryButton, SectionHead, TextLink } from "@/components/ui";
 import { getExisting } from "@/content/existing";
 import { getDict, isLocale } from "@/content/i18n";
 import { pageMeta } from "@/lib/seo";
@@ -106,6 +106,9 @@ export default async function OdooSupportPage({ params }: { params: Params }) {
             <h2 className="text-2xl font-bold sm:text-3xl">{x.partner.title}</h2>
             <p className="text-lg text-muted">{x.partner.text}</p>
             <p className="rounded-xl border border-line bg-white/60 p-4 text-[15px] text-muted">{x.partner.note}</p>
+            <div>
+              <TextLink href={`/${locale}${x.partner.guide.href}`}>{x.partner.guide.label}</TextLink>
+            </div>
           </div>
           <div className="flex flex-col gap-4 rounded-3xl glass-tint p-8">
             <h3 className="text-xl font-bold">{x.partner.checklistTitle}</h3>

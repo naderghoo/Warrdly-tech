@@ -60,6 +60,7 @@ export const existingAr = {
       "توثيق التخصيصات والطلبات المفتوحة",
     ],
     note: "راجع عقدك مع الشريك الحالي قبل الإشعار: مدة الإشعار، والفواتير المستحقة، وملكية الشيفرة المخصصة.",
+    guide: { label: "اقرأ الدليل الكامل لتغيير شريك Odoo", href: "/blog/change-odoo-partner" },
   },
   faqTitle: "أسئلة شائعة",
   faq: [
@@ -155,6 +156,7 @@ export const existingEn: typeof existingAr = {
       "Documentation of customisations and open requests",
     ],
     note: "Check your contract with the current partner before giving notice: notice period, outstanding invoices and ownership of custom code.",
+    guide: { label: "Read the full guide to changing your Odoo partner", href: "/blog/change-odoo-partner" },
   },
   faqTitle: "Frequently asked questions",
   faq: [

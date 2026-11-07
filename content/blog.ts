@@ -724,6 +724,232 @@ export const posts: Post[] = [
       ],
     },
   },
+  // -------------------------------------------------------------------
+  {
+    slug: "change-odoo-partner",
+    date: "2026-11-07",
+    related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
+    ar: {
+      title: "كيف تغيّر شريك Odoo دون أن تخسر بياناتك أو تتوقف أعمالك",
+      seoTitle: "تغيير شريك Odoo: الخطوات وقائمة الاستلام الكاملة",
+      description:
+        "دليل عملي لتغيير شريك Odoo: ما تقوله اتفاقية Odoo الرسمية، وما يجب أن تستلمه من الشريك الحالي، وخطوات الانتقال بالترتيب حسب نوع الاستضافة، والأخطاء التي تكلّف الشركات بياناتها.",
+      category: "إدارة النظام",
+      readMinutes: 7,
+      body: [
+        {
+          type: "p",
+          text: "تطبيق Odoo علاقة طويلة مع الشريك الذي نفّذه. وأحياناً لا تسير هذه العلاقة كما يجب: طلبات إصلاح مفتوحة منذ أسابيع، أو تطوير متوقف، أو تواصل انقطع. في هذه الحالة يتردد كثير من الشركات في تغيير الشريك خوفاً على بياناتهم وتعديلاتهم. والخبر الجيد أن التغيير ممكن ومنظّم، إذا تم بالترتيب الصحيح.",
+        },
+        { type: "h2", text: "هل يحق لك تغيير شريك Odoo؟" },
+        {
+          type: "p",
+          text: "نعم. تعرّف اتفاقية اشتراك Odoo Enterprise الشريك بأنه طرف ثالث يختاره العميل، وتنص على أن للعميل أن يغيّر شريكه أو يتعامل مع Odoo مباشرة، بشرط إشعار مسبق. ويحدد البند 6.1 هذا الإشعار: إشعار مكتوب إلى Odoo قبل 30 يوماً من تغيير جهة التواصل الرئيسية إلى شريك آخر.",
+        },
+        {
+          type: "p",
+          text: "بمعنى آخر: اشتراك Odoo عقد بين شركتك وOdoo مباشرة، والشريك مقدّم خدمة لك. لكن عقدك مع الشريك نفسه، إن وُجد، عقد منفصل له شروطه، ويجب مراجعته قبل أي خطوة.",
+        },
+        { type: "h2", text: "متى يكون التغيير هو القرار الصحيح؟" },
+        {
+          type: "ul",
+          items: [
+            "مشكلات تؤثر على العمل اليومي بقيت دون حل لفترة طويلة رغم المتابعة.",
+            "لا توجد قناة دعم واضحة، أو لا يوجد زمن استجابة متفق عليه.",
+            "تطوير أو إضافات متفق عليها لم تُسلَّم، دون جدول زمني مقنع.",
+            "الشريك لا يملك خبرة في قطاعك أو في متطلبات الفوترة الإلكترونية السعودية.",
+            "تحتاج ترقية الإصدار، والشريك الحالي لا يستطيع تنفيذها أو يؤجلها باستمرار.",
+          ],
+        },
+        {
+          type: "note",
+          text: "قبل التغيير، جرّب محادثة صريحة مع الشريك الحالي بقائمة مكتوبة بالمشكلات ومواعيد متوقعة. كثير من العلاقات تتحسن بعد هذه المحادثة، وإن لم تتحسن فستكون قد وثّقت الأسباب.",
+        },
+        { type: "h2", text: "قبل أي إشعار: ما يجب أن تستلمه" },
+        {
+          type: "p",
+          text: "هذه أهم مرحلة في الانتقال كله. استلم هذه العناصر وتحقق منها وأنت ما زلت على علاقة جيدة بالشريك الحالي، وليس بعد إرسال الإشعار.",
+        },
+        {
+          type: "table",
+          head: ["العنصر", "لماذا يهم", "كيف تتحقق"],
+          rows: [
+            ["نسخة احتياطية كاملة لقاعدة البيانات مع الملفات المرفقة", "هي بياناتك كلها: العملاء والفواتير والمخزون والمستندات", "استعدها على بيئة تجريبية وافتحها، ولا تكتفِ بوجود الملف"],
+            ["الشيفرة المصدرية لكل الوحدات المخصصة", "بدونها لا يستطيع أي شريك جديد صيانة التعديلات أو ترقيتها", "مستودع يملكه حساب شركتك، وليس حساب الشريك"],
+            ["صلاحيات المدير", "لإدارة المستخدمين والإعدادات بنفسك", "سجّل الدخول بحساب مدير باسم شركتك"],
+            ["الوصول إلى الاستضافة", "Odoo.sh أو الخادم الخاص هو مكان تشغيل نظامك", "مالك المشروع أو الخادم حساب تابع لشركتك"],
+            ["مفاتيح التكاملات", "منصات البيع والدفع والشحن والبريد ومنصة فاتورة", "قائمة بكل تكامل وأين تُدار مفاتيحه"],
+            ["الإضافات المدفوعة", "إضافات متجر Odoo مرتبطة بالحساب الذي اشتراها", "اعرف الحساب، واطلب نقلها أو إعادة شرائها"],
+            ["التوثيق والطلبات المفتوحة", "لكي لا يبدأ الشريك الجديد من الصفر", "قائمة التخصيصات وسبب كل منها، والمهام غير المكتملة"],
+          ],
+          caption: "قائمة الاستلام قبل تغيير شريك Odoo",
+        },
+        { type: "h2", text: "راجع عقدك مع الشريك الحالي" },
+        {
+          type: "ul",
+          items: [
+            "مدة الإشعار المطلوبة لإنهاء عقد الخدمة أو الدعم.",
+            "الفواتير المستحقة أو الساعات المدفوعة مقدماً وغير المستخدمة.",
+            "ملكية الشيفرة المخصصة: هل نص العقد على انتقالها إليك بعد السداد؟",
+            "الأعمال الجارية: ما الذي سيُسلَّم قبل الانتقال وما الذي سيتوقف.",
+          ],
+        },
+        {
+          type: "p",
+          text: "إن كان العقد غامضاً في ملكية الشيفرة، فاتفق على ذلك كتابياً مع الشريك قبل الانتقال. وللمسائل التعاقدية المعقدة، استشر مستشاراً قانونياً.",
+        },
+        { type: "h2", text: "خطوات الانتقال بالترتيب" },
+        {
+          type: "ol",
+          items: [
+            "اجمع العناصر في الجدول أعلاه، واستعد النسخة الاحتياطية على بيئة تجريبية للتأكد من سلامتها.",
+            "امنح الشريك الجديد صلاحية مؤقتة محدودة، بعد توقيع اتفاقية سرية، ليراجع النظام ويقدّر حالته.",
+            "اتفق مع الشريك الحالي على خطة تسليم ومدة انتقال واضحة.",
+            "أرسل إشعاراً مكتوباً إلى Odoo بتغيير الشريك، عبر مدير حسابك في Odoo، قبل 30 يوماً على الأقل.",
+            "بعد اكتمال التسليم، غيّر كلمات مرور حسابات المدير، وألغِ صلاحيات الشريك السابق على النظام والاستضافة والمستودع.",
+            "جدّد مفاتيح التكاملات الحساسة، مثل الدفع والبريد، إن كان الشريك السابق يملك نسخة منها.",
+            "راجع الطلبات المفتوحة مع الشريك الجديد، ورتّبها حسب أثرها على العمل.",
+            "خصص الشهر الأول للاستقرار والإصلاحات، قبل البدء في تطوير جديد أو ترقية.",
+          ],
+        },
+        { type: "h2", text: "ما يختلف حسب نوع الاستضافة" },
+        {
+          type: "table",
+          head: ["الاستضافة", "النسخة الاحتياطية", "الشيفرة المخصصة", "انتبه إلى"],
+          rows: [
+            ["Odoo Online", "من صفحة إدارة قواعد البيانات في حسابك على odoo.com", "لا توجد وحدات برمجية مخصصة، فالتخصيص عبر الإعدادات وStudio", "أن يكون الحساب المالك للاشتراك باسم شركتك"],
+            ["Odoo.sh", "من تبويب النسخ الاحتياطية في المشروع", "في مستودع GitHub مرتبط بالمشروع", "أن يكون مالك المستودع ومالك المشروع حسابين تابعين لشركتك"],
+            ["خادم خاص", "نسخة من قاعدة البيانات ومجلد الملفات المرفقة", "على الخادم أو في مستودع منفصل", "صلاحيات الخادم، والنطاق، وشهادات الأمان، وجدولة النسخ الاحتياطي"],
+          ],
+        },
+        { type: "h2", text: "أخطاء تكلّف الشركات بياناتها" },
+        {
+          type: "ul",
+          items: [
+            "إلغاء صلاحيات الشريك السابق قبل استلام النسخة الاحتياطية والشيفرة.",
+            "قبول الشيفرة في مستودع يملكه الشريك، بدل نقل الملكية إلى شركتك.",
+            "الاكتفاء بوجود ملف النسخة الاحتياطية دون تجربة استعادته.",
+            "تنفيذ الانتقال في فترة إقفال الشهر أو قرب موعد موجة الفوترة الإلكترونية.",
+            "الجمع بين تغيير الشريك وترقية الإصدار في الوقت نفسه، فإذا ظهرت مشكلة صعب تحديد سببها.",
+          ],
+        },
+        {
+          type: "note",
+          text: "نساعد الشركات التي تستخدم Odoo في مراجعة أنظمتها وحل مشكلاتها، وفي تنظيم الانتقال عندما تقرر تغيير الشريك. نبدأ بجلسة مراجعة مجانية، ونتعامل مع الشريك السابق باحترام، فهدفنا استقرار نظامك.",
+        },
+      ],
+    },
+    en: {
+      title: "How to change your Odoo partner without losing data or disrupting operations",
+      seoTitle: "Changing your Odoo partner: steps and handover checklist",
+      description:
+        "A practical guide to changing your Odoo partner: what Odoo's official agreement says, what to receive from your current partner, the switch steps by hosting type, and the mistakes that cost companies their data.",
+      category: "System management",
+      readMinutes: 7,
+      body: [
+        {
+          type: "p",
+          text: "An Odoo implementation is a long relationship with the partner who delivered it. Sometimes that relationship doesn't work: fix requests open for weeks, stalled development or lost contact. Many companies hesitate to change partner for fear of losing their data and customisations. The good news is that switching is possible and orderly, if it is done in the right order.",
+        },
+        { type: "h2", text: "Are you allowed to change your Odoo partner?" },
+        {
+          type: "p",
+          text: "Yes. The Odoo Enterprise Subscription Agreement defines a partner as a third party chosen by the customer, and states that the customer may switch partners or work with Odoo directly, subject to prior notice. Clause 6.1 sets that notice: written notice to Odoo 30 days before changing the main point of contact to another Odoo partner.",
+        },
+        {
+          type: "p",
+          text: "In other words, your Odoo subscription is a contract between your company and Odoo, and the partner is your service provider. Your contract with the partner, if any, is separate and has its own terms, so review it before taking any step.",
+        },
+        { type: "h2", text: "When is switching the right call?" },
+        {
+          type: "ul",
+          items: [
+            "Issues affecting daily operations have stayed unresolved for a long time despite follow-up.",
+            "There is no clear support channel or agreed response time.",
+            "Agreed development or add-ons were not delivered, with no credible timeline.",
+            "The partner lacks experience in your sector or in Saudi e-invoicing requirements.",
+            "You need a version upgrade that the current partner cannot deliver or keeps postponing.",
+          ],
+        },
+        {
+          type: "note",
+          text: "Before switching, have a frank conversation with your current partner, with a written list of issues and expected dates. Many relationships improve after that conversation; if not, you will have documented the reasons.",
+        },
+        { type: "h2", text: "Before any notice: what you must receive" },
+        {
+          type: "p",
+          text: "This is the most important stage of the whole switch. Receive and verify these items while you are still on good terms with the current partner, not after sending notice.",
+        },
+        {
+          type: "table",
+          head: ["Item", "Why it matters", "How to verify"],
+          rows: [
+            ["A full database backup including attachments", "It is all your data: customers, invoices, stock and documents", "Restore it on a test environment and open it; a file alone proves nothing"],
+            ["Source code for every custom module", "Without it no new partner can maintain or upgrade your customisations", "A repository owned by your company's account, not the partner's"],
+            ["Administrator access", "To manage users and settings yourself", "Log in with an admin account in your company's name"],
+            ["Hosting access", "Odoo.sh or your own server is where your system runs", "The project or server owner is an account your company controls"],
+            ["Integration keys", "Marketplaces, payments, couriers, email and the Fatoora platform", "A list of every integration and where its keys are managed"],
+            ["Paid add-ons", "Odoo Apps purchases are tied to the account that bought them", "Know the account; ask for a transfer or repurchase"],
+            ["Documentation and open requests", "So the new partner doesn't start from zero", "A list of customisations and why each exists, plus unfinished tasks"],
+          ],
+          caption: "Handover checklist before changing your Odoo partner",
+        },
+        { type: "h2", text: "Review your contract with the current partner" },
+        {
+          type: "ul",
+          items: [
+            "The notice period required to end the service or support contract.",
+            "Outstanding invoices, or prepaid hours not yet used.",
+            "Ownership of custom code: does the contract transfer it to you once paid?",
+            "Work in progress: what will be delivered before the switch and what will stop.",
+          ],
+        },
+        {
+          type: "p",
+          text: "If the contract is unclear about code ownership, agree on it in writing with the partner before switching. For complex contractual questions, consult a legal adviser.",
+        },
+        { type: "h2", text: "The switch, step by step" },
+        {
+          type: "ol",
+          items: [
+            "Collect the items in the table above, and restore the backup on a test environment to confirm it is sound.",
+            "Give the new partner limited, temporary access, after signing an NDA, to review the system and assess its state.",
+            "Agree a handover plan and a clear transition period with the current partner.",
+            "Send written notice of the partner change to Odoo, through your Odoo account manager, at least 30 days ahead.",
+            "Once the handover is complete, change admin passwords and remove the previous partner's access to the system, hosting and repository.",
+            "Rotate sensitive integration keys, such as payments and email, if the previous partner holds a copy.",
+            "Review open requests with the new partner and rank them by business impact.",
+            "Reserve the first month for stabilisation and fixes before new development or an upgrade.",
+          ],
+        },
+        { type: "h2", text: "What differs by hosting type" },
+        {
+          type: "table",
+          head: ["Hosting", "Backup", "Custom code", "Watch out for"],
+          rows: [
+            ["Odoo Online", "From the database management page of your odoo.com account", "No custom code modules; customisation is through settings and Studio", "The account that owns the subscription is in your company's name"],
+            ["Odoo.sh", "From the project's Backups tab", "In the GitHub repository linked to the project", "Both the repository owner and the project owner are your company's accounts"],
+            ["Own server", "A database dump plus the filestore folder", "On the server or in a separate repository", "Server access, domain, SSL certificates and backup scheduling"],
+          ],
+        },
+        { type: "h2", text: "Mistakes that cost companies their data" },
+        {
+          type: "ul",
+          items: [
+            "Removing the previous partner's access before receiving the backup and code.",
+            "Accepting code in a repository the partner owns instead of transferring ownership to your company.",
+            "Relying on a backup file without testing a restore.",
+            "Switching during month-end close or near your e-invoicing wave deadline.",
+            "Changing partner and upgrading the version at the same time, so any problem is hard to trace.",
+          ],
+        },
+        {
+          type: "note",
+          text: "We help companies already running Odoo review their systems and fix their issues, and organise the switch when they decide to change partner. We start with a free review session and treat the previous partner with respect; our goal is a stable system.",
+        },
+      ],
+    },
+  },
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
