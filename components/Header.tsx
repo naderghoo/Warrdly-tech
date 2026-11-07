@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Dict } from "@/content/ar";
 import { getCap } from "@/content/capabilities";
 import { getExisting } from "@/content/existing";
+import { getCalc } from "@/content/calculator";
 import type { Locale } from "@/content/i18n";
 import { Icon } from "./Icon";
 import { site } from "@/content/site";
@@ -150,6 +151,9 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
                       <Link href={`${base}/addons`} className="text-sm font-semibold text-plum hover:text-plum-dark">
                         {cap.nav.addons}
                       </Link>
+                      <Link href={`${base}/odoo-cost-calculator`} className="text-sm font-semibold text-plum hover:text-plum-dark">
+                        {getCalc(locale).nav}
+                      </Link>
                       <Link href={`${base}/why-odoo`} className="text-sm font-semibold text-plum hover:text-plum-dark">
                         {locale === "ar" ? "لماذا Odoo" : "Why Odoo"}
                       </Link>
@@ -216,6 +220,10 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
               <Link href={`${base}/why-odoo`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
                 <Icon name="globe" size={20} stroke={1.8} />
                 {locale === "ar" ? "لماذا Odoo" : "Why Odoo"}
+              </Link>
+              <Link href={`${base}/odoo-cost-calculator`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
+                <Icon name="calendar" size={20} stroke={1.8} />
+                {getCalc(locale).nav}
               </Link>
               <Link href={`${base}/assessment`} className="flex items-center gap-3 py-2.5 text-base font-semibold text-plum">
                 <Icon name="check" size={20} stroke={2} />

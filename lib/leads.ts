@@ -14,8 +14,13 @@ export type Lead = {
   assessment?: string;
 };
 
+const SOURCE_LABEL: Record<string, string> = {
+  "readiness-assessment": "اختبار الجاهزية",
+  "cost-calculator": "حاسبة التكلفة",
+};
+
 const subject = (lead: Lead) =>
-  [lead.source === "readiness-assessment" ? "اختبار الجاهزية" : "طلب استشارة", lead.company, lead.name, lead.phone]
+  [SOURCE_LABEL[lead.source || ""] ?? "طلب استشارة", lead.company, lead.name, lead.phone]
     .filter(Boolean)
     .join(" - ");
 
@@ -35,7 +40,15 @@ function describe(lead: Lead) {
     `المصدر / Source: ${lead.source || "contact-form"}`,
     "",
     lead.message || "",
-    ...(lead.assessment ? ["", "----- اختبار الجاهزية / Readiness assessment -----", lead.assessment] : []),
+    ...(lead.assessment
+      ? [
+          "",
+          lead.source === "cost-calculator"
+            ? "----- حاسبة التكلفة / Cost calculator -----"
+            : "----- اختبار الجاهزية / Readiness assessment -----",
+          lead.assessment,
+        ]
+      : []),
   ].join("\n");
 }
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Dict } from "@/content/ar";
 import { getCap } from "@/content/capabilities";
 import { getExisting } from "@/content/existing";
+import { getCalc } from "@/content/calculator";
 import type { Locale } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -41,6 +42,7 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
             <Link href={`${base}/services`} className="hover:text-white">{locale === "ar" ? "الخدمات التقنية" : "Technology services"}</Link>
             <Link href={`${base}/zatca`} className="hover:text-white">{dict.nav.zatca}</Link>
             <Link href={`${base}/blog`} className="hover:text-white">{locale === "ar" ? "المدونة" : "Blog"}</Link>
+            <Link href={`${base}/odoo-cost-calculator`} className="hover:text-white">{getCalc(locale).nav}</Link>
             <Link href={`${base}/assessment`} className="hover:text-white">{locale === "ar" ? "اختبار الجاهزية" : "Readiness test"}</Link>
             <Link href={`${base}#packages`} className="hover:text-white">{dict.nav.packages}</Link>
             <Link href={`${base}/contact`} className="hover:text-white">{dict.nav.contact}</Link>

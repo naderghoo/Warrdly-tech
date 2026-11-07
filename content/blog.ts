@@ -418,7 +418,7 @@ export const posts: Post[] = [
   {
     slug: "odoo-cost-saudi-arabia",
     date: "2026-11-05",
-    related: { label: { ar: "الباقات والاستشارة المجانية", en: "Packages and free consultation" }, href: "/contact" },
+    related: { label: { ar: "احسب تكلفة اشتراك Odoo لشركتك", en: "Calculate your Odoo subscription cost" }, href: "/odoo-cost-calculator" },
     ar: {
       title: "كم تكلفة Odoo في السعودية؟ دليل واضح لميزانية الاشتراك والتطبيق",
       seoTitle: "سعر Odoo في السعودية 2026: الأسعار الرسمية وما يحدد التكلفة",
