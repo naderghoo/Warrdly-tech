@@ -241,10 +241,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* 7 ── Trust & confidentiality + how we work */}
       <section id="trust" className="scroll-mt-24 bg-transparent">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
-          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.1fr_1fr]">
+          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
             <SectionHead eyebrow={d.caseStudy.eyebrow} title={d.caseStudy.title} />
-            <div className="flex flex-col gap-3">
-              <p className="text-lg text-muted">{d.caseStudy.text}</p>
+            <div className="flex flex-col gap-3 border-s-2 border-plum/25 ps-6 lg:mb-1.5">
+              <p className="text-[17px] leading-[1.9] text-muted">{d.caseStudy.text}</p>
               <div>
                 <TextLink href={`${base}/contact`}>{d.caseStudy.cta}</TextLink>
               </div>

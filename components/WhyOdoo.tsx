@@ -32,13 +32,13 @@ export function WhyOdoo({
       {/* ---------- Why Odoo: intro, key figures, advantages ---------- */}
       <section id="why-odoo" className="scroll-mt-24 bg-transparent">
         <Container className="flex flex-col gap-12 py-20 sm:py-24">
-          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.1fr_1fr]">
+          <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
             <div className="flex flex-col gap-3">
               <span className="accent-line" aria-hidden="true" />
               <Eyebrow>{c.eyebrow}</Eyebrow>
-              <Title className="text-3xl font-bold leading-snug text-ink sm:text-[40px]">{c.title}</Title>
+              <Title className="text-balance text-3xl font-bold leading-snug text-ink sm:text-[40px]">{c.title}</Title>
             </div>
-            <p className="text-lg text-muted">{c.intro}</p>
+            <p className="border-s-2 border-plum/25 ps-6 text-[17px] leading-[1.9] text-muted lg:mb-1.5">{c.intro}</p>
           </div>
 
           {/* Key figures: one formal band with dividers */}
