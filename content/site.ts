@@ -18,6 +18,8 @@ export const site = {
 
   /** رمز إحصاءات Cloudflare (Web Analytics) — ليس سراً، يظهر في كود الصفحة. فارغ = معطّل */
   cfAnalyticsToken: "16d6891bfdb841d8b4be4e06e4126da6",
+  // Microsoft Clarity (heatmaps + anonymised session recordings), project for tech.warrdly.com
+  clarityId: "z9zesvghfp",
 
   /** بوابة العملاء في Odoo (المشاريع والمهام والفواتير والتذاكر) */
   portalUrl: "https://warrdly.odoo.com/my",
