@@ -51,6 +51,5 @@ export const site = {
    */
   stats: [] as { value: string; ar: string; en: string }[],
 
-  /** أسعار الباقات بالريال. فارغ = يظهر "اطلب عرض سعر" */
-  prices: { starter: "", growth: "" },
+  // أسعار الباقات وخدماتها الإضافية في content/ar.ts و content/en.ts (packages)
 };

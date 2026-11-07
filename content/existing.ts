@@ -83,7 +83,7 @@ export const existingAr = {
     },
     {
       q: "ما الفرق بين جلسة المراجعة المجانية والفحص الشامل؟",
-      a: "الجلسة المجانية 30 دقيقة نحدد فيها أهم المشكلات معك. أما الفحص الشامل فمراجعة مفصّلة للنظام بتقرير مكتوب، ويُسعَّر حسب حجم النظام.",
+      a: "الجلسة المجانية 30 دقيقة نحدد فيها أهم المشكلات معك. أما الفحص الشامل فمراجعة مفصّلة للنظام بتقرير مكتوب وخطة إصلاح، بسعر ثابت 3,500 ر.س يُخصم إذا نفّذت الإصلاح معنا خلال 30 يوماً.",
     },
   ],
   homeBand: {
@@ -180,7 +180,7 @@ export const existingEn: typeof existingAr = {
     },
     {
       q: "What's the difference between the free review and the full audit?",
-      a: "The free session is 30 minutes to identify your main issues together. The full audit is a detailed review with a written report, priced by system size.",
+      a: "The free session is 30 minutes to identify your main issues together. The full audit is a detailed review with a written report and fix plan, at a fixed SAR 3,500, credited if you fix with us within 30 days.",
     },
   ],
   homeBand: {

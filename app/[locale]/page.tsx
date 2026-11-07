@@ -292,27 +292,34 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-3">
             {d.packages.tiers.map((t) => {
               const featured = t.key === "growth";
-              const price =
-                t.key === "enterprise"
-                  ? d.packages.custom
-                  : site.prices[t.key as "starter" | "growth"]
-                    ? `${site.prices[t.key as "starter" | "growth"]} ${d.packages.currency}`
-                    : d.packages.quote;
+              const enterprise = t.key === "enterprise";
               return (
                 <div
                   key={t.key}
-                  className={`flex flex-col gap-4.5 rounded-xl p-8 ${featured ? "sheen-edge bg-ink text-white" : "border border-line bg-white"}`}
+                  className={`flex flex-col gap-5 rounded-2xl p-8 ${featured ? "sheen-edge bg-ink text-white lg:-my-3 lg:py-11" : "border border-line bg-white"}`}
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-[22px] font-bold">{t.name}</h3>
                     {featured && <span className="rounded bg-gold px-2.5 py-1 text-[12px] font-bold text-ink">{d.packages.popular}</span>}
                   </div>
-                  <p className={`text-[15px] ${featured ? "text-mist-2" : "text-muted"}`}>{t.desc}</p>
-                  <p className="border-b border-current/10 pb-4 text-[24px] font-bold">{price}</p>
+                  <p className={`min-h-[48px] text-[15px] leading-relaxed ${featured ? "text-mist-2" : "text-muted"}`}>{t.desc}</p>
+                  <div className={`flex flex-col gap-1 border-b pb-5 ${featured ? "border-white/10" : "border-line"}`}>
+                    <span className={`text-[13px] font-semibold ${featured ? "text-mist-2" : "text-muted-2"}`}>
+                      {enterprise ? d.packages.usually : d.packages.from}
+                    </span>
+                    <span className="flex items-baseline gap-1.5">
+                      <span className={`text-[40px] font-bold leading-none tabular-nums ${featured ? "text-gold" : "text-ink"}`}>{t.price}</span>
+                      <span className="text-base font-semibold opacity-80">{d.packages.currency}</span>
+                    </span>
+                    <span className={`mt-2 inline-flex items-center gap-1.5 text-[14px] ${featured ? "text-mist-2" : "text-muted"}`}>
+                      <Icon name="calendar" size={16} stroke={1.9} />
+                      {d.packages.duration}: <strong className={featured ? "text-white" : "text-ink"}>{t.duration}</strong>
+                    </span>
+                  </div>
                   <ul className="flex flex-col gap-2.5 text-[15px]">
                     {t.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2">
-                        <Icon name="check" size={17} stroke={2.4} className={featured ? "text-gold" : "text-plum"} />
+                      <li key={f} className="flex items-start gap-2">
+                        <Icon name="check" size={17} stroke={2.4} className={`mt-1 flex-none ${featured ? "text-gold" : "text-plum"}`} />
                         {f}
                       </li>
                     ))}
@@ -320,14 +327,59 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   <Link
                     href={`${base}/contact`}
                     className={`mt-auto inline-flex min-h-[48px] items-center justify-center rounded-lg font-semibold ${
-                      featured ? "bg-plum text-white" : "border border-line-2 text-ink hover:border-plum hover:text-plum"
+                      featured ? "bg-gold text-ink hover:bg-[#F5B95A]" : "border border-line-2 text-ink hover:border-plum hover:text-plum"
                     }`}
                   >
-                    {t.key === "enterprise" ? d.packages.talk : d.packages.quote}
+                    {enterprise ? d.packages.talk : d.packages.quote}
                   </Link>
                 </div>
               );
             })}
+          </div>
+
+          {/* Guarantee + payment terms */}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {[
+              { icon: "shield", title: d.packages.guaranteeTitle, text: d.packages.guarantee },
+              { icon: "calendar", title: d.packages.paymentTitle, text: d.packages.payment },
+            ].map((b) => (
+              <div key={b.title} className="flex items-start gap-4 rounded-2xl border border-line bg-paper p-6">
+                <span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-plum text-white">
+                  <Icon name={b.icon} size={21} stroke={1.8} />
+                </span>
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-[17px] font-bold text-ink">{b.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-muted">{b.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Add-on services */}
+          <div className="flex flex-col gap-5">
+            <h3 className="text-2xl font-bold text-ink">{d.packages.addonsTitle}</h3>
+            <ul className="divide-y divide-line overflow-hidden rounded-2xl border border-line">
+              {d.packages.addons.map((a) => (
+                <li key={a.name} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-6">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[16px] font-bold text-ink">{a.name}</span>
+                    <span className="text-[14px] leading-relaxed text-muted">{a.desc}</span>
+                  </div>
+                  <span className="flex flex-none items-baseline gap-1.5 whitespace-nowrap">
+                    {a.unit === "from" && <span className="text-[13px] text-muted-2">{d.packages.from}</span>}
+                    <span className="text-[22px] font-bold tabular-nums text-plum-dark">{a.price}</span>
+                    <span className="text-[14px] font-semibold text-muted">
+                      {d.packages.currency}
+                      {a.unit === "month" ? ` ${d.packages.perMonth}` : a.unit === "hour" ? ` ${d.packages.perHour}` : ""}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px] text-muted-2">
+              {d.packages.note}
+              <TextLink href={`${base}/odoo-cost-calculator`}>{d.packages.calcLink}</TextLink>
+            </p>
           </div>
         </Container>
       </section>

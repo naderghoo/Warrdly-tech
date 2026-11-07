@@ -73,6 +73,22 @@ function orgJsonLd(locale: "ar" | "en") {
       },
     ],
     ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: getDict(locale).packages.eyebrow,
+      itemListElement: getDict(locale).packages.tiers.map((t) => ({
+        "@type": "Offer",
+        name: t.name,
+        description: t.desc,
+        url: `${site.url}/${locale}#packages`,
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: Number(t.price.replace(/,/g, "")),
+          priceCurrency: "SAR",
+          valueAddedTaxIncluded: false,
+        },
+      })),
+    },
     ...(site.email ? { email: site.email } : {}),
     ...(site.whatsapp ? { telephone: `+${site.whatsapp}` } : {}),
   };
