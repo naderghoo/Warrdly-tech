@@ -9,6 +9,8 @@ export type Block =
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
   | { type: "note"; text: string }
+  /** Internal link (path after the locale, e.g. "/zatca", or "#packages" for the home page section) or full external URL */
+  | { type: "link"; text: string; href: string }
   | { type: "table"; head: string[]; rows: string[][]; caption?: string };
 
 export type PostContent = {
@@ -420,23 +422,28 @@ export const posts: Post[] = [
   {
     slug: "odoo-cost-saudi-arabia",
     date: "2026-11-05",
+    updated: "2026-11-23",
     related: { label: { ar: "احسب تكلفة اشتراك Odoo لشركتك", en: "Calculate your Odoo subscription cost" }, href: "/odoo-cost-calculator" },
     ar: {
-      title: "كم تكلفة Odoo في السعودية؟ دليل واضح لميزانية الاشتراك والتطبيق",
+      title: "كم تكلفة أودو Odoo في السعودية؟ دليل كامل لميزانية الاشتراك والتطبيق والدعم",
       seoTitle: "سعر أودو Odoo في السعودية 2026: الأسعار وما يحدد التكلفة",
       description:
-        "أسعار Odoo الرسمية في السعودية 2026: باقة Standard من 13.50 دولاراً وCustom من 25.50 دولاراً للمستخدم شهرياً، مع تكلفة التطبيق والدعم وكيف تقدّر ميزانيتك.",
+        "أسعار أودو (Odoo) الرسمية في السعودية 2026: Standard من 13.50 دولاراً وCustom من 25.50 دولاراً للمستخدم شهرياً، مع أمثلة ميزانية بالريال وتكلفة التطبيق والربط مع فاتورة والدعم.",
       category: "Odoo",
-      readMinutes: 6,
+      readMinutes: 10,
       body: [
         {
           type: "p",
-          text: "«كم سعر Odoo؟» هو أول سؤال يطرحه كل مدير يفكر في نظام ERP، والجواب الدقيق يعتمد على ثلاثة بنود منفصلة: اشتراك Odoo نفسه، وتكلفة التطبيق والتهيئة، والدعم بعد الإطلاق. الخلط بين هذه البنود هو السبب الأكثر شيوعاً لتجاوز الميزانية.",
+          text: "«كم سعر أودو؟» هو أول سؤال يطرحه كل مدير يفكر في نظام ERP. والجواب الدقيق لا يكون رقماً واحداً، بل ثلاثة بنود منفصلة: اشتراك Odoo نفسه، وتكلفة التطبيق والتهيئة التي تدفعها للشريك، والدعم بعد الإطلاق. الخلط بين هذه البنود هو السبب الأكثر شيوعاً لتجاوز الميزانية، أو لاختيار عرض يبدو رخيصاً ثم تتضاعف تكلفته بعد التشغيل.",
+        },
+        {
+          type: "p",
+          text: "في هذا الدليل نشرح كل بند بالأرقام الرسمية المعلنة للسعودية، ونعطيك أمثلة ميزانية بالريال لشركات بأحجام مختلفة، ونذكر التكاليف التي لا تظهر في العروض عادة.",
         },
         { type: "h2", text: "البند الأول: اشتراك Odoo" },
         {
           type: "p",
-          text: "تبيع Odoo اشتراكها بالمستخدم شهرياً، والسعر يختلف حسب الدولة. هذه الأسعار الرسمية المعروضة للسعودية على صفحة أسعار Odoo بالدولار الأمريكي، في نوفمبر 2026:",
+          text: "تبيع Odoo اشتراكها بالمستخدم شهرياً، والسعر يختلف حسب الدولة. هذه الأسعار المعروضة للسعودية على صفحة الأسعار الرسمية بالدولار الأمريكي، كما راجعناها في 23 نوفمبر 2026:",
         },
         {
           type: "table",
@@ -445,64 +452,148 @@ export const posts: Post[] = [
             ["تطبيق واحد مجاني", "0 دولار", "0 دولار", "0 دولار"],
             ["قياسي (Standard)", "13.50 دولار ≈ 50.6 ريال", "16.90 دولار ≈ 63.4 ريال", "16.90 دولار (21.10 بعد العرض)"],
             ["مخصص (Custom)", "25.50 دولار ≈ 95.6 ريال", "32.00 دولار ≈ 120 ريال", "32.00 دولار (40.00 بعد العرض)"],
+            ["مستخدم محدود (Light User)", "5.90 دولار ≈ 22.1 ريال", "بعرض سعر من Odoo", "بعرض سعر من Odoo"],
           ],
-          caption: "السعر للمستخدم الواحد شهرياً. التحويل إلى الريال بسعر 3.75. المصدر: odoo.com/ar/pricing، نوفمبر 2026. الأسعار قابلة للتغيير، وتأكد من ضريبة القيمة المضافة عند الطلب.",
+          caption: "السعر للمستخدم الواحد شهرياً، قبل ضريبة القيمة المضافة. التحويل إلى الريال بسعر 3.75. المصدر: صفحة أسعار Odoo الرسمية، 23 نوفمبر 2026. الأسعار قابلة للتغيير.",
         },
-        {
-          type: "p",
-          text: "مثال: شركة بعشرة مستخدمين على باقة Custom بالدفع السنوي تدفع نحو 3,060 دولاراً (≈ 11,475 ريالاً) في السنة الأولى، ونحو 3,840 دولاراً (≈ 14,400 ريال) سنوياً بعد التجديد. وعلى باقة Standard: نحو 1,620 دولاراً (≈ 6,075 ريالاً) ثم 2,028 دولاراً (≈ 7,605 ريالات).",
-        },
+        { type: "link", text: "صفحة أسعار Odoo الرسمية (odoo.com/ar/pricing)", href: "https://www.odoo.com/ar/pricing" },
         {
           type: "ul",
           items: [
-            "تطبيق واحد مجاناً: تطبيق واحد فقط بعدد مستخدمين غير محدود على Odoo Online، ويناسب التجربة لا التشغيل الكامل.",
-            "باقة Standard: كل تطبيقات Odoo على السحابة (Odoo Online)، ولا تسمح بتثبيت وحدات برمجية مخصصة.",
-            "باقة Custom: تضيف الاستوديو والذكاء الاصطناعي، وتعدد الشركات، والواجهة البرمجية الخارجية (API)، والاستضافة على Odoo.sh أو على خوادمك، وتثبيت وحدات مخصصة وتكاملات خاصة.",
-            "المستخدم هو من يدخل النظام فعلياً؛ أما العملاء والموردون الذين يستخدمون بوابة العملاء فلا يُحتسبون مستخدمين.",
+            "تطبيق واحد مجاني: تطبيق واحد فقط بعدد مستخدمين غير محدود على Odoo Online. يناسب التجربة، لا تشغيل شركة كاملة.",
+            "قياسي (Standard): كل تطبيقات Odoo على السحابة (Odoo Online)، مع الاستضافة والصيانة والدعم، دون وحدات برمجية مخصصة.",
+            "مخصص (Custom): يضيف الاستوديو والذكاء الاصطناعي، وتعدد الشركات في قاعدة بيانات واحدة، والواجهة البرمجية الخارجية (API)، وإمكانية الاستضافة على Odoo.sh أو على خوادمك، وتثبيت وحدات مخصصة.",
+            "المستخدم المحدود: حساب بصلاحيات محدودة مثل الإجازات والنفقات والحضور وماسح الباركود في المستودع وشاشة نقاط البيع والتصنيع. تمنحه Odoo عبر مستشاري أعمالها بعرض سعر خاص.",
           ],
         },
         {
           type: "note",
-          text: "انتبه لخصم السنة الأولى: سعر الاشتراك في السنة الأولى مخفّض للمستخدمين المطلوبين في البداية، ويرتفع عند التجديد بنحو الربع. ابنِ ميزانيتك على سعر التجديد لا على سعر العرض.",
+          text: "انتبه لخصم السنة الأولى: سعر السنة الأولى مخفّض للمستخدمين المطلوبين عند البداية فقط، ويرتفع عند التجديد بنحو الربع. ابنِ ميزانيتك على سعر التجديد لا على سعر العرض.",
+        },
+        { type: "h2", text: "من يُحتسب مستخدماً مدفوعاً؟" },
+        {
+          type: "p",
+          text: "حسب Odoo، المستخدم المدفوع هو من يدخل الواجهة الخلفية للنظام لإنشاء المستندات أو عرضها أو تعديلها، مثل موظف المبيعات والمحاسب وأمين المستودع، وحتى المحاسب الخارجي الذي يعمل على حساباتك. أما العملاء والموردون الذين يدخلون البوابة لرؤية فواتيرهم وطلباتهم، وزوار المتجر الإلكتروني، فلا يُحتسبون.",
+        },
+        {
+          type: "p",
+          text: "نقطة يغفل عنها كثيرون: سجل الموظف النشط في تطبيق الموارد البشرية دون حساب مستخدم مرتبط به يُحتسب أيضاً، كمستخدم محدود. لذلك راجع عدد سجلات الموظفين قبل التجديد، ولا تُنشئ حسابات لمن لا يحتاج الدخول فعلاً.",
         },
         { type: "h2", text: "Standard أم Custom؟ القرار الذي يغيّر التكلفة" },
         {
+          type: "table",
+          head: ["تحتاج إلى...", "Standard", "Custom"],
+          rows: [
+            ["المبيعات والمخزون والمحاسبة ونقاط البيع القياسية", "نعم", "نعم"],
+            ["أكثر من شركة في قاعدة بيانات واحدة", "لا", "نعم"],
+            ["تعديل الشاشات والحقول بالاستوديو", "لا", "نعم"],
+            ["ربط برنامج خارجي عبر الواجهة البرمجية (API)", "لا", "نعم"],
+            ["وحدات مخصصة: ربط أمازون ونون وسلة، أو تطبيق خاص للمندوبين", "لا", "نعم"],
+            ["الاستضافة على Odoo.sh أو خوادمك الخاصة", "لا", "نعم"],
+          ],
+          caption: "مزوّدو الدفع وشركات الشحن والمزامنة البنكية المدمجة في Odoo لا تُعدّ واجهة برمجية خارجية، وتعمل على باقة Standard.",
+        },
+        {
           type: "p",
-          text: "أهم سؤال هنا: هل تحتاج وحدات مخصصة أو تكاملات غير موجودة في Odoo القياسي؟ ربط أمازون ونون وسلة، أو اعتماد البيع حسب هامش الربح، أو تطبيق خاص للمندوبين، كلها تتطلب وحدات إضافية، وهذه لا تعمل على باقة Standard. شركات التوزيع والتجارة الإلكترونية تحتاج غالباً باقة Custom، والشركات الصغيرة التي تكفيها المبيعات والمخزون والمحاسبة القياسية تكفيها Standard.",
+          text: "القاعدة العملية: الشركة الصغيرة التي تكفيها المبيعات والمخزون والمحاسبة كما هي تكفيها Standard. أما شركات التوزيع والتجارة الإلكترونية التي تبيع على المنصات، أو المجموعات متعددة الشركات، فتحتاج غالباً Custom. والانتقال من Standard إلى Custom لاحقاً ممكن، لكن الأفضل أن يُحسم القرار قبل التطبيق لأنه يؤثر على تصميم الحل.",
+        },
+        { type: "h2", text: "أين يُستضاف النظام، وهل للاستضافة تكلفة؟" },
+        {
+          type: "ul",
+          items: [
+            "Odoo Online: مشمولة في الباقتين دون تكلفة إضافية، وتتولى Odoo الاستضافة والنسخ الاحتياطي والتحديثات.",
+            "Odoo.sh: منصة استضافة وتطوير للوحدات المخصصة، متاحة مع Custom، ولها تكلفة استضافة منفصلة عن الاشتراك.",
+            "خوادمك الخاصة: متاحة مع Custom، وتتحمل أنت تكلفة الخادم وإدارته وأمنه ونسخه الاحتياطية.",
+          ],
+        },
+        { type: "link", text: "اقرأ: Odoo Online أم Odoo.sh أم خادم خاص؟ أي استضافة تناسب شركتك", href: "/blog/odoo-online-vs-odoo-sh-vs-on-premise" },
+        { type: "h2", text: "أمثلة ميزانية الاشتراك بالريال" },
+        {
+          type: "table",
+          head: ["الشركة", "الباقة", "السنة الأولى", "سنوياً بعد التجديد"],
+          rows: [
+            ["5 مستخدمين", "Standard", "≈ 3,040 ريال (810 دولار)", "≈ 3,800 ريال (1,014 دولار)"],
+            ["10 مستخدمين", "Custom", "≈ 11,475 ريال (3,060 دولار)", "≈ 14,400 ريال (3,840 دولار)"],
+            ["25 مستخدماً", "Custom", "≈ 28,690 ريال (7,650 دولار)", "≈ 36,000 ريال (9,600 دولار)"],
+          ],
+          caption: "بالدفع السنوي، قبل ضريبة القيمة المضافة (15٪)، ودون المستخدمين المحدودين أو تكلفة Odoo.sh. التحويل بسعر 3.75 ريال للدولار.",
         },
         { type: "h2", text: "البند الثاني: تكلفة التطبيق والتهيئة" },
         {
           type: "p",
-          text: "هذا البند يدفعه العميل لشريك Odoo مقابل تحويل النظام من برنامج عام إلى نظام يعمل على طريقة شركتك. لا يوجد سعر ثابت له، لأنه يعتمد على النطاق، وأهم ما يحدده:",
+          text: "هذا ما تدفعه لشريك Odoo مقابل تحويل النظام من برنامج عام إلى نظام يعمل على طريقة شركتك: تحليل الإجراءات، والتهيئة، وترحيل البيانات، والتكاملات، والتدريب. تذكر Odoo نفسها أن الشركات المتوسطة والكبيرة تعمل عادة مع شريك محلي يدير المشروع. لا يوجد سعر ثابت لهذا البند لأنه يعتمد على النطاق، وأهم ما يحدده:",
         },
         {
           type: "ol",
           items: [
-            "عدد التطبيقات المطلوبة: المبيعات والمخزون والمحاسبة أبسط بكثير من إضافة التصنيع والموارد البشرية ونقاط البيع.",
-            "عدد الفروع والمستودعات والشركات، فكل مستودع وفرع يضيف إعدادات ومسارات.",
+            "عدد التطبيقات: المبيعات والمخزون والمحاسبة أبسط بكثير من إضافة التصنيع والموارد البشرية ونقاط البيع.",
+            "عدد الفروع والمستودعات والشركات، فكل مستودع وفرع يضيف إعدادات ومسارات وصلاحيات.",
             "ترحيل البيانات: نقل الأصناف والعملاء والأرصدة الافتتاحية من نظامك الحالي، وحالة هذه البيانات ونظافتها.",
             "التكاملات: كل منصة بيع أو شركة شحن أو جهاز بصمة يُربط بالنظام.",
             "التخصيص: تقارير خاصة، ونماذج فواتير وعروض أسعار مطبوعة، وسير اعتماد خاص بشركتك.",
-            "الربط مع منصة فاتورة (هيئة الزكاة والضريبة والجمارك)، وعدد نقاط البيع التي تصدر فواتير مبسطة.",
+            "الربط مع منصة فاتورة، وعدد دفاتر المبيعات ونقاط البيع التي تُصدر فواتير.",
             "التدريب: عدد الأقسام والموظفين ومدة التدريب.",
           ],
         },
+        {
+          type: "p",
+          text: "كمرجع، هذه باقات التطبيق المنشورة لدينا بأسعار ثابتة ونطاق مكتوب، قبل ضريبة القيمة المضافة ودون اشتراك Odoo:",
+        },
+        {
+          type: "table",
+          head: ["الباقة", "تناسب", "تبدأ من", "المدة"],
+          rows: [
+            ["انطلاقة", "منشأة صغيرة حتى 5 مستخدمين: مبيعات وفوترة ومحاسبة وربط فاتورة", "9,900 ريال", "3–4 أسابيع"],
+            ["نمو", "توزيع وجملة وتجميل وتجزئة حتى 20 مستخدماً، مع المخزون والمستودعات والمندوبين", "24,900 ريال", "6–8 أسابيع"],
+            ["مؤسسات", "مجموعات متعددة الشركات والفروع، مع تكاملات وتطوير مخصص", "60,000 ريال", "حسب النطاق"],
+          ],
+          caption: "تكامل كل منصة بيع إضافية (سلة أو أمازون أو نون) يبدأ من 4,500 ريال.",
+        },
+        { type: "link", text: "تفاصيل الباقات وشروط الدفع وضمان المدة", href: "#packages" },
+        { type: "h2", text: "الربط مع منصة فاتورة: ما الذي تدفع مقابله؟" },
+        {
+          type: "p",
+          text: "التوطين السعودي في Odoo يدعم المرحلة الثانية من الفوترة الإلكترونية (الربط والتكامل) بشكل أساسي، عبر وحدات جاهزة للفواتير ونقاط البيع. لذلك لا تحتاج برنامجاً وسيطاً مدفوعاً للربط. ما تدفع مقابله فعلاً هو العمل: استكمال بيانات المنشأة والفروع كما تشترطها الهيئة، وتسجيل كل دفتر مبيعات برمز التحقق من بوابة فاتورة، والاختبار في بيئة المحاكاة قبل الإنتاج، وضبط نقاط البيع والفواتير المبسطة.",
+        },
+        {
+          type: "note",
+          text: "بعد إرسال أول فاتورة في بيئة الإنتاج لا يمكن الرجوع إلى بيئة الاختبار، لذلك يجب أن ينتهي الاختبار وتصحيح البيانات قبل التشغيل الفعلي.",
+        },
+        { type: "link", text: "اقرأ: ربط Odoo بمنصة فاتورة، ما الذي تحتاجه منشأتك للمرحلة الثانية؟", href: "/blog/odoo-zatca-fatoora-integration" },
         { type: "h2", text: "البند الثالث: الدعم بعد الإطلاق" },
         {
           type: "p",
-          text: "بعد التشغيل ستحتاج من يجيب عن أسئلة الموظفين، ويعالج الفواتير المرفوضة من منصة فاتورة، ويضيف تقريراً أو يعدّل إجراءً. يُقدَّم الدعم عادة بباقة شهرية بعدد ساعات وزمن استجابة محددين. شركة تعمل بلا دعم بعد الإطلاق تعود غالباً إلى ملفات Excel خلال أشهر.",
+          text: "اشتراك Odoo يشمل دعماً من Odoo نفسها للخصائص القياسية: الأعطال والأسئلة عن طريقة عمل النظام. لكنه لا يشمل تعديل إجراءاتك، أو إضافة تقرير خاص، أو صيانة الوحدات المخصصة والتكاملات، أو تدريب موظف جديد. هذا دور الشريك، ويُقدَّم عادة بباقة شهرية بعدد ساعات وزمن استجابة محددين. لدينا مثلاً باقة أساسية بـ 2,900 ريال شهرياً (8 ساعات ورد خلال يوم عمل)، وباقة متقدمة بـ 5,900 ريال شهرياً (20 ساعة ورد خلال 4 ساعات عمل).",
         },
-        { type: "h2", text: "كيف تقدّر ميزانيتك قبل التعاقد" },
+        {
+          type: "p",
+          text: "شركة تعمل بلا دعم بعد الإطلاق تعود غالباً إلى ملفات Excel خلال أشهر، فيضيع الاستثمار في التطبيق كله.",
+        },
+        { type: "h2", text: "تكاليف لا تظهر في العروض عادة" },
         {
           type: "ul",
           items: [
-            "عدّ المستخدمين الفعليين الذين سيدخلون النظام، لا كل موظفي الشركة.",
-            "حدد التطبيقات التي تحتاجها في السنة الأولى، وأجّل الباقي إلى مرحلة ثانية.",
-            "اكتب قائمة بالتكاملات: منصات البيع، والشحن، والدفع، والبصمة.",
-            "اطلب من الشريك عرضاً يفصل البنود الثلاثة: الاشتراك، والتطبيق، والدعم.",
-            "احسب الاشتراك على سعر التجديد، وأضف هامشاً للمستخدمين الذين ستضيفهم خلال السنة.",
+            "ضريبة القيمة المضافة 15٪ على الاشتراك وعلى خدمات الشريك.",
+            "ارتفاع سعر الاشتراك عند التجديد بعد انتهاء خصم السنة الأولى.",
+            "المستخدمون الذين تضيفهم خلال السنة، وسجلات الموظفين دون حسابات.",
+            "تنظيف البيانات قبل الترحيل إذا كانت الأصناف أو أرصدة العملاء غير دقيقة.",
+            "تكلفة Odoo.sh أو الخادم الخاص إذا احتجت وحدات مخصصة.",
+            "ترقية الوحدات المخصصة عند الانتقال إلى إصدار أحدث من Odoo.",
           ],
         },
+        { type: "link", text: "اقرأ: ترقية Odoo، الخطوات والمدة وما تحتاج معرفته قبل البدء", href: "/blog/odoo-upgrade-guide" },
+        { type: "h2", text: "كيف تقدّر ميزانيتك قبل التعاقد" },
+        {
+          type: "ol",
+          items: [
+            "عدّ المستخدمين الفعليين الذين سيدخلون النظام، لا كل موظفي الشركة، وحدد من يكفيه مستخدم محدود.",
+            "حدد التطبيقات التي تحتاجها في السنة الأولى، وأجّل الباقي إلى مرحلة ثانية.",
+            "اكتب قائمة بالتكاملات: منصات البيع، والشحن، والدفع، والبصمة. وجودها يحسم غالباً اختيار Custom.",
+            "احسب الاشتراك على سعر التجديد، وأضف هامشاً للمستخدمين الذين ستضيفهم خلال السنة.",
+            "اطلب من الشريك عرضاً يفصل البنود الثلاثة: الاشتراك، والتطبيق، والدعم، بنطاق مكتوب ومدة محددة.",
+          ],
+        },
+        { type: "link", text: "احسب تكلفة اشتراك Odoo لشركتك بالحاسبة", href: "/odoo-cost-calculator" },
         {
           type: "note",
           text: "في وردلي تيكنولوجيز نعطيك في الاستشارة المجانية تقديراً أولياً يفصل الاشتراك والتطبيق والدعم، بناءً على عدد مستخدميك وتطبيقاتك وتكاملاتك الفعلية، قبل أي التزام.",
@@ -510,21 +601,21 @@ export const posts: Post[] = [
       ],
     },
     en: {
-      title: "How much does Odoo cost in Saudi Arabia? A clear guide to subscription and implementation budgets",
+      title: "How much does Odoo cost in Saudi Arabia? A complete guide to subscription, implementation and support budgets",
       seoTitle: "Odoo price in Saudi Arabia 2026: official plans and costs",
       description:
-        "Official Odoo prices for Saudi Arabia in 2026: Standard from $13.50 and Custom from $25.50 per user per month, plus implementation and support costs.",
+        "Official Odoo prices for Saudi Arabia in 2026: Standard from $13.50 and Custom from $25.50 per user per month, with SAR budget examples, implementation, ZATCA integration and support costs.",
       category: "Odoo",
-      readMinutes: 6,
+      readMinutes: 9,
       body: [
         {
           type: "p",
-          text: "\"How much is Odoo?\" is the first question every manager asks about an ERP, and the honest answer depends on three separate items: the Odoo subscription itself, implementation and configuration, and support after go-live. Mixing them up is the most common reason budgets overrun.",
+          text: "\"How much is Odoo?\" is the first question every manager asks about an ERP, and the honest answer is not one number but three separate items: the Odoo subscription, the implementation you pay a partner for, and support after go-live. Mixing them up is the most common reason budgets overrun, or why an offer that looks cheap doubles after go-live.",
         },
         { type: "h2", text: "Item one: the Odoo subscription" },
         {
           type: "p",
-          text: "Odoo sells its subscription per user per month, and the price varies by country. These are the official prices shown for Saudi Arabia on Odoo's pricing page, in US dollars, in November 2026:",
+          text: "Odoo sells its subscription per user per month, and the price varies by country. These are the prices shown for Saudi Arabia on Odoo's official pricing page, in US dollars, as checked on 23 November 2026:",
         },
         {
           type: "table",
@@ -533,64 +624,115 @@ export const posts: Post[] = [
             ["One App Free", "$0", "$0", "$0"],
             ["Standard", "$13.50 ≈ SAR 50.6", "$16.90 ≈ SAR 63.4", "$16.90 ($21.10 after offer)"],
             ["Custom", "$25.50 ≈ SAR 95.6", "$32.00 ≈ SAR 120", "$32.00 ($40.00 after offer)"],
+            ["Light User", "$5.90 ≈ SAR 22.1", "Quoted by Odoo", "Quoted by Odoo"],
           ],
-          caption: "Per user per month. Converted at SAR 3.75 per USD. Source: odoo.com/ar/pricing, November 2026. Prices may change; confirm VAT when ordering.",
+          caption: "Per user per month, before VAT. Converted at SAR 3.75 per USD. Source: Odoo's official pricing page, 23 November 2026. Prices may change.",
         },
-        {
-          type: "p",
-          text: "Example: a company with ten users on Custom, billed yearly, pays about $3,060 (≈ SAR 11,475) in year one and about $3,840 (≈ SAR 14,400) a year after renewal. On Standard: about $1,620 (≈ SAR 6,075), then $2,028 (≈ SAR 7,605).",
-        },
+        { type: "link", text: "Odoo's official pricing page", href: "https://www.odoo.com/pricing" },
         {
           type: "ul",
           items: [
-            "One App Free: a single app with unlimited users on Odoo Online, suitable for trying Odoo rather than running the business.",
-            "Standard: all Odoo apps on Odoo Online, without custom modules.",
-            "Custom: adds Studio and AI, multi-company, the external API, hosting on Odoo.sh or your own servers, and custom modules and integrations.",
-            "A user is someone who logs into the system; customers and suppliers using the portal are not counted as users.",
+            "One App Free: a single app with unlimited users on Odoo Online; fine for trying Odoo, not for running a company.",
+            "Standard: all apps on Odoo Online, including hosting, maintenance and support, without custom modules.",
+            "Custom: adds Studio and AI, multi-company, the external API, hosting on Odoo.sh or your own servers, and custom modules.",
+            "Light User: limited access such as time off, expenses, attendance, the inventory barcode app, and the POS and manufacturing shop-floor screens. Odoo offers it through its business advisors on a custom quote.",
           ],
         },
         {
           type: "note",
-          text: "Watch the first-year discount: the first-year price applies to the users ordered at the start and rises at renewal by roughly a quarter. Budget on the renewal price, not the promotional one.",
+          text: "Watch the first-year discount: it applies only to the users ordered at the start, and the price rises at renewal by roughly a quarter. Budget on the renewal price.",
         },
-        { type: "h2", text: "Standard or Custom? The decision that changes the cost" },
+        { type: "h2", text: "Who counts as a paid user?" },
         {
           type: "p",
-          text: "The key question is whether you need custom modules or integrations that standard Odoo doesn't include. Connecting Amazon, noon and Salla, margin-based sales approval, or a dedicated sales-rep app all require extra modules, and these don't run on Standard. Distributors and e-commerce businesses usually need Custom; small companies that only need standard sales, inventory and accounting can stay on Standard.",
+          text: "Anyone who uses Odoo's back end to create, view or edit documents, including an external accountant working on your books. Customers and suppliers using the portal, and e-commerce visitors, are free. Note that an active employee record in the HR app without a linked user account is also billed, as a Light User, so review employee records before renewal.",
         },
-        { type: "h2", text: "Item two: implementation and configuration" },
+        { type: "h2", text: "Standard or Custom?" },
         {
-          type: "p",
-          text: "This is what you pay an Odoo partner to turn a general product into a system that works the way your company does. There's no fixed price, because it depends on scope. The main drivers are:",
-        },
-        {
-          type: "ol",
-          items: [
-            "Number of apps: sales, inventory and accounting are far simpler than adding manufacturing, HR and point of sale.",
-            "Number of branches, warehouses and companies; each adds settings and routes.",
-            "Data migration: moving items, customers and opening balances from your current system, and how clean that data is.",
-            "Integrations: every sales channel, courier or attendance device connected to the system.",
-            "Customisation: special reports, printed invoice and quotation layouts, and approval flows specific to your company.",
-            "Connecting to ZATCA's Fatoora platform, and the number of points of sale issuing simplified invoices.",
-            "Training: number of departments and staff, and training duration.",
+          type: "table",
+          head: ["You need...", "Standard", "Custom"],
+          rows: [
+            ["Standard sales, inventory, accounting and POS", "Yes", "Yes"],
+            ["Several companies in one database", "No", "Yes"],
+            ["Studio customisation", "No", "Yes"],
+            ["An external program connected via the API", "No", "Yes"],
+            ["Custom modules: Amazon, noon and Salla connectors, a sales-rep app", "No", "Yes"],
+            ["Hosting on Odoo.sh or your own servers", "No", "Yes"],
           ],
+          caption: "Payment providers, couriers and bank sync built into Odoo don't count as external API use and work on Standard.",
         },
-        { type: "h2", text: "Item three: support after go-live" },
-        {
-          type: "p",
-          text: "After go-live you'll need someone to answer staff questions, handle invoices rejected by Fatoora, and add a report or adjust a process. Support is usually a monthly package with set hours and response times. Companies that run without support often drift back to Excel within months.",
-        },
-        { type: "h2", text: "How to estimate your budget before signing" },
+        { type: "h2", text: "Hosting" },
         {
           type: "ul",
           items: [
-            "Count the people who will actually log in, not every employee.",
-            "Pick the apps you need in year one and leave the rest for a second phase.",
-            "List your integrations: sales channels, couriers, payments and attendance.",
-            "Ask your partner for a quote that separates subscription, implementation and support.",
-            "Calculate the subscription at the renewal price and allow for users you'll add during the year.",
+            "Odoo Online: included in both plans at no extra cost.",
+            "Odoo.sh: available with Custom, with its own hosting fee on top of the subscription.",
+            "Your own servers: available with Custom; you pay for and manage the server, security and backups.",
           ],
         },
+        { type: "link", text: "Read: Odoo Online vs Odoo.sh vs on-premise", href: "/blog/odoo-online-vs-odoo-sh-vs-on-premise" },
+        { type: "h2", text: "Subscription budget examples in SAR" },
+        {
+          type: "table",
+          head: ["Company", "Plan", "First year", "Yearly after renewal"],
+          rows: [
+            ["5 users", "Standard", "≈ SAR 3,040 ($810)", "≈ SAR 3,800 ($1,014)"],
+            ["10 users", "Custom", "≈ SAR 11,475 ($3,060)", "≈ SAR 14,400 ($3,840)"],
+            ["25 users", "Custom", "≈ SAR 28,690 ($7,650)", "≈ SAR 36,000 ($9,600)"],
+          ],
+          caption: "Billed yearly, before 15% VAT, excluding Light Users and Odoo.sh. SAR 3.75 per USD.",
+        },
+        { type: "h2", text: "Item two: implementation" },
+        {
+          type: "p",
+          text: "This is what you pay a partner to turn Odoo into a system that works the way your company does. Odoo itself notes that mid-sized and larger companies usually work with a local partner. The main cost drivers are the number of apps, branches and warehouses, data migration and data quality, integrations, customisation, ZATCA onboarding, and training.",
+        },
+        {
+          type: "table",
+          head: ["Package", "Fits", "From", "Duration"],
+          rows: [
+            ["Starter", "Small business up to 5 users: sales, invoicing, accounting, Fatoora", "SAR 9,900", "3–4 weeks"],
+            ["Growth", "Distribution, wholesale, beauty and retail up to 20 users", "SAR 24,900", "6–8 weeks"],
+            ["Enterprise", "Multi-company groups with integrations and custom development", "SAR 60,000", "By scope"],
+          ],
+          caption: "Our published fixed-price packages, before VAT and excluding the Odoo subscription. Each extra sales-channel integration starts at SAR 4,500.",
+        },
+        { type: "link", text: "Package details, payment terms and timeline guarantee", href: "#packages" },
+        { type: "h2", text: "ZATCA Fatoora integration" },
+        {
+          type: "p",
+          text: "Odoo's Saudi localization supports Phase 2 e-invoicing natively, for invoices and point of sale, so no paid middleware is needed. What you pay for is the work: completing company and branch data, onboarding each sales journal with an OTP from the Fatoora portal, testing in simulation, and configuring POS. Once a production invoice is sent, you can't switch back to testing.",
+        },
+        { type: "link", text: "Read: connecting Odoo to Fatoora", href: "/blog/odoo-zatca-fatoora-integration" },
+        { type: "h2", text: "Item three: support after go-live" },
+        {
+          type: "p",
+          text: "The Odoo subscription includes Odoo's own support for standard features. Changing your processes, adding reports, maintaining custom modules and integrations, and training new staff is the partner's job, usually through a monthly package. Ours start at SAR 2,900 a month (8 hours, next-business-day response) and SAR 5,900 a month (20 hours, 4-business-hour response).",
+        },
+        { type: "h2", text: "Costs that rarely appear in quotes" },
+        {
+          type: "ul",
+          items: [
+            "15% VAT on the subscription and on partner services.",
+            "The renewal price after the first-year discount ends.",
+            "Users added during the year, and employee records without accounts.",
+            "Data cleanup before migration.",
+            "Odoo.sh or server costs if you need custom modules.",
+            "Upgrading custom modules when moving to a newer Odoo version.",
+          ],
+        },
+        { type: "h2", text: "How to estimate your budget before signing" },
+        {
+          type: "ol",
+          items: [
+            "Count the people who will actually log in, and who only needs a Light User.",
+            "Pick the apps you need in year one and leave the rest for phase two.",
+            "List your integrations; they usually decide whether you need Custom.",
+            "Calculate the subscription at the renewal price, with room for new users.",
+            "Ask for a quote that separates subscription, implementation and support, with a written scope and timeline.",
+          ],
+        },
+        { type: "link", text: "Calculate your Odoo subscription with our calculator", href: "/odoo-cost-calculator" },
         {
           type: "note",
           text: "At Warrdly Technologies, the free consultation gives you an initial estimate that separates subscription, implementation and support, based on your actual users, apps and integrations, before any commitment.",

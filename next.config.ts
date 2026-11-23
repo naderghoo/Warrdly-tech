@@ -14,7 +14,10 @@ const nextConfig: NextConfig = {
   turbopack: { resolveAlias: { "cloudflare:sockets": "./lib/cf-sockets.ts" } },
   // Permanent (308) redirect from "/" to the Arabic homepage, so search engines pass ranking to /ar
   async redirects() {
-    return [{ source: "/", destination: "/ar", permanent: true }];
+    return [
+      { source: "/", destination: "/ar", permanent: true },
+      { source: "/:locale(ar|en)/team/hothyfa-alareqi", destination: "/:locale/team/general-manager", permanent: true },
+    ];
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

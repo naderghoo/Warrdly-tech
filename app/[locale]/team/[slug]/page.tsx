@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -7,8 +8,6 @@ import { Container, Eyebrow } from "@/components/ui";
 import { authors, getAuthor } from "@/content/authors";
 import { blogUi, posts } from "@/content/blog";
 import { getDict, isLocale, locales } from "@/content/i18n";
-import { site } from "@/content/site";
-import { ld, ORG_ID } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -22,7 +21,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const a = getAuthor(slug);
   if (!isLocale(locale) || !a) return {};
   const c = a[locale];
-  return pageMeta(locale, `/team/${slug}`, `${c.name}${locale === "ar" ? "، " : ", "}${c.role}`, c.bio[0]);
+  return pageMeta(locale, `/team/${slug}`, `${c.name}${locale === "ar" ? "، " : ", "}${c.role}`, c.bio[0], { image: "/og.png" });
 }
 
 export default async function AuthorPage({ params }: { params: Params }) {
@@ -32,37 +31,12 @@ export default async function AuthorPage({ params }: { params: Params }) {
   const d = getDict(locale);
   const c = a[locale];
   const ui = blogUi[locale];
-  const initials = c.name
-    .split(" ")
-    .map((w) => (locale === "ar" ? w.replace(/^ال/, "")[0] : w[0]))
-    .join(locale === "ar" ? "\u200c" : "");
-
-  const person = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": `${site.url}/#person-${a.slug}`,
-    name: c.name,
-    alternateName: locale === "ar" ? a.en.name : a.ar.name,
-    jobTitle: c.role,
-    description: c.bio.join(" "),
-    url: `${site.url}/${locale}/team/${a.slug}`,
-    worksFor: { "@id": ORG_ID },
-    knowsAbout: c.expertise,
-    ...(a.sameAs.length ? { sameAs: a.sameAs } : {}),
-  };
-
   return (
     <>
       <Breadcrumbs locale={locale} trail={[{ label: c.name }]} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={ld(person)} />
       <section className="bg-tint/40">
         <Container className="flex flex-col gap-8 py-16 sm:flex-row sm:items-start">
-          <span
-            className="flex h-28 w-28 flex-none items-center justify-center rounded-full bg-plum text-3xl font-bold text-white"
-            aria-hidden="true"
-          >
-            {initials}
-          </span>
+          <Image src="/logo.png" alt="" width={112} height={112} className="h-28 w-28 flex-none rounded-full" />
           <div className="flex max-w-[760px] flex-col gap-4">
             <Eyebrow>{locale === "ar" ? "كاتب المقالات" : "Author"}</Eyebrow>
             <h1 className="text-4xl font-bold leading-tight">{c.name}</h1>
@@ -79,15 +53,6 @@ export default async function AuthorPage({ params }: { params: Params }) {
                 </li>
               ))}
             </ul>
-            {a.sameAs.length > 0 && (
-              <div className="flex flex-wrap gap-4">
-                {a.sameAs.map((u) => (
-                  <a key={u} href={u} target="_blank" rel="noopener me" className="font-semibold text-plum hover:text-plum-dark">
-                    {u.includes("linkedin") ? "LinkedIn" : u.replace(/^https?:\/\//, "")}
-                  </a>
-                ))}
-              </div>
-            )}
           </div>
         </Container>
       </section>

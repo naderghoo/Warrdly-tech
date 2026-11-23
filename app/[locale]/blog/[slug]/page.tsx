@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Icon } from "@/components/Icon";
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return pageMeta(locale, `/blog/${slug}`, c.seoTitle ?? c.title, c.description, { absoluteTitle: true, publishedTime: post.date });
 }
 
-function Render({ block }: { block: Block }) {
+function Render({ block, locale }: { block: Block; locale: string }) {
   switch (block.type) {
     case "h2":
       return <h2 className="pt-6 text-2xl font-bold leading-snug sm:text-[28px]">{block.text}</h2>;
@@ -91,6 +92,21 @@ function Render({ block }: { block: Block }) {
           {block.caption && <figcaption className="text-sm text-mist-2">{block.caption}</figcaption>}
         </figure>
       );
+    case "link": {
+      const external = /^https?:\/\//.test(block.href);
+      const href = external ? block.href : `/${locale}${block.href}`;
+      return external ? (
+        <a href={href} target="_blank" rel="noopener" className="inline-flex items-center gap-2 self-start font-semibold text-plum underline decoration-plum/30 underline-offset-4 hover:text-plum-dark">
+          {block.text}
+          <Icon name="arrow" size={16} className="flex-none rtl:-scale-x-100" />
+        </a>
+      ) : (
+        <Link href={href} className="inline-flex items-center gap-2 self-start font-semibold text-plum underline decoration-plum/30 underline-offset-4 hover:text-plum-dark">
+          {block.text}
+          <Icon name="arrow" size={16} className="flex-none rtl:-scale-x-100" />
+        </Link>
+      );
+    }
     case "note":
       return (
         <aside className="flex gap-3 rounded-2xl glass-tint p-5 text-[16px] font-medium leading-[1.8] text-plum-dark">
@@ -125,13 +141,8 @@ export default async function BlogPost({ params }: { params: Params }) {
     inLanguage: locale,
     mainEntityOfPage: `${site.url}/${locale}/blog/${slug}`,
     image: `${site.url}/og/${locale}/blog/${slug}.jpg`,
-    author: {
-      "@type": "Person",
-      "@id": `${site.url}/#person-${author.slug}`,
-      name: author[locale].name,
-      jobTitle: author[locale].role,
-      url: `${site.url}/${locale}/team/${author.slug}`,
-    },
+    // The site shows the author by role only, so the article is credited to the company
+    author: { "@type": "Organization", "@id": ORG_ID, name: locale === "ar" ? "وردلي تيكنولوجيز" : "Warrdly Technologies", url: `${site.url}/${locale}` },
     publisher: { "@id": ORG_ID },
   };
 
@@ -166,7 +177,7 @@ export default async function BlogPost({ params }: { params: Params }) {
         <div className="bg-transparent">
           <Container className="flex max-w-[860px] flex-col gap-5 py-14">
             {c.body.map((b, i) => (
-              <Render key={i} block={b} />
+              <Render key={i} block={b} locale={locale} />
             ))}
             <Link
               href={`/${locale}${post.related.href}`}
@@ -179,9 +190,7 @@ export default async function BlogPost({ params }: { params: Params }) {
               <Icon name="arrow" size={22} className="flex-none text-plum rtl:-scale-x-100" />
             </Link>
             <div className="flex items-start gap-4 rounded-2xl border border-line bg-white/60 p-6">
-              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-plum font-bold text-white" aria-hidden="true">
-                {author[locale].name.split(" ").map((w) => (locale === "ar" ? w.replace(/^ال/, "")[0] : w[0])).join(locale === "ar" ? "\u200c" : "")}
-              </span>
+              <Image src="/logo.png" alt="" width={48} height={48} className="h-12 w-12 flex-none rounded-full" />
               <span className="flex flex-col gap-1">
                 <Link href={`/${locale}/team/${author.slug}`} rel="author" className="font-bold text-ink hover:text-plum">
                   {author[locale].name}
