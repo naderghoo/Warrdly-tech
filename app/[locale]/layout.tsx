@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { SiteScripts } from "@/components/SiteScripts";
 import { dirOf, getDict, isLocale, locales } from "@/content/i18n";
 import { site } from "@/content/site";
 import Script from "next/script";
@@ -132,10 +133,13 @@ export default async function LocaleLayout({
         <Footer dict={dict} locale={locale} />
         <WhatsAppFloat label={dict.contact.whatsapp} />
         <Reveal />
-        {site.odooLivechat.url && (
+        <SiteScripts livechat={site.odooLivechat.url ? site.odooLivechat : undefined} />
+        {site.ga4Id && (
           <>
-            <script defer src={`${site.odooLivechat.url}/im_livechat/loader/${site.odooLivechat.channelId}`} />
-            <script defer src={`${site.odooLivechat.url}/im_livechat/assets_embed.js`} />
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.ga4Id}`} strategy="lazyOnload" />
+            <Script id="ga4" strategy="lazyOnload">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config','${site.ga4Id}');`}
+            </Script>
           </>
         )}
         {cfToken && (

@@ -17,7 +17,7 @@ export type PlanKey = keyof typeof odooPricing.plans;
 export const calcAr = {
   path: "/odoo-cost-calculator",
   nav: "حاسبة تكلفة Odoo",
-  metaTitle: "حاسبة تكلفة اشتراك Odoo في السعودية",
+  metaTitle: "حاسبة تكلفة اشتراك أودو Odoo في السعودية",
   metaDescription:
     "احسب تكلفة اشتراك Odoo لشركتك بالريال: عدد المستخدمين، وباقة Standard أو Custom، والدفع السنوي أو الشهري، بالأسعار الرسمية في السعودية مع سعر التجديد.",
   hero: {

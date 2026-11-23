@@ -100,7 +100,7 @@ export function Header({ dict, locale }: { dict: Dict; locale: Locale }) {
       <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur-xl backdrop-saturate-150">
         <div className="relative mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-3 sm:px-6">
           <Link href={base} className="flex flex-none items-center gap-2.5 text-ink">
-            <Image src="/logo.png" alt="" width={44} height={44} priority />
+            <Image src="/logo.png" alt={dict.brand.name} width={44} height={44} priority />
             <span className="flex flex-col whitespace-nowrap leading-tight">
               <span className="text-lg font-bold">{dict.brand.name}</span>
               <span className="text-[11px] tracking-wide text-muted-2">{dict.brand.sub}</span>

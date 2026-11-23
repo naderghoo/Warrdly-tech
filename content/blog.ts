@@ -24,6 +24,8 @@ export type PostContent = {
 export type Post = {
   slug: string;
   date: string; // YYYY-MM-DD
+  /** تاريخ آخر تحديث جوهري للمقال (اختياري) — يظهر لمحركات البحث كـ dateModified */
+  updated?: string; // YYYY-MM-DD
   related: { label: { ar: string; en: string }; href: string };
   ar: PostContent;
   en: PostContent;
@@ -421,7 +423,7 @@ export const posts: Post[] = [
     related: { label: { ar: "احسب تكلفة اشتراك Odoo لشركتك", en: "Calculate your Odoo subscription cost" }, href: "/odoo-cost-calculator" },
     ar: {
       title: "كم تكلفة Odoo في السعودية؟ دليل واضح لميزانية الاشتراك والتطبيق",
-      seoTitle: "سعر Odoo في السعودية 2026: الأسعار الرسمية وما يحدد التكلفة",
+      seoTitle: "سعر أودو Odoo في السعودية 2026: الأسعار وما يحدد التكلفة",
       description:
         "أسعار Odoo الرسمية في السعودية 2026: باقة Standard من 13.50 دولاراً وCustom من 25.50 دولاراً للمستخدم شهرياً، مع تكلفة التطبيق والدعم وكيف تقدّر ميزانيتك.",
       category: "Odoo",
@@ -603,7 +605,7 @@ export const posts: Post[] = [
     related: { label: { ar: "صفحة التكاملات", en: "Integrations page" }, href: "/integrations" },
     ar: {
       title: "ربط متجر سلة مع Odoo: المنتجات والطلبات والمخزون والفواتير في نظام واحد",
-      seoTitle: "ربط سلة مع Odoo: دليل عملي للتجار",
+      seoTitle: "ربط سلة مع أودو Odoo: دليل عملي للتجار",
       description:
         "كيف يعمل ربط متجر سلة مع نظام Odoo: مزامنة المنتجات والمخزون، واستيراد الطلبات، وتحديث حالتها، والفوترة المتوافقة مع فاتورة، مع خطوات التطبيق والأخطاء الشائعة.",
       category: "التجارة الإلكترونية",
@@ -731,7 +733,7 @@ export const posts: Post[] = [
     related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
     ar: {
       title: "كيف تغيّر شريك Odoo دون أن تخسر بياناتك أو تتوقف أعمالك",
-      seoTitle: "تغيير شريك Odoo: الخطوات وقائمة الاستلام الكاملة",
+      seoTitle: "تغيير شريك أودو Odoo: الخطوات وقائمة الاستلام",
       description:
         "دليل عملي لتغيير شريك Odoo: ما تقوله اتفاقية Odoo الرسمية، وما يجب أن تستلمه من الشريك الحالي، وخطوات الانتقال بالترتيب حسب نوع الاستضافة، والأخطاء التي تكلّف الشركات بياناتها.",
       category: "إدارة النظام",
@@ -957,7 +959,7 @@ export const posts: Post[] = [
     related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
     ar: {
       title: "أشهر مشكلات Odoo بعد التطبيق وكيف تُحل",
-      seoTitle: "مشاكل Odoo الشائعة بعد التطبيق وحلولها",
+      seoTitle: "مشاكل أودو Odoo الشائعة بعد التطبيق وحلولها",
       description:
         "المخزون لا يطابق، والتكلفة غير دقيقة، والفواتير ترفضها منصة فاتورة، والنظام بطيء، والفريق عاد إلى Excel. أسباب أشهر مشكلات Odoo بعد التطبيق وطريقة حل كل منها.",
       category: "إدارة النظام",
@@ -1423,7 +1425,7 @@ export const posts: Post[] = [
     related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
     ar: {
       title: "ترقية Odoo: الخطوات والمدة وما تحتاج معرفته قبل البدء",
-      seoTitle: "ترقية Odoo إلى إصدار أحدث: الخطوات والمخاطر",
+      seoTitle: "ترقية أودو Odoo إلى إصدار أحدث: الخطوات والمخاطر",
       description:
         "متى تحتاج ترقية Odoo، وما الذي يشمله الاشتراك، وخطوات الترقية الآمنة من النسخة التجريبية حتى التشغيل، وكيف تتعامل مع الوحدات المخصصة.",
       category: "إدارة النظام",

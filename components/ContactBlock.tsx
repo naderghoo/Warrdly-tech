@@ -31,6 +31,12 @@ export function ContactBlock({ dict, locale, heading = true }: { dict: Dict; loc
                 {dict.contact.whatsapp}: <span dir="ltr">+{site.whatsapp}</span>
               </a>
             )}
+            {site.whatsapp && (
+              <a href={`tel:+${site.whatsapp}`} className="inline-flex items-center gap-2.5 text-ink hover:text-plum">
+                <Icon name="phone" size={22} className="text-plum" />
+                {dict.contact.call}: <span dir="ltr">+{site.whatsapp}</span>
+              </a>
+            )}
             {site.email && (
               <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2.5 text-ink hover:text-plum">
                 <Icon name="mail" size={22} className="text-plum" />

@@ -21,6 +21,9 @@ export const site = {
   // Microsoft Clarity (heatmaps + anonymised session recordings), project for tech.warrdly.com
   clarityId: "z9zesvghfp",
 
+  /** معرّف Google Analytics 4 (يبدأ بـ G-). فارغ = معطّل. الأحداث المتتبعة: lead_submit, whatsapp_click, call_click, email_click */
+  ga4Id: "" as string,
+
   /** بوابة العملاء في Odoo (المشاريع والمهام والفواتير والتذاكر) */
   portalUrl: "https://warrdly.odoo.com/my",
 

@@ -28,11 +28,15 @@ export function HeroVideo({ locale }: { locale: "ar" | "en" }) {
   }, []);
 
   return (
-    <div className="sheen-edge relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink" aria-hidden="true">
+    <div className="sheen-edge relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/hero/hero-${locale}.webp`}
-        alt=""
+        alt={
+          locale === "ar"
+            ? "نظام أودو Odoo مربوط مع أمازون ونون وسلة ومنصة فاتورة في نظام واحد"
+            : "Odoo connected to Amazon, noon, Salla and ZATCA Fatoora in one system"
+        }
         width={960}
         height={720}
         decoding="async"
@@ -50,6 +54,7 @@ export function HeroVideo({ locale }: { locale: "ar" | "en" }) {
           playsInline
           preload="auto"
           disablePictureInPicture
+          aria-hidden="true"
           onCanPlay={() => setReady(true)}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}
         />

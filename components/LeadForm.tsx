@@ -47,6 +47,7 @@ export function LeadForm({
       if (!res.ok) throw new Error();
       form.reset();
       setStatus("success");
+      window.dispatchEvent(new Event("warrdly:lead"));
     } catch {
       setStatus("error");
     }

@@ -121,6 +121,7 @@ export default async function BlogPost({ params }: { params: Params }) {
     headline: c.title,
     description: c.description,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
     inLanguage: locale,
     mainEntityOfPage: `${site.url}/${locale}/blog/${slug}`,
     image: `${site.url}/og/${locale}/blog/${slug}.jpg`,

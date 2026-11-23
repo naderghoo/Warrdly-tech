@@ -61,7 +61,7 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
           {/* Brand + contact */}
           <div className="col-span-2 flex flex-col gap-5 md:col-span-3 lg:col-span-1">
             <Link href={base} className="flex items-center gap-2.5 self-start">
-              <Image src="/logo.png" alt="" width={40} height={40} />
+              <Image src="/logo.png" alt={dict.brand.name} width={40} height={40} />
               <span className="text-xl font-bold text-white">{dict.brand.name}</span>
             </Link>
             <p className="max-w-[340px] text-[15px] leading-relaxed">{dict.footer.about}</p>
@@ -71,6 +71,14 @@ export function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
                 <li>
                   <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener" className="inline-flex items-center gap-2.5 hover:text-white">
                     <WhatsAppLogo size={18} className="flex-none text-[#25D366]" />
+                    <span dir="ltr">{formatPhone(site.whatsapp)}</span>
+                  </a>
+                </li>
+              )}
+              {site.whatsapp && (
+                <li>
+                  <a href={`tel:+${site.whatsapp}`} className="inline-flex items-center gap-2.5 hover:text-white">
+                    <Icon name="phone" size={18} stroke={1.8} className="flex-none text-gold" />
                     <span dir="ltr">{formatPhone(site.whatsapp)}</span>
                   </a>
                 </li>

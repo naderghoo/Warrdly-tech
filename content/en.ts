@@ -299,6 +299,7 @@ export const en: Dict = {
     title: "A free 30-minute consultation with an Odoo expert",
     text: "Tell us about your business and we'll recommend the right apps with an initial estimate of cost and timeline.",
     whatsapp: "WhatsApp",
+    call: "Call us",
     book: "Book a meeting directly",
   },
   form: {
