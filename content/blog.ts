@@ -5,6 +5,7 @@
 
 export type Block =
   | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
@@ -872,14 +873,15 @@ export const posts: Post[] = [
   {
     slug: "change-odoo-partner",
     date: "2026-11-07",
+    updated: "2026-11-24",
     related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
     ar: {
       title: "كيف تغيّر شريك Odoo دون أن تخسر بياناتك أو تتوقف أعمالك",
       seoTitle: "تغيير شريك أودو Odoo: الخطوات وقائمة الاستلام",
       description:
-        "دليل عملي لتغيير شريك Odoo: ما تقوله اتفاقية Odoo الرسمية، وما يجب أن تستلمه من الشريك الحالي، وخطوات الانتقال بالترتيب حسب نوع الاستضافة، والأخطاء التي تكلّف الشركات بياناتها.",
+        "دليل عملي لتغيير شريك أودو (Odoo): ما تقوله اتفاقية Odoo الرسمية، وقائمة الاستلام من الشريك الحالي، وخطوات الانتقال وجدولها الزمني حسب نوع الاستضافة، وكيف تختار الشريك الجديد، وأسئلة شائعة.",
       category: "إدارة النظام",
-      readMinutes: 7,
+      readMinutes: 11,
       body: [
         {
           type: "p",
@@ -894,6 +896,11 @@ export const posts: Post[] = [
           type: "p",
           text: "بمعنى آخر: اشتراك Odoo عقد بين شركتك وOdoo مباشرة، والشريك مقدّم خدمة لك. لكن عقدك مع الشريك نفسه، إن وُجد، عقد منفصل له شروطه، ويجب مراجعته قبل أي خطوة.",
         },
+        {
+          type: "p",
+          text: "وتوضح الاتفاقية في البند 4.6 دور الشريك: إن اخترت العمل مع شريك، يصبح هو جهة التواصل الرئيسية لك في الإصلاحات والدعم والترقيات، ويتولى خدمات الوحدات المخصصة، ويمكنه الرجوع إلى Odoo نيابة عنك في الخصائص القياسية. أما إن قررت التعامل مع Odoo مباشرة، فخدمات الوحدات المخصصة لا تُقدَّم إلا إذا كان نظامك مستضافاً على Odoo Online.",
+        },
+        { type: "link", text: "اتفاقية اشتراك Odoo Enterprise (الإصدار 13، 24 سبتمبر 2026)", href: "https://www.odoo.com/documentation/19.0/legal/terms/enterprise.html" },
         { type: "h2", text: "متى يكون التغيير هو القرار الصحيح؟" },
         {
           type: "ul",
@@ -956,6 +963,18 @@ export const posts: Post[] = [
             "خصص الشهر الأول للاستقرار والإصلاحات، قبل البدء في تطوير جديد أو ترقية.",
           ],
         },
+        { type: "h2", text: "جدول زمني نموذجي للانتقال" },
+        {
+          type: "table",
+          head: ["المرحلة", "المدة التقريبية", "ما يحدث"],
+          rows: [
+            ["الاستلام والتحقق", "أسبوع إلى أسبوعين", "جمع عناصر قائمة الاستلام واستعادة النسخة الاحتياطية على بيئة تجريبية"],
+            ["مراجعة الشريك الجديد", "أسبوع", "فحص النظام بصلاحية مؤقتة وتقرير بحالته وأولويات الإصلاح"],
+            ["الإشعار والتسليم", "30 يوماً على الأقل", "إشعار Odoo كتابياً، واستكمال التسليم مع الشريك الحالي"],
+            ["الاستقرار", "الشهر الأول بعد الانتقال", "إغلاق الصلاحيات القديمة، وحل المشكلات العاجلة قبل أي تطوير جديد"],
+          ],
+          caption: "المدد تقريبية وتختلف حسب حجم النظام وتعاون الشريك الحالي. يمكن أن تتداخل مرحلة المراجعة مع فترة الإشعار.",
+        },
         { type: "h2", text: "ما يختلف حسب نوع الاستضافة" },
         {
           type: "table",
@@ -977,6 +996,62 @@ export const posts: Post[] = [
             "الجمع بين تغيير الشريك وترقية الإصدار في الوقت نفسه، فإذا ظهرت مشكلة صعب تحديد سببها.",
           ],
         },
+        { type: "h2", text: "كيف تختار الشريك الجديد؟" },
+        {
+          type: "p",
+          text: "لا تكرر التجربة نفسها. قبل التعاقد، اطلب إجابات مكتوبة عن هذه الأسئلة:",
+        },
+        {
+          type: "ul",
+          items: [
+            "هل لديكم خبرة موثقة في قطاعنا وفي متطلبات الفوترة الإلكترونية السعودية؟",
+            "ما قناة الدعم، وما زمن الاستجابة المتفق عليه كتابياً؟",
+            "من يملك الشيفرة المخصصة التي ستطورونها، وأين تُحفظ؟",
+            "كيف تبدأون مع نظام نفّذه غيركم: مراجعة أولاً، أم تعديلات مباشرة؟",
+            "ما خطتكم للإصدارات القادمة وترقية الوحدات المخصصة؟",
+            "هل توقعون اتفاقية سرية قبل الاطلاع على بياناتنا؟",
+          ],
+        },
+        { type: "h2", text: "ماذا يفحص الشريك الجديد في المراجعة؟" },
+        {
+          type: "p",
+          text: "المراجعة الجيدة تنتهي بتقرير مكتوب لا بانطباع شفهي. هذه البنود التي نفحصها في أي نظام نستلمه:",
+        },
+        {
+          type: "ul",
+          items: [
+            "إصدار Odoo وهل ما زال مدعوماً، وخطة الترقية إن لزم.",
+            "الوحدات المخصصة: هل شيفرتها كاملة في مستودع، وهل تعمل مع الإصدار الحالي، وأيها يمكن استبداله بخصائص قياسية.",
+            "حالة الربط مع منصة فاتورة: الدفاتر المسجلة، والفواتير المرفوضة أو العالقة.",
+            "التكاملات: سجلات المزامنة مع منصات البيع والشحن والدفع، والأخطاء المتكررة.",
+            "المحاسبة والمخزون: الفروقات بين الأرصدة، والحركات العالقة، وإعدادات التقييم.",
+            "المستخدمون والصلاحيات: حسابات غير مستخدمة، وصلاحيات أوسع من اللازم.",
+            "النسخ الاحتياطي: هل يعمل، وهل جُربت الاستعادة.",
+          ],
+        },
+        { type: "link", text: "اقرأ: مشكلات أودو Odoo الشائعة بعد التطبيق وحلولها", href: "/blog/common-odoo-problems" },
+        { type: "h2", text: "أسئلة شائعة" },
+        { type: "h3", text: "هل يتغير سعر اشتراك Odoo عند تغيير الشريك؟" },
+        {
+          type: "p",
+          text: "لا. الاشتراك عقد بينك وبين Odoo، وسعره يعتمد على عدد المستخدمين والباقة، لا على الشريك. ما يتغير هو عقد الخدمة مع الشريك الجديد.",
+        },
+        { type: "h3", text: "هل يمكنني التعامل مع Odoo مباشرة دون شريك؟" },
+        {
+          type: "p",
+          text: "نعم، بإشعار مسبق. لكن إن كان لديك وحدات مخصصة مستضافة على Odoo.sh أو خادم خاص، فلن تشملها خدمات Odoo المباشرة حسب البند 4.6، وستحتاج من يصونها.",
+        },
+        { type: "h3", text: "هل يتوقف النظام أثناء الانتقال؟" },
+        {
+          type: "p",
+          text: "لا يُفترض ذلك. تغيير الشريك تغيير في من يخدم النظام، لا في النظام نفسه. التوقف يحدث فقط إذا تزامن الانتقال مع نقل الاستضافة أو الترقية، ولهذا ننصح بفصلها.",
+        },
+        { type: "h3", text: "ماذا لو رفض الشريك الحالي تسليم الشيفرة؟" },
+        {
+          type: "p",
+          text: "ارجع إلى عقدك معه في ملكية الشيفرة. وإن كان نظامك على Odoo.sh أو خادم تملكه شركتك، فالشيفرة المنشورة موجودة فيه أصلاً. وللخلافات التعاقدية، استشر مستشاراً قانونياً.",
+        },
+        { type: "link", text: "اقرأ: ترقية أودو Odoo، الخطوات والمخاطر", href: "/blog/odoo-upgrade-guide" },
         {
           type: "note",
           text: "نساعد الشركات التي تستخدم Odoo في مراجعة أنظمتها وحل مشكلاتها، وفي تنظيم الانتقال عندما تقرر تغيير الشريك. نبدأ بجلسة مراجعة مجانية، ونتعامل مع الشريك السابق باحترام، فهدفنا استقرار نظامك.",
@@ -989,7 +1064,7 @@ export const posts: Post[] = [
       description:
         "A practical guide to changing your Odoo partner: what Odoo's official agreement says, what to receive from your current partner, the switch steps by hosting type, and the mistakes that cost companies their data.",
       category: "System management",
-      readMinutes: 7,
+      readMinutes: 10,
       body: [
         {
           type: "p",
@@ -1004,6 +1079,11 @@ export const posts: Post[] = [
           type: "p",
           text: "In other words, your Odoo subscription is a contract between your company and Odoo, and the partner is your service provider. Your contract with the partner, if any, is separate and has its own terms, so review it before taking any step.",
         },
+        {
+          type: "p",
+          text: "Clause 4.6 explains the partner's role: if you work with a partner, it becomes your main point of contact for bug fixes, support and upgrades, handles services for your custom modules, and may contact Odoo on your behalf about standard features. If you work with Odoo directly, services for custom modules are only provided when you are hosted on Odoo Online.",
+        },
+        { type: "link", text: "Odoo Enterprise Subscription Agreement (version 13, 24 September 2026)", href: "https://www.odoo.com/documentation/19.0/legal/terms/enterprise.html" },
         { type: "h2", text: "When is switching the right call?" },
         {
           type: "ul",
@@ -1066,6 +1146,18 @@ export const posts: Post[] = [
             "Reserve the first month for stabilisation and fixes before new development or an upgrade.",
           ],
         },
+        { type: "h2", text: "A typical timeline" },
+        {
+          type: "table",
+          head: ["Stage", "Approx. duration", "What happens"],
+          rows: [
+            ["Handover and checks", "1–2 weeks", "Collect the handover items and restore the backup in a test environment"],
+            ["New partner review", "1 week", "System audit with temporary access and a written report"],
+            ["Notice and handover", "At least 30 days", "Written notice to Odoo and completing handover"],
+            ["Stabilisation", "First month after the switch", "Revoke old access and fix urgent issues before new development"],
+          ],
+          caption: "Durations vary with system size and the current partner's cooperation; the review can overlap the notice period.",
+        },
         { type: "h2", text: "What differs by hosting type" },
         {
           type: "table",
@@ -1087,6 +1179,39 @@ export const posts: Post[] = [
             "Changing partner and upgrading the version at the same time, so any problem is hard to trace.",
           ],
         },
+        { type: "h2", text: "How to choose the new partner" },
+        {
+          type: "ul",
+          items: [
+            "Documented experience in your sector and in Saudi e-invoicing.",
+            "A clear support channel with a written response time.",
+            "Who owns the custom code they write, and where it is stored.",
+            "Whether they start with a review before changing anything.",
+            "Their plan for future versions and upgrading custom modules.",
+            "Willingness to sign an NDA before seeing your data.",
+          ],
+        },
+        { type: "h2", text: "What the new partner should audit" },
+        {
+          type: "ul",
+          items: [
+            "Odoo version, support status and upgrade path.",
+            "Custom modules: complete code in a repository, compatibility, and which can be replaced by standard features.",
+            "Fatoora status: onboarded journals and rejected or stuck invoices.",
+            "Integration sync logs and recurring errors.",
+            "Accounting and stock discrepancies and stuck moves.",
+            "Users and access rights.",
+            "Backups, including a tested restore.",
+          ],
+        },
+        { type: "h2", text: "FAQ" },
+        { type: "h3", text: "Does the Odoo subscription price change?" },
+        { type: "p", text: "No. The subscription is between you and Odoo and is priced by users and plan, not by partner." },
+        { type: "h3", text: "Can I work with Odoo directly?" },
+        { type: "p", text: "Yes, with prior notice. But custom modules hosted on Odoo.sh or your own server are not covered by Odoo's direct services under clause 4.6, so someone still needs to maintain them." },
+        { type: "h3", text: "Will the system stop during the switch?" },
+        { type: "p", text: "It shouldn't. Changing partner changes who serves the system, not the system itself. Keep hosting moves and upgrades separate." },
+        { type: "link", text: "Read: common Odoo problems after implementation", href: "/blog/common-odoo-problems" },
         {
           type: "note",
           text: "We help companies already running Odoo review their systems and fix their issues, and organise the switch when they decide to change partner. We start with a free review session and treat the previous partner with respect; our goal is a stable system.",

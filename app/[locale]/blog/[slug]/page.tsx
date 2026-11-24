@@ -30,6 +30,8 @@ function Render({ block, locale }: { block: Block; locale: string }) {
   switch (block.type) {
     case "h2":
       return <h2 className="pt-6 text-2xl font-bold leading-snug sm:text-[28px]">{block.text}</h2>;
+    case "h3":
+      return <h3 className="pt-2 text-xl font-bold leading-snug">{block.text}</h3>;
     case "p":
       return <p className="text-[17px] leading-[1.9] text-[#3E3242]">{block.text}</p>;
     case "ul":
