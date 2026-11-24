@@ -1429,14 +1429,15 @@ export const posts: Post[] = [
   {
     slug: "common-odoo-problems",
     date: "2026-11-07",
+    updated: "2026-11-24",
     related: { label: { ar: "دعم أنظمة Odoo القائمة", en: "Support for existing Odoo systems" }, href: "/odoo-support" },
     ar: {
-      title: "أشهر مشكلات Odoo بعد التطبيق وكيف تُحل",
+      title: "أشهر 10 مشكلات في أودو Odoo بعد التطبيق وكيف تُحل",
       seoTitle: "مشاكل أودو Odoo الشائعة بعد التطبيق وحلولها",
       description:
-        "المخزون لا يطابق، والتكلفة غير دقيقة، والفواتير ترفضها منصة فاتورة، والنظام بطيء، والفريق عاد إلى Excel. أسباب أشهر مشكلات Odoo بعد التطبيق وطريقة حل كل منها.",
+        "المخزون لا يطابق، والتكلفة غير دقيقة، والفواتير ترفضها منصة فاتورة، والنظام بطيء، والفريق عاد إلى Excel. أسباب أشهر 10 مشكلات في أودو (Odoo) بعد التطبيق، وطريقة حل كل منها، وبأيها تبدأ.",
       category: "إدارة النظام",
-      readMinutes: 8,
+      readMinutes: 11,
       body: [
         {
           type: "p",
@@ -1454,6 +1455,8 @@ export const posts: Post[] = [
             ["التكاملات تتوقف", "مفاتيح منتهية أو أخطاء لا يراقبها أحد", "مراقبة التكاملات وتنبيهات عند الفشل"],
             ["بيانات مكررة", "إدخال يدوي متكرر واستيراد دون تدقيق", "دمج المكرر وضوابط عند الإدخال"],
             ["الترقية مؤجلة", "وحدات مخصصة يخشى الجميع أن تتعطل", "ترقية على نسخة تجريبية أولاً"],
+            ["أخطاء صلاحيات أو موظفون يرون ما لا يخصهم", "مجموعات صلاحيات أُعطيت على عجل عند التطبيق", "مراجعة المستخدمين والمجموعات حسب الأدوار"],
+            ["أرقام شهر مُقفل تتغير", "لا توجد تواريخ إقفال للفترات المحاسبية", "تفعيل تواريخ الإقفال وإجراء إقفال شهري"],
           ],
           caption: "ملخص أشهر مشكلات Odoo بعد التطبيق",
         },
@@ -1499,6 +1502,7 @@ export const posts: Post[] = [
             "تأكد أن الإشعارات الدائنة مرتبطة بالفاتورة الأصلية.",
           ],
         },
+        { type: "link", text: "اقرأ: ربط أودو Odoo بمنصة فاتورة، دليل المرحلة الثانية والموجة 25", href: "/blog/odoo-zatca-fatoora-integration" },
         { type: "h2", text: "4. النظام بطيء" },
         {
           type: "p",
@@ -1540,6 +1544,7 @@ export const posts: Post[] = [
             "راجع سجلات الأخطاء أسبوعياً، ولا تنتظر شكوى العميل.",
           ],
         },
+        { type: "link", text: "اقرأ: ربط متجر سلة مع أودو Odoo، وكيف تُراقب المزامنة", href: "/blog/salla-odoo-integration" },
         { type: "h2", text: "7. بيانات مكررة" },
         {
           type: "p",
@@ -1566,11 +1571,52 @@ export const posts: Post[] = [
             "لا تجمع الترقية مع تغييرات كبيرة أخرى في الوقت نفسه.",
           ],
         },
+        { type: "link", text: "اقرأ: ترقية أودو Odoo، الخطوات والمخاطر", href: "/blog/odoo-upgrade-guide" },
+        { type: "h2", text: "9. أخطاء صلاحيات، أو موظفون يرون ما لا يخصهم" },
+        {
+          type: "p",
+          text: "مشكلتان من مصدر واحد: موظف يظهر له خطأ صلاحية عند فتح شاشة يحتاجها، وآخر يرى أسعار الشراء أو أرقام الرواتب وهو لا يحتاجها. السبب غالباً أن الصلاحيات أُعطيت على عجل أثناء التطبيق، بنسخ مستخدم إلى آخر أو بمنح صلاحية المدير لحل مشكلة مؤقتة.",
+        },
+        {
+          type: "ul",
+          items: [
+            "اكتب الأدوار الفعلية في شركتك (مندوب، أمين مستودع، محاسب، مدير فرع) وما يحتاجه كل دور.",
+            "اربط كل مستخدم بمجموعات دوره فقط، وقلّل عدد حسابات المدير إلى أدنى حد.",
+            "في الشركات متعددة الفروع، تأكد أن كل مستخدم مسموح له بالشركات أو الفروع التي يعمل فيها فقط.",
+            "عطّل حسابات الموظفين الذين غادروا، فالحساب النشط يُحتسب في الاشتراك أيضاً.",
+          ],
+        },
+        { type: "h2", text: "10. أرقام شهر مُقفل تتغير بعد إعداد التقارير" },
+        {
+          type: "p",
+          text: "ترسل الإدارة تقرير الشهر، ثم يتغير الرقم بعد أسبوع لأن أحدهم سجّل أو عدّل قيداً بتاريخ قديم. وهذا يضر بالإقرارات الضريبية أيضاً، إذ قد تختلف أرقام النظام عن الإقرار المقدَّم.",
+        },
+        {
+          type: "ul",
+          items: [
+            "فعّل تواريخ الإقفال في إعدادات المحاسبة، لمنع تسجيل قيود أو تعديلها قبل تاريخ محدد.",
+            "اعتمد إجراء إقفال شهرياً: مطابقة البنوك، ومراجعة المخزون، ثم الإقفال.",
+            "أي تصحيح لفترة مقفلة يتم بقيد في الفترة الحالية، لا بفتح الفترة القديمة.",
+          ],
+        },
         { type: "h2", text: "متى تحتاج مراجعة شاملة للنظام؟" },
         {
           type: "p",
           text: "إذا كانت لديك ثلاث مشكلات أو أكثر من هذه القائمة، فالأفضل مراجعة شاملة بدل إصلاح كل مشكلة منفردة. كثير من هذه المشكلات مترابط: مخزون غير دقيق يعني تكلفة غير دقيقة، وتكلفة غير دقيقة تعني أن الإدارة تعود إلى Excel.",
         },
+        { type: "h2", text: "بأيها تبدأ؟ ترتيب الأولويات" },
+        {
+          type: "table",
+          head: ["الأولوية", "المشكلات", "السبب"],
+          rows: [
+            ["عاجلة", "رفض الفواتير من منصة فاتورة، وتوقف التكاملات", "تمس الامتثال والإيرادات مباشرة، وأثرها يتراكم يومياً"],
+            ["عالية", "المخزون غير المطابق، والتكلفة غير الدقيقة، والصلاحيات", "كل قرار شراء وتسعير يُبنى عليها، والصلاحيات تمس سرية البيانات"],
+            ["متوسطة", "الإقفال المحاسبي، والبيانات المكررة، والتقارير", "تصلح التقارير وتعيد ثقة الإدارة بالأرقام"],
+            ["مخططة", "البطء والترقية", "تحتاج قياساً وتجربة على نسخة تجريبية، فتُخطط ولا تُرتجل"],
+          ],
+          caption: "ترتيب عام؛ في المراجعة نرتّبها حسب أثرها الفعلي على عملك.",
+        },
+        { type: "link", text: "اقرأ: كيف تغيّر شريك أودو Odoo دون أن تخسر بياناتك", href: "/blog/change-odoo-partner" },
         {
           type: "note",
           text: "نراجع أنظمة Odoo القائمة ونرتّب مشكلاتها حسب أثرها على العمل، ثم نبدأ بما يؤثر عليك اليوم، سواء كنت تعمل معنا أو مع شريك آخر. ابدأ بجلسة مراجعة مجانية مدتها 30 دقيقة.",
@@ -1583,7 +1629,7 @@ export const posts: Post[] = [
       description:
         "Stock doesn't match, costs are off, Fatoora rejects invoices, the system is slow and the team is back on Excel. The causes of the most common post-implementation Odoo problems and how to fix each one.",
       category: "System management",
-      readMinutes: 8,
+      readMinutes: 10,
       body: [
         {
           type: "p",
@@ -1646,6 +1692,7 @@ export const posts: Post[] = [
             "Make sure credit notes are linked to the original invoice.",
           ],
         },
+        { type: "link", text: "Read: connecting Odoo to Fatoora (Phase 2 and Wave 25)", href: "/blog/odoo-zatca-fatoora-integration" },
         { type: "h2", text: "4. The system is slow" },
         {
           type: "p",
@@ -1687,6 +1734,7 @@ export const posts: Post[] = [
             "Review error logs weekly instead of waiting for a customer complaint.",
           ],
         },
+        { type: "link", text: "Read: connecting Salla to Odoo and monitoring the sync", href: "/blog/salla-odoo-integration" },
         { type: "h2", text: "7. Duplicate data" },
         {
           type: "p",
@@ -1713,6 +1761,46 @@ export const posts: Post[] = [
             "Don't combine the upgrade with other major changes at the same time.",
           ],
         },
+        { type: "link", text: "Read: upgrading Odoo, steps and risks", href: "/blog/odoo-upgrade-guide" },
+        { type: "h2", text: "9. Access errors, or staff seeing what they shouldn't" },
+        {
+          type: "p",
+          text: "Both come from rights granted in a hurry during implementation: copying one user to another, or giving admin rights to fix a one-off issue.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Define real roles (sales rep, storekeeper, accountant, branch manager) and what each needs.",
+            "Give each user only their role's groups, and keep admin accounts to a minimum.",
+            "In multi-company setups, allow each user only the companies they work in.",
+            "Archive users who have left; active accounts are billed.",
+          ],
+        },
+        { type: "h2", text: "10. Closed-month figures keep changing" },
+        {
+          type: "p",
+          text: "Management sends the month's report, then a back-dated entry changes it, which can also leave the books out of line with filed VAT returns.",
+        },
+        {
+          type: "ul",
+          items: [
+            "Set lock dates in the accounting settings to block entries before a given date.",
+            "Adopt a monthly close: bank reconciliation, stock review, then lock.",
+            "Correct closed periods with an entry in the current period, not by reopening.",
+          ],
+        },
+        { type: "h2", text: "Where to start" },
+        {
+          type: "table",
+          head: ["Priority", "Problems", "Why"],
+          rows: [
+            ["Urgent", "Fatoora rejections, stopped integrations", "Hit compliance and revenue directly, every day"],
+            ["High", "Stock mismatch, costing, access rights", "Purchasing and pricing depend on them; rights affect confidentiality"],
+            ["Medium", "Period close, duplicates, reports", "Restore management's trust in the numbers"],
+            ["Planned", "Performance, upgrade", "Need measurement and a test copy"],
+          ],
+        },
+        { type: "link", text: "Read: changing your Odoo partner without losing data", href: "/blog/change-odoo-partner" },
         { type: "h2", text: "When do you need a full system review?" },
         {
           type: "p",
